@@ -13,13 +13,19 @@ and open the template in the editor.
     <body>
         <h1>Main Page</h1>
         <br>
-        <form action="userformjsp.jsp">
-        <input type="submit" name="command" value="Register">
-        </form>
         
+        <form action="userformjsp.jsp">
+            <input type="submit" name="command" value="Register">
+        </form>
+
         <form action="FrontController">
-        <input type="submit" value="Manage Products">
-        <input type="hidden" name="command" value="ShowProductsCommand">
+            <input type="hidden" name="command" value="ShowShopProductsCommand">
+            <input type="submit" value="Show cart">
+        </form>
+
+        <form action="FrontController">
+            <input type="hidden" name="command" value="ShowProductsCommand">
+            <input type="submit" value="Manage Products">
         </form>
     </body>
 </html>

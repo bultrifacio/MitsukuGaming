@@ -36,7 +36,7 @@ public class RemoveFromCartCommand extends FrontCommand {
                 session.setAttribute("Cart", cart);
             }
             cart.removeProduct(request.getParameter("id"));
-            forward("/cart.jsp");
+            forward("/showCart.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(RemoveFromCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,7 +21,7 @@
                 <th>Price</th>
             </tr>
 
-            <c:forEach var="element" items="${productList}">
+            <c:forEach var="element" items="${Cart}">
                 <tr>
                     <td>${element.name}</td>
                     <td>${element.quantity}</td>
@@ -29,8 +29,8 @@
                     <td>
                         <form action="FrontController">
                             <input type="hidden" name="id" value="${element.productId}">
-                            <input type="submit" value="Remove from cart">
                             <input type="hidden" name="command" value="RemoveFromCartCommand">
+                            <input type="submit" value="Remove from cart">
                         </form>
                     </td>
                 </tr>

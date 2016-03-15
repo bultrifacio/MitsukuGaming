@@ -23,14 +23,6 @@
         <form action="FrontController">
             <fieldset>
                 <legend>Product information:</legend>
-
-                <%
-
-                    //Product product = (Product) session.getAttribute("product");
-                    //if (product != null) {
-
-                %>
-
                 <c:forEach var="element" items="${productList}">
                     ID:<br>
                     <input type="text" name="id" value="${element.productId}"><br>
