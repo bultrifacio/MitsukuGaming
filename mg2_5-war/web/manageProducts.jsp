@@ -23,6 +23,7 @@
 
         <table border="1">
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Available</th>
