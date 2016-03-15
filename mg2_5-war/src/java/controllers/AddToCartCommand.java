@@ -38,13 +38,25 @@ public class AddToCartCommand extends FrontCommand {
             }
             cart.addProduct(request.getParameter("id"));
             forward("/manageProducts.jsp");
-        } catch (NamingException ex) {
-            Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+        /*cart.addProduct("1");
+        cart.addProduct("7");
+        cart.addProduct("3");
+        cart.addProduct("8");
+        cart.addProduct("10");
+        cart.removeProduct("7");
+        ArrayList<String> shooppingCart = cart.getContents();
+        for (String product : shooppingCart) {
+        out.println(product + "<br>");
+        }
+        cart.removeProduct("7");
+        cart.removeProduct("10");
+        cart.removeProduct("3");
+        for (String product : shooppingCart) {
+        out.println(product + "<br>");
+        }*/ 
 
         /*cart.addProduct("1");
         cart.addProduct("7");

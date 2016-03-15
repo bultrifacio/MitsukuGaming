@@ -33,49 +33,32 @@
 
             <c:forEach var="element" items="${productList}">
                 <tr>
-                <form action="FrontController">
+                    <td>${element.productId}</td>
+                    <td>${element.name}</td>
+                    <td>${element.quantity}</td>
+                    <td>${element.available}</td>
+                    <td>${element.price}</td>
+                    <td>${element.cost}</td>
                     <td>
-                        ${element.productId}
-                        <input type="hidden" name="id" value="${element.productId}">
-                    </td>
+                        <form action="FrontController">
+                            <input type="hidden" name="id" value="${element.productId}">
+                            <input type="hidden" name="name" value="${element.name}">
+                            <input type="hidden" name="quantity" value="${element.quantity}">
+                            <input type="hidden" name="available" value="${element.available}">
+                            <input type="hidden" name="price" value="${element.price}">
+                            <input type="hidden" name="cost" value="${element.cost}">
 
-                    <td>
-                        ${element.name}
-                        <input type="hidden" name="name" value="${element.name}">
+                            <input type="submit" value="Modify Product">
+                            <input type="hidden" name="command" value="CopyProductDetailsCommand">
+                        </form>
+                        <form action="FrontController">
+                            <input type="hidden" name="id" value="${element.productId}">
+                            <input type="submit" value="Remove Product">
+                            <input type="hidden" name="command" value="RemoveProductCommand">
+                        </form>
                     </td>
-
-                    <td>
-                        ${element.quantity}
-                        <input type="hidden" name="quantity" value="${element.quantity}">
-                    </td>
-
-                    <td>
-                        ${element.available}
-                        <input type="hidden" name="available" value="${element.available}">
-                    </td>
-
-                    <td>
-                        ${element.price}
-                        <input type="hidden" name="price" value="${element.price}">
-                    </td>
-
-                    <td>
-                        ${element.cost}
-                        <input type="hidden" name="cost" value="${element.cost}">
-                    </td>
-
-                    <td>
-                        <input type="submit" value="Modify Product">
-                        <input type="hidden" name="command" value="CopyProductDetailsCommand">
-                </form>
-                <form action="FrontController">
-                    <input type="hidden" name="id" value="${element.productId}">
-                    <input type="submit" value="Remove Product">
-                    <input type="hidden" name="command" value="RemoveProductCommand">
-                </form>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
-</body>
+                </tr>
+            </c:forEach>
+        </table>
+    </body>
 </html>
