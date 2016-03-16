@@ -31,12 +31,11 @@ public class RemoveFromCartCommand extends FrontCommand {
         ShoppingCartLocal cart = null;
         try {
             //cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart!controller.ShoppingCartLocal");
-            cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             HttpSession session = request.getSession(true);
             cart = (ShoppingCartLocal) session.getAttribute("Cart");
             if (cart == null) {
-                cart = new ShoppingCart();
+                cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
                 session.setAttribute("Cart", cart);
             }
             cart.removeProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));

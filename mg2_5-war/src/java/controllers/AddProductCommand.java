@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -43,15 +44,15 @@ public class AddProductCommand extends FrontCommand {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date releaseDate = formatter.parse(date);
             product.setReleaseDate(releaseDate);
-            if ("True".equals(avaible)) {
+            //if ("True".equals(avaible)) {
                 product.setAvailable(1);
-            } else {
-                product.setAvailable(0);
-            }
+           // } else {
+              //  product.setAvailable(0);
+            //}
             product.setCost(Float.parseFloat(cost));
             product.setPrice(Float.parseFloat(price));
             product.setDescription(description);
-            product.setProductId(producto.count() + 1);
+            product.setProductId(new Random().nextInt(1000000));
             product.setSynopsis(synopsis);
             producto.create(product);
             List<Product> productList = producto.findAll();

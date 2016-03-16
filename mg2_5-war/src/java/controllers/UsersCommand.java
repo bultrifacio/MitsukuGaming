@@ -20,7 +20,7 @@ public class UsersCommand extends FrontCommand {
             //UsersFacade users = InitialContext.doLookup("java:module/UsersFacade");
             UsersFacade users = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             users.create(new Users(new Random().nextInt(1000000), request.getParameter("name"), request.getParameter("email"), request.getParameter("password")));
-            forward("/index.html");
+            forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException ex) {
             Logger.getLogger(UsersCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ServletException ex) {
