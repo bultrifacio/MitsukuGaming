@@ -4,8 +4,11 @@
     Author     : Blarzek
 --%>
 
+<%@page import="entities.Product"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,14 +20,11 @@
         <table border="1">
             <tr>
                 <th>Name</th>
-                <th>Quantity</th>
                 <th>Price</th>
-            </tr>
-
-            <c:forEach var="element" items="${Cart}">
+            </tr>       
+            <c:forEach var="element" items="${productListCart}">
                 <tr>
                     <td>${element.name}</td>
-                    <td>${element.quantity}</td>
                     <td>${element.price}</td>
                     <td>
                         <form action="FrontController">

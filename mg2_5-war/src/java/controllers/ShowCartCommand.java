@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controllers;
 
 import controller.ProductFacade;
@@ -24,14 +25,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author alumno
  */
-public class AddToCartCommand extends FrontCommand {
+public class ShowCartCommand extends FrontCommand{
 
     @Override
     public void process() {
         out.println("<h1>Prueba Shooping cart/h1>");
         ShoppingCartLocal cart = null;
         try {
-            //cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart!controller.ShoppingCartLocal");
             cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             HttpSession session = request.getSession(true);
@@ -40,13 +40,12 @@ public class AddToCartCommand extends FrontCommand {
                 cart = new ShoppingCart();
                 session.setAttribute("Cart", cart);
             }
-            cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
-            List<Product> productList = productFacade.findAll();
-            request.setAttribute("productList", productList);
-            forward("/showProducts.jsp");
-        } catch (NamingException | ServletException | IOException ex) {
-            Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
+            List<Product> productListCart=cart.getContents();
+            request.setAttribute("productListCart", productListCart);
+            forward("/showCart.jsp");
+        } catch (ServletException | IOException | NamingException ex) {
+            Logger.getLogger(ShowCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 }

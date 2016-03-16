@@ -7,7 +7,6 @@
 package entities;
 
 import java.util.ArrayList;
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
 /**
@@ -19,27 +18,27 @@ public class ShoppingCart implements ShoppingCartLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    public ArrayList<String> Cart = new ArrayList<>();
+    public ArrayList<Product> Cart = new ArrayList<>();
     
     @Override
-    public void addProduct(String id){
-        Cart.add(id);
+    public void addProduct(Product product){
+        Cart.add(product);
     }
     
     @Override
-    public void removeProduct (String id){
-        Cart.remove(id);
+    public void removeProduct (Product product){
+        Cart.remove(product);
     }
     
     @Override
-    public ArrayList<String> getContents() {
+    public ArrayList<Product> getContents() {
         return Cart;
     }
     
     /**
      *
      */
-    @Remove
+    @Override
     public void remove(){
         Cart = null;
     }

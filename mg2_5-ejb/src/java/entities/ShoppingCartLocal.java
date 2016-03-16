@@ -16,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface ShoppingCartLocal {
 
-    public void addProduct(String id);
+    public void addProduct(Product product);
 
-    public void removeProduct(String id);
+    public void removeProduct(Product product);
 
-    public ArrayList<String> getContents();
+    public ArrayList<Product> getContents();
 
     public void remove();
     

@@ -15,6 +15,10 @@
     </head>
     <body>
         <h1>Show Products</h1>
+        <form action="FrontController">
+            <input type="hidden" name="command" value="ShowCartCommand">
+            <input type="submit" value="Show Cart">
+        </form>
         <table border="1">
             <c:forEach var="element" items="${productList}">
                 <tr>
