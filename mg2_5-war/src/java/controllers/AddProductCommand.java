@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -26,6 +27,7 @@ public class AddProductCommand extends FrontCommand {
     @Override
     public void process() {
         try {
+            //ProductFacade producto = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             ProductFacade producto = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             String name = request.getParameter("name");
             String quantity = request.getParameter("quantity");
@@ -52,6 +54,8 @@ public class AddProductCommand extends FrontCommand {
             product.setProductId(producto.count() + 1);
             product.setSynopsis(synopsis);
             producto.create(product);
+            List<Product> productList = producto.findAll();
+            request.setAttribute("productList", productList);
             forward("/manageProducts.jsp");
         } catch (NamingException ex) {
             Logger.getLogger(AddProductCommand.class.getName()).log(Level.SEVERE, null, ex);

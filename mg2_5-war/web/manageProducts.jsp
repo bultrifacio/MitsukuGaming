@@ -17,7 +17,7 @@
     <body>
         <h1>Manage Products</h1>
 
-        <form action="AddProduct">
+        <form action="addProduct.jsp">
             <input type="submit" value="Add Product">
         </form>
 
