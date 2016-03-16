@@ -28,12 +28,8 @@ public class GetInitialDataCommand extends FrontCommand {
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);
-            forward("/index.html");
-        } catch (NamingException ex) {
-            Logger.getLogger(GetInitialDataCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(GetInitialDataCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+            forward("/index.jsp");
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(GetInitialDataCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 
