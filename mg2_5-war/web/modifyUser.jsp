@@ -33,35 +33,37 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Modify User</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController">
-            <fieldset>
-                <legend>User information:</legend>
+        <div class="container">
+            <h1>Modify User</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController">
+                <fieldset>
+                    <legend>User information:</legend>
 
-                <%
+                    <%
 
-                    //Product product = (Product) session.getAttribute("product");
-                    //if (product != null) {
+                        //Product product = (Product) session.getAttribute("product");
+                        //if (product != null) {
 
-                %>
+                    %>
 
-                <c:forEach var="element" items="${usersList}">
-                    ID:<br>
-                    <input type="text" name="id" value="${element.userId}"><br>
-                    User name:<br>
-                    <input type="text" name="name" value="${element.name}"><br>
-                    Email:<br>
-                    <input type="text" name="email" value="${element.email}"><br>
-                    Password:<br>
-                    <input type="text" name="password" value="${element.password}"><br>
-                    <input type="hidden" name="command" value="ModifyUsersCommand">
-                    <input type="submit"  value="Save changes">
-                </c:forEach>
-            </fieldset>
-        </form>
+                    <c:forEach var="element" items="${usersList}">
+                        ID:<br>
+                        <input type="text" name="id" value="${element.userId}"><br>
+                        User name:<br>
+                        <input type="text" name="name" value="${element.name}"><br>
+                        Email:<br>
+                        <input type="text" name="email" value="${element.email}"><br>
+                        Password:<br>
+                        <input type="text" name="password" value="${element.password}"><br>
+                        <input type="hidden" name="command" value="ModifyUsersCommand">
+                        <input type="submit"  value="Save changes">
+                    </c:forEach>
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

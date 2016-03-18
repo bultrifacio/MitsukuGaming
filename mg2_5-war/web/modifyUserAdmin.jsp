@@ -29,22 +29,24 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Modify user</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="ModifyUserFormServlet">
-            <fieldset>
-                <legend>Personal information:</legend>
-                User name:<br>
-                <input type="text" name="name" value=""><br>
-                User email:<br>
-                <input type="text" name="email" value=""><br>
-                User pass:<br>
-                <input type="text" name="password" value=""><br>
-                <input type="submit" name="bt" value="Submit">
-            </fieldset>
-        </form>
+        <div class="container">
+            <h1>Modify user</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="ModifyUserFormServlet">
+                <fieldset>
+                    <legend>Personal information:</legend>
+                    User name:<br>
+                    <input type="text" name="name" value=""><br>
+                    User email:<br>
+                    <input type="text" name="email" value=""><br>
+                    User pass:<br>
+                    <input type="text" name="password" value=""><br>
+                    <input type="submit" name="bt" value="Submit">
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

@@ -34,49 +34,51 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Buy product</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <fieldset>
-            <legend>Product information:</legend>
-            <c:forEach var="element" items="${selectedProduct}">
-                <b>ID:</b><br>
-                ${element.productId}<br>
-                <b>Product name:</b><br>
-                ${element.name}<br>
-                <b>Price:</b><br>
-                ${element.price}<br>
-                
-                <%
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                    List<Product> list = (List<Product>) request.getAttribute("selectedProduct");
-                    Date releaseDate = list.get(0).getReleaseDate();
-                    String formatedDate = df.format(releaseDate);
-                %>
+        <div class="container">
+            <h1>Buy product</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <fieldset>
+                <legend>Product information:</legend>
+                <c:forEach var="element" items="${selectedProduct}">
+                    <b>ID:</b><br>
+                    ${element.productId}<br>
+                    <b>Product name:</b><br>
+                    ${element.name}<br>
+                    <b>Price:</b><br>
+                    ${element.price}<br>
 
-                <b>Release date:</b><br>
-                <%= formatedDate %><br>
-                <b>Available:</b><br>
-                ${element.available}<br>
-                <b>Description:</b><br>
-                ${element.description}<br>
-                <b>Synopsis:</b><br>
-                ${element.synopsis}<br><br>
+                    <%
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                        List<Product> list = (List<Product>) request.getAttribute("selectedProduct");
+                        Date releaseDate = list.get(0).getReleaseDate();
+                        String formatedDate = df.format(releaseDate);
+                    %>
 
-                <form action="FrontController">
-                    <input type="hidden" name="id" value="${element.productId}">
-                    <input type="hidden" name="name" value="${element.name}">
-                    <input type="hidden" name="quantity" value="${element.quantity}">
-                    <input type="hidden" name="available" value="${element.available}">
-                    <input type="hidden" name="price" value="${element.price}">
-                    <input type="hidden" name="cost" value="${element.cost}">
+                    <b>Release date:</b><br>
+                    <%= formatedDate%><br>
+                    <b>Available:</b><br>
+                    ${element.available}<br>
+                    <b>Description:</b><br>
+                    ${element.description}<br>
+                    <b>Synopsis:</b><br>
+                    ${element.synopsis}<br><br>
 
-                    <input type="submit" value="Add to cart">
-                    <input type="hidden" name="command" value="AddToCartCommand">
-                </form>
-            </c:forEach>
-        </fieldset>
+                    <form action="FrontController">
+                        <input type="hidden" name="id" value="${element.productId}">
+                        <input type="hidden" name="name" value="${element.name}">
+                        <input type="hidden" name="quantity" value="${element.quantity}">
+                        <input type="hidden" name="available" value="${element.available}">
+                        <input type="hidden" name="price" value="${element.price}">
+                        <input type="hidden" name="cost" value="${element.cost}">
+
+                        <input type="submit" value="Add to cart">
+                        <input type="hidden" name="command" value="AddToCartCommand">
+                    </form>
+                </c:forEach>
+            </fieldset>
+        </div>
     </body>
 </html>

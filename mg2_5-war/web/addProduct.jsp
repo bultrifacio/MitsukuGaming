@@ -28,31 +28,33 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <h1>Add a product</h1>
-    <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-    <form action="FrontController">
-        <fieldset>
-        <legend>Product information:</legend>
-        Name: <input name="name" type="text"><br>
-        Quantity: <input name="quantity" type="text"><br>
-        Price: <input name="price" type="text"><br>
-        Cost: <input name="cost" type="text"><br>
-        Description:<br>
-        <textarea name="description" rows="10" cols="20"></textarea><br>
-        Available: <select name="available">
-            <option value="True">True</option>
-            <option value="False">False</option>
-        </select><br>
-        Release date: <input name="date" type="text"><br>
-        Synopsis:<br>
-        <textarea name="synopsis" rows="10" cols="20"></textarea><br>
-        <input name="command" value="AddProductCommand" type="hidden"><br>
-        <input value="Add new product" type="submit"><br>
-        </fieldset>
-    </form>
-
-
+    <body>
+        <div class="container">
+            <h1>Add a product</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController">
+                <fieldset>
+                    <legend>Product information:</legend>
+                    Name: <input name="name" type="text"><br>
+                    Quantity: <input name="quantity" type="text"><br>
+                    Price: <input name="price" type="text"><br>
+                    Cost: <input name="cost" type="text"><br>
+                    Description:<br>
+                    <textarea name="description" rows="10" cols="20"></textarea><br>
+                    Available: <select name="available">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select><br>
+                    Release date: <input name="date" type="text"><br>
+                    Synopsis:<br>
+                    <textarea name="synopsis" rows="10" cols="20"></textarea><br>
+                    <input name="command" value="AddProductCommand" type="hidden"><br>
+                    <input value="Add new product" type="submit"><br>
+                </fieldset>
+            </form>
+        </div>
+    </body>
 </html>

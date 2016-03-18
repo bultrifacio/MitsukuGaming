@@ -32,39 +32,41 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Manage Users</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
+        <div class="container">
+            <h1>Manage Users</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
 
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Options</th>
-            </tr>
-
-            <c:forEach var="element" items="${usersList}">
+            <table border="1">
                 <tr>
-                    <td>${element.userId}</td>
-                    <td>${element.name}</td>
-                    <td>${element.email}</td>
-                    <td>${element.password}</td>
-                    <td>
-                        <form action="FrontController">
-                            <input type="hidden" name="id" value="${element.userId}">
-                            <input type="hidden" name="name" value="${element.name}">
-                            <input type="hidden" name="email" value="${element.email}">
-                            <input type="hidden" name="password" value="${element.password}">
-                            <input type="submit" value="Modify User">
-                            <input type="hidden" name="command" value="CopyUsersDetailsCommand">
-                        </form>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Options</th>
                 </tr>
-            </c:forEach>
-        </table>
+
+                <c:forEach var="element" items="${usersList}">
+                    <tr>
+                        <td>${element.userId}</td>
+                        <td>${element.name}</td>
+                        <td>${element.email}</td>
+                        <td>${element.password}</td>
+                        <td>
+                            <form action="FrontController">
+                                <input type="hidden" name="id" value="${element.userId}">
+                                <input type="hidden" name="name" value="${element.name}">
+                                <input type="hidden" name="email" value="${element.email}">
+                                <input type="hidden" name="password" value="${element.password}">
+                                <input type="submit" value="Modify User">
+                                <input type="hidden" name="command" value="CopyUsersDetailsCommand">
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>

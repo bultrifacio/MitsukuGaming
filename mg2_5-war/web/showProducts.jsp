@@ -31,33 +31,35 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Show Products</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController">
-            <input type="hidden" name="command" value="ShowCartCommand">
-            <input type="submit" value="Show Cart">
-        </form>
-        <table border="1">
-            <c:forEach var="element" items="${productList}">
-                <tr>
-                    <td>${element.productId}</td>
-                    <td>${element.name}</td>
-                    <td>${element.quantity}</td>
-                    <td>${element.available}</td>
-                    <td>${element.price}</td>
-                    <td>${element.cost}</td>
-                    <td>
-                        <form action="FrontController">
-                            <input type="hidden" name="id" value="${element.productId}">
-                            <input type="hidden" name="command" value="AddToCartCommand">
-                            <input type="submit" value="Add to cart">
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+        <div class="container">
+            <h1>Show Products</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController">
+                <input type="hidden" name="command" value="ShowCartCommand">
+                <input type="submit" value="Show Cart">
+            </form>
+            <table border="1">
+                <c:forEach var="element" items="${productList}">
+                    <tr>
+                        <td>${element.productId}</td>
+                        <td>${element.name}</td>
+                        <td>${element.quantity}</td>
+                        <td>${element.available}</td>
+                        <td>${element.price}</td>
+                        <td>${element.cost}</td>
+                        <td>
+                            <form action="FrontController">
+                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="command" value="AddToCartCommand">
+                                <input type="submit" value="Add to cart">
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>

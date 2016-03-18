@@ -28,22 +28,24 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Register</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController">
-            <fieldset>
-                <legend>Personal information:</legend>
-                First name:<br>
-                <input type="text" name="name" value="yop"><br><br>
-                Password:<br>
-                <input type="text" name="password" value="tu"><br><br>
-                email:<br>
-                <input type="text" name="email" value="yo@mail.com"><br><br>
-                <input type="submit" name="command" value="UsersCommand">
-            </fieldset>
-        </form>
+        <div class="container">
+            <h1>Register</h1>
+            <form action="FrontController">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController">
+                <fieldset>
+                    <legend>Personal information:</legend>
+                    First name:<br>
+                    <input type="text" name="name" value="yop"><br><br>
+                    Password:<br>
+                    <input type="text" name="password" value="tu"><br><br>
+                    email:<br>
+                    <input type="text" name="email" value="yo@mail.com"><br><br>
+                    <input type="submit" name="command" value="UsersCommand">
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

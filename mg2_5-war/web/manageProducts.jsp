@@ -32,6 +32,7 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
+        <div class="container">
         <h1>Manage Products</h1>
         <form action="FrontController">
             <input type="hidden" name="command">
@@ -81,5 +82,6 @@
                 </tr>
             </c:forEach>
         </table>
+        </div>
     </body>
 </html>
