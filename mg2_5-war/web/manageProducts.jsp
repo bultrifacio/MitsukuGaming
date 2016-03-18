@@ -42,7 +42,7 @@
             <input type="submit" value="Add Product">
         </form>
 
-        <table border="1">
+        <table border="1" class="table-striped">
             <tr>
                 <th>ID</th>
                 <th>Name</th>

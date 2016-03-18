@@ -31,7 +31,6 @@ public class AddToCartCommand extends FrontCommand {
         out.println("<h1>Prueba Shooping cart/h1>");
         ShoppingCartLocal cart = null;
         try {
-            //cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart!controller.ShoppingCartLocal");
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             HttpSession session = request.getSession(true);
             cart = (ShoppingCartLocal) session.getAttribute("Cart");
@@ -40,8 +39,6 @@ public class AddToCartCommand extends FrontCommand {
                 session.setAttribute("Cart", cart);
             }
             cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
-            //List<Product> productList = productFacade.findAll();
-            //request.setAttribute("productList", productList);
             request.setAttribute("cart", cart.getContents());
             forward("/showCart.jsp");
         } catch (NamingException | ServletException | IOException ex) {

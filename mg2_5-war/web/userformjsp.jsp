@@ -37,13 +37,14 @@
             <form action="FrontController">
                 <fieldset>
                     <legend>Personal information:</legend>
-                    First name:<br>
-                    <input type="text" name="name" value="yop"><br><br>
+                    Name:<br>
+                    <input type="text" name="name" placeholder="Enter Your Name"><br><br>
                     Password:<br>
-                    <input type="text" name="password" value="tu"><br><br>
-                    email:<br>
-                    <input type="text" name="email" value="yo@mail.com"><br><br>
-                    <input type="submit" name="command" value="UsersCommand">
+                    <input type="password" name="password" placeholder="Enter Your Password"><br><br>
+                    Email:<br>
+                    <input type="text" name="email" placeholder="Enter Your Email"><br><br>
+                    <input type="hidden" name="command" value="UsersCommand">
+                    <input type="submit" value="Register">
                 </fieldset>
             </form>
         </div>

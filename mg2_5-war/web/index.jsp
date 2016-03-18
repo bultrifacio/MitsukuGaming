@@ -75,7 +75,7 @@
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
                         <a href="userformjsp.jsp" class="list-group-item">Register</a>
-                        <a href="pruebas.html" class="list-group-item">Pruebas</a>
+                        <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
                         <a href="#" class="list-group-item">Category</a>
                     </div>
                 </div>

@@ -39,7 +39,7 @@
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
 
-            <table border="1">
+            <table border="1" class="table-striped">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>

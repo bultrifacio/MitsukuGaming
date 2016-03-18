@@ -41,7 +41,7 @@
                 <input type="hidden" name="command" value="ShowCartCommand">
                 <input type="submit" value="Show Cart">
             </form>
-            <table border="1">
+            <table border="1" class="table-striped">
                 <c:forEach var="element" items="${productList}">
                     <tr>
                         <td>${element.productId}</td>

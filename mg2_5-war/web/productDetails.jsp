@@ -39,6 +39,10 @@
             <form action="FrontController">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
+            </form>
+            <form action="FrontController">
+                <input type="hidden" name="command" value="ShowCartCommand">
+                <input type="submit" value="Show cart" class="btn-link">
             </form><br><br>
             <fieldset>
                 <legend>Product information:</legend>

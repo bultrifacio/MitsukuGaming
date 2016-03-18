@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Pruebas</title>
+        <title>Admin Panel</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap Core CSS -->
@@ -29,16 +29,11 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <h1>Pruebas</h1>
-            <br>
+            <h1>Admin Panel</h1>
             <form action="FrontController">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-
-            <form action="userformjsp.jsp">
-                <input type="submit" name="command" value="Register">
-            </form>
 
             <form action="FrontController">
                 <input type="hidden" name="command" value="ShowShopProductsCommand">
@@ -47,7 +42,7 @@ and open the template in the editor.
 
             <form action="FrontController">
                 <input type="hidden" name="command" value="ShowProductsCommand">
-                <input type="submit" value="Manage Products">
+                <input type="submit" value="Manage products">
             </form>
 
             <form action="FrontController">
