@@ -6,13 +6,17 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Main Page</title>
+        <title>Pruebas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Main Page</h1>
+        <h1>Pruebas</h1>
         <br>
+        <form action="FrontController">
+            <input type="hidden" name="command">
+            <input type="submit" value="Go to Main page" class="btn-link">
+        </form><br><br>
         
         <form action="userformjsp.jsp">
             <input type="submit" name="command" value="Register">

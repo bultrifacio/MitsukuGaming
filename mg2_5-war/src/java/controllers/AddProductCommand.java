@@ -10,7 +10,6 @@ import entities.Product;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -28,46 +27,33 @@ public class AddProductCommand extends FrontCommand {
     @Override
     public void process() {
         try {
-            //ProductFacade producto = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            ProductFacade producto = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            String name = request.getParameter("name");
-            String quantity = request.getParameter("quantity");
-            String price = request.getParameter("price");
-            String cost = request.getParameter("cost");
-            String description = request.getParameter("description");
-            String avaible = request.getParameter("avaible");
+            ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             String date = request.getParameter("date");
-            String synopsis = request.getParameter("synopsis");
-            Product product = new Product();
-            product.setName(name);
-            product.setQuantity(Integer.parseInt(quantity));
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date releaseDate = formatter.parse(date);
-            product.setReleaseDate(releaseDate);
-            //if ("True".equals(avaible)) {
+            
+            Product product = new Product(
+                    new Random().nextInt(1000000),
+                    request.getParameter("name"), 
+                    Float.parseFloat(request.getParameter("price")),
+                    Float.parseFloat(request.getParameter("cost")), 
+                    Integer.parseInt(request.getParameter("quantity")), 
+                    formatter.parse(date), 1);
+            
+            if (request.getParameter("available").equals("True")) {
                 product.setAvailable(1);
-           // } else {
-              //  product.setAvailable(0);
-            //}
-            product.setCost(Float.parseFloat(cost));
-            product.setPrice(Float.parseFloat(price));
-            product.setDescription(description);
-            product.setProductId(new Random().nextInt(1000000));
-            product.setSynopsis(synopsis);
-            producto.create(product);
-            List<Product> productList = producto.findAll();
+            } else {
+                product.setAvailable(0);
+            }
+            
+            product.setDescription(request.getParameter("description"));
+            product.setSynopsis(request.getParameter("synopsis"));
+            
+            productFacade.create(product);
+            List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);
             forward("/manageProducts.jsp");
-        } catch (NamingException ex) {
-            Logger.getLogger(AddProductCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(AddProductCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(AddProductCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ParseException | ServletException | IOException ex) {
             Logger.getLogger(AddProductCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ;
     }
-
 }

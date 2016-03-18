@@ -6757,4 +6757,18 @@ button.close {
     display: none !important;
   }
 }
+
+.btn-link{
+    border:none;
+    outline:none;
+    background:none;
+    cursor:pointer;
+    color:#4d88ff;
+    padding:0;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    font-family:inherit;
+    font-size:inherit;
+}
 /*# sourceMappingURL=bootstrap.css.map */

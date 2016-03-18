@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>MitsukuGaming</title>
+        <title>Mitsuku Gaming</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Start Bootstrap</a>
+                    <a class="navbar-brand" href="#">Mitsuku Gaming</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -74,9 +74,9 @@
                 <div class="col-md-3">
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
-                        <a href="userformjsp.jsp" class="list-group-item">Registrate AQUI</a>
+                        <a href="userformjsp.jsp" class="list-group-item">Register</a>
                         <a href="pruebas.html" class="list-group-item">Pruebas</a>
-                        <a href="#" class="list-group-item">Category 3</a>
+                        <a href="#" class="list-group-item">Category</a>
                     </div>
                 </div>
 
@@ -119,16 +119,16 @@
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/320x150" alt="">
                                     <div class="caption">
-                                        <h4 class="pull-right">${element.price} $</h4>
+                                        
                                         <h4>
                                             <form action="FrontController">
-                                                <a href="productDetails.jsp">${element.name}</a>
                                                 <input type="hidden" name="id" value="${element.productId}">
-                                                <input type="submit" value="${element.name}">
+                                                <input type="submit" value="${element.name}" class="btn-link">
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>
                                         </h4>
-                                        <p>${element.description}<a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                        <h4 class="pull-right">${element.price} &euro;</h4>
+                                        <p>${element.description}</p>
                                     </div>
                                     <div class="ratings">
                                         <p class="pull-right">15 reviews</p>
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </c:forEach>            
+                        </c:forEach>
                         <!-- 
                         <div class="col-sm-4 col-lg-4 col-md-4">
                             <div class="thumbnail">
@@ -276,14 +276,15 @@
                             </div>
                         </div>
                         -->
-                        <div class="col-sm-4 col-lg-4 col-md-4">
+                        
+                        <!-- <div class="col-sm-4 col-lg-4 col-md-4">
                             <h4><a href="#">Like this template?</a>
                             </h4>
                             <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
                             <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                        </div>
+                        </div> -->
 
-                    </div> -----------------------------
+                    </div>
 
                 </div>
 
@@ -300,7 +301,7 @@
             <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
+                        <p>Copyright &copy; Mitsuku Gaming 2016</p>
                     </div>
                 </div>
             </footer>

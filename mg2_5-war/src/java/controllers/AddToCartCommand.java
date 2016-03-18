@@ -40,9 +40,10 @@ public class AddToCartCommand extends FrontCommand {
                 session.setAttribute("Cart", cart);
             }
             cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
-            List<Product> productList = productFacade.findAll();
-            request.setAttribute("productList", productList);
-            forward("/showProducts.jsp");
+            //List<Product> productList = productFacade.findAll();
+            //request.setAttribute("productList", productList);
+            request.setAttribute("cart", cart.getContents());
+            forward("/showCart.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

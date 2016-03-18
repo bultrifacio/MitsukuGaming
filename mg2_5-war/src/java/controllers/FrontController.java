@@ -49,11 +49,11 @@ public class FrontController extends HttpServlet {
 
     private Class getCommandClass(HttpServletRequest request) {
         Class result;
-        String command="";
-        if(request.getParameter("command")==null){
-            command="controllers.GetInitialDataCommand";
-        }else{
-        command = /*"frontController." */(String) "controllers."+request.getParameter("command");
+        String command;
+        if (request.getParameter("command") == null || request.getParameter("command").equals("")){
+            command = "controllers.GetInitialDataCommand";
+        } else {
+            command = /*"frontController." */(String) "controllers."+request.getParameter("command");
         }
          
         try {

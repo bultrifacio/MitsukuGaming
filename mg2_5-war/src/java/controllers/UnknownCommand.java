@@ -16,7 +16,7 @@ public class UnknownCommand extends FrontCommand {
     @Override
     public void process() {
         try {
-            forward("unknown.jsp");
+            forward("/unknown.jsp");
         } catch (ServletException ex) {
             Logger.getLogger(UnknownCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
