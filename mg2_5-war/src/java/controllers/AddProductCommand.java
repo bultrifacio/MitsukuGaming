@@ -30,9 +30,15 @@ public class AddProductCommand extends FrontCommand {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             String date = request.getParameter("date");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            
+            int randomId = new Random().nextInt(1000000);
+            List<Product> randomList = productFacade.findAll();
+            for (Product productRandom : randomList) {
+                if(randomId==productRandom.getProductId()){
+                    randomId = new Random().nextInt(1000000);
+                }
+            }
             Product product = new Product(
-                    new Random().nextInt(1000000),
+                    randomId,
                     request.getParameter("name"), 
                     Float.parseFloat(request.getParameter("price")),
                     Float.parseFloat(request.getParameter("cost")), 
