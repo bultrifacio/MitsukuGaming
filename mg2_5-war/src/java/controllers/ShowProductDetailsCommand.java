@@ -2,8 +2,10 @@ package controllers;
 
 import controller.ProductFacade;
 import controller.ReviewFacade;
+import controller.UsersFacade;
 import entities.Product;
 import entities.Review;
+import entities.Users;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +28,21 @@ public class ShowProductDetailsCommand extends FrontCommand {
             
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             List<Review> reviewList = reviewFacade.findAll();
+            List<Review> productReviews = new ArrayList<>();
+            
+            UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
+            List<Users> reviewOwners = new ArrayList<>();
             
             for (Review review : reviewList) {
                 if (review.getProductId() == Integer.parseInt(request.getParameter("id"))) {
-                    
+                    productReviews.add(review);
+                    reviewOwners.add(usersFacade.find(review.getUserId()));
                 }
             }
             
             request.setAttribute("selectedProduct", selectedProduct);
+            request.setAttribute("productReviews", productReviews);
+            request.setAttribute("reviewOwners", reviewOwners);
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
