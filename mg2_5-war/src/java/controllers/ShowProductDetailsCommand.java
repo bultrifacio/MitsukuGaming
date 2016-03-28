@@ -35,10 +35,6 @@ public class ShowProductDetailsCommand extends FrontCommand {
                 }
             }
             
-            
-            
-            
-            
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             List<Review> reviewList = reviewFacade.findAll();
             List<Review> productReviews = new ArrayList<>();

@@ -34,7 +34,9 @@ public class showMyWishListCommand extends FrontCommand {
 
             WishlistFacade wishListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/WishlistFacade");
             ProductFacade productListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            List<Product> productList = new ArrayList<>();
+            List<Product> productList = productListFacade.findAll();
+            List<Product> productListFiltre = new ArrayList<>();
+           
             
             List<Wishlist> wishlist = wishListFacade.findAll();
             List<Wishlist> wishlistFiltre = new ArrayList<>();
@@ -45,11 +47,14 @@ public class showMyWishListCommand extends FrontCommand {
                 }
             }
             
-            for (Wishlist wishlistobject : wishlistFiltre) {
-                productList.add(productListFacade.find(wishlistobject.getProductId()+""));
+            for (Product productobject : productList) {
+                for (Wishlist wishlist1 : wishlistFiltre) {
+                    if(productobject.getProductId()==wishlist1.getProductId())
+                        productListFiltre.add(productobject);
+                }
             }
             
-            request.setAttribute("productList", productList);
+            request.setAttribute("productListFiltre", productListFiltre);
             forward("/wishList.jsp");
 
         } catch (ServletException ex) {
