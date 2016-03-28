@@ -39,6 +39,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findByReleaseDate", query = "SELECT p FROM Product p WHERE p.releaseDate = :releaseDate"),
     @NamedQuery(name = "Product.findByAvailable", query = "SELECT p FROM Product p WHERE p.available = :available")})
 public class Product implements Serializable {
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "PRICE")
+    private Float price;
+    @Column(name = "COST")
+    private Float cost;
+    @Size(max = 15)
+    @Column(name = "CATEGORY")
+    private String category;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -50,14 +58,6 @@ public class Product implements Serializable {
     @Size(min = 1, max = 144)
     @Column(name = "NAME")
     private String name;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "PRICE")
-    private float price;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "COST")
-    private float cost;
     @Lob
     @Size(max = 32700)
     @Column(name = "DESCRIPTION")
@@ -87,12 +87,13 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public Product(Integer productId, String name, float price, float cost, int quantity, Date releaseDate, int available) {
+    public Product(Integer productId, String name, float price, float cost, int quantity, String category,Date releaseDate, int available) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.cost = cost;
         this.quantity = quantity;
+        this.category = category;
         this.releaseDate = releaseDate;
         this.available = available;
     }
@@ -104,6 +105,14 @@ public class Product implements Serializable {
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
+    
+    public String getProductCategory() {
+        return category;
+    }
+
+    public void setProductCategory(String category) {
+        this.category = category;
+    }
 
     public String getName() {
         return name;
@@ -113,21 +122,6 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
 
     public String getDescription() {
         return description;
@@ -192,6 +186,30 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "entities.Product[ productId=" + productId + " ]";
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public Float getCost() {
+        return cost;
+    }
+
+    public void setCost(Float cost) {
+        this.cost = cost;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
     
 }

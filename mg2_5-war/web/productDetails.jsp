@@ -51,6 +51,8 @@
                     ${element.productId}<br>
                     <b>Product name:</b><br>
                     ${element.name}<br>
+                    <b>Category:</b><br>
+                    ${element.category}<br>
                     <b>Price:</b><br>
                     ${element.price}<br>
 
