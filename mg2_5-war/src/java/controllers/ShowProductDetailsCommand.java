@@ -1,7 +1,9 @@
 package controllers;
 
 import controller.ProductFacade;
+import controller.ReviewFacade;
 import entities.Product;
+import entities.Review;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,19 @@ public class ShowProductDetailsCommand extends FrontCommand {
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            String aux = request.getParameter("id");
             
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
-            List<Product> selectedProduct = new ArrayList<Product>();
+            List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
+            
+            ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
+            List<Review> reviewList = reviewFacade.findAll();
+            
+            for (Review review : reviewList) {
+                if (review.getProductId() == Integer.parseInt(request.getParameter("id"))) {
+                    
+                }
+            }
             
             request.setAttribute("selectedProduct", selectedProduct);
             forward("/productDetails.jsp");

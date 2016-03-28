@@ -43,25 +43,25 @@
         <form action="FrontController">
             <fieldset>
                 <legend>Insert your email:</legend>
-                <% 
+                <%
                     Integer validEmail = (Integer) session.getAttribute("validEmail");
-                                
+
                     if (validEmail != null) {
-                        if (validEmail==1){
+                        if (validEmail == 1) {
                             out.println("You have received a message to reset your password");
-                        }else{
+                        } else {
                             out.println("That email doesn't exists in our system.<br>");
                             out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
                             out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
                             out.println("<input type=\"submit\"  value=\"Reset password\">");
                         }
-                        
-                    }else{
+
+                    } else {
                         out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
                         out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
                         out.println("<input type=\"submit\"  value=\"Reset password\">");
                     }
-                    
+
                 %>
             </fieldset>
         </form>
