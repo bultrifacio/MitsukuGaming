@@ -1,7 +1,7 @@
 <%-- 
-    Document   : modifyProduct
-    Created on : 14-mar-2016, 17:12:50
-    Author     : Blarzek
+    Document   : newPassword
+    Created on : 28-mar-2016, 13:47:20
+    Author     : ENTRAR
 --%>
 
 <%@page import="java.util.List"%>
@@ -35,34 +35,18 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Reset password</h1>
+        <h1>New password</h1>
         <form action="FrontController">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
         <form action="FrontController">
             <fieldset>
-                <legend>Insert your email:</legend>
-                <% 
-                    Integer validEmail = (Integer) session.getAttribute("validEmail");
-                                
-                    if (validEmail != null) {
-                        if (validEmail==1){
-                            out.println("You have received a message to reset your password");
-                        }else{
-                            out.println("That email doesn't exists in our system.<br>");
-                            out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
-                            out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
-                            out.println("<input type=\"submit\"  value=\"Reset password\">");
-                        }
-                        
-                    }else{
-                        out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
-                        out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
-                        out.println("<input type=\"submit\"  value=\"Reset password\">");
-                    }
-                    
-                %>
+                <legend>Insert the new password:</legend>
+                <input type="password" name="pass1" placeholder="Insert your password">
+                <input type="password" name="pass2" placeholder="Repeat your password">
+                <input type="submit" value="Modify password">
+                <input type="hidden" name="command" value="ModifyPasswordCommand">
             </fieldset>
         </form>
     </body>
