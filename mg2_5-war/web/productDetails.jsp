@@ -4,6 +4,8 @@
     Author     : alumno
 --%>
 
+<%@page import="entities.Review"%>
+<%@page import="entities.Users"%>
 <%@page import="java.util.Date"%>
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
@@ -71,6 +73,37 @@
                     ${element.description}<br>
                     <b>Synopsis:</b><br>
                     ${element.synopsis}<br><br>
+                    <fieldset>
+                        <legend>User reviews</legend>
+                        <%
+                            Users loggedUser = (Users) session.getAttribute("loggedUser");
+                            if (loggedUser != null) {
+                                out.println("<form action=\"FrontController\">");
+                                out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
+                                out.println("<input type=\"text\" name=\"text\" placeholder=\"Write your review here\">");
+                                out.println("<input type=\"text\" name=\"score\" placeholder=\"Your score\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"WriteReviewCommand\">");
+                                out.println("<input type=\"submit\" value=\"Write a review\">");
+                                out.println("</form>");
+                            }
+                            
+                            List<Review> productReviews = (List<Review>) request.getAttribute("productReviews");
+                            List<Users> reviewOwners = (List<Users>) request.getAttribute("reviewOwners");
+                            for (Review review : productReviews) {
+                                out.println("<b>Name: </b>");
+                                for (Users owner : reviewOwners) {
+                                    if (owner.getUserId() == review.getUserId()) {
+                                        out.println(owner.getName() + "<br>");
+                                    }
+                                }
+                                Date reviewDate = review.getDate();
+                                String reviewDateText = df.format(reviewDate);
+                                out.println("<b>Date: </b>" + reviewDateText + "<br>");
+                                out.println("<b>Text: </b>" + review.getText() + "<br>");
+                                out.println("<b>Score: </b>" + review.getScore() + "<br><br>");
+                            }
+                        %>
+                    </fieldset>
 
                     <form action="FrontController">
                         <input type="hidden" name="id" value="${element.productId}">

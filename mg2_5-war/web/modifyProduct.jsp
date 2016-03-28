@@ -62,10 +62,10 @@
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                         List<Product> list = (List<Product>)request.getAttribute("productList");
                         Date releaseDate = list.get(0).getReleaseDate();
-                        String formatedDate = df.format(releaseDate);
+                        String formattedDate = df.format(releaseDate);
                     %>
                     
-                    <input type="text" name="release" value="<%= formatedDate %>"><br>
+                    <input type="text" name="release" value="<%= formattedDate %>"><br>
                     Available:<br>
                     <input type="text" name="available" value="${element.available}"><br>
                     Description:<br>
