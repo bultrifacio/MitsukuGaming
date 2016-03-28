@@ -38,6 +38,7 @@ public class ModifyProductCommand extends FrontCommand {
                     Float.parseFloat(request.getParameter("price")), 
                     Float.parseFloat(request.getParameter("cost")), 
                     Integer.parseInt(request.getParameter("quantity")),
+                    request.getParameter("category"),
                     releaseDate,
                     Integer.parseInt(request.getParameter("available")));
             product.setDescription(request.getParameter("description"));

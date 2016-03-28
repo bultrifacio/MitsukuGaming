@@ -1,3 +1,4 @@
+<%@page import="entities.Users"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -60,12 +61,29 @@
                             <a href="#">Contact</a>
                         </li>
                         <li>
-                            <form action="FrontController">
-                                <input type="text">
-                                <input type="text">
-                                <input type="hidden" name="command" value="LoginCommand">
-                                <input type="submit">
-                            </form>
+                            <% 
+                                Users loggedUser = (Users) session.getAttribute("loggedUser");
+                                
+                                if (loggedUser != null) {
+                                    out.println("<input type=\"text\" name=\"username\" value=\"Welcome " + loggedUser.getName() + "\">");
+                                    out.println("<form action=\"FrontController\">");
+                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowProfileCommand\">");
+                                    out.println("<input type=\"hidden\" name=\"id\" value=\"" + loggedUser.getUserId() + "\">");
+                                    out.println("<input type=\"hidden\" name=\"name\" value=\"" + loggedUser.getName()+ "\">");
+                                    out.println("<input type=\"hidden\" name=\"email\" value=\"" + loggedUser.getEmail()+ "\">");
+                                    out.println("<input type=\"hidden\" name=\"password\" value=\"" + loggedUser.getPassword()+ "\">");
+                                    out.println("<input type=\"submit\" value=\"Modify profile\">");
+                                    out.println("</form>");
+                                } else {
+                                    out.println("<form action=\"FrontController\">");
+                                    out.println("<input type=\"text\" name=\"username\" placeholder=\"Username\">");
+                                    out.println("<input type=\"password\" name=\"password\" placeholder=\"Password\">");
+                                    out.println("<input type=\"hidden\" name=\"command\" value=\"LoginCommand\">");
+                                    out.println("<input type=\"submit\" value=\"Login\">");
+                                    out.println("</form>");
+                                    out.println("<a href=\"resetPassword.jsp\">Forgot password?</a>");
+                                }
+                            %>
                         </li>
                     </ul>
                 </div>

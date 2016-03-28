@@ -46,6 +46,7 @@
                     <tr>
                         <td>${element.productId}</td>
                         <td>${element.name}</td>
+                        <td>${element.category}</td>
                         <td>${element.quantity}</td>
                         <td>${element.available}</td>
                         <td>${element.price}</td>

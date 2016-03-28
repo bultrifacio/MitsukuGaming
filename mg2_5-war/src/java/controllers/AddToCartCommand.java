@@ -28,7 +28,6 @@ public class AddToCartCommand extends FrontCommand {
 
     @Override
     public void process() {
-        out.println("<h1>Prueba Shooping cart/h1>");
         ShoppingCartLocal cart = null;
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");

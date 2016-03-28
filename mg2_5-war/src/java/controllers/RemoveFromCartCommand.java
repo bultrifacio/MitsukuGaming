@@ -27,7 +27,6 @@ public class RemoveFromCartCommand extends FrontCommand {
 
     @Override
     public void process() {
-        out.println("<h1>Prueba Shooping cart/h1>");
         ShoppingCartLocal cart = null;
         try {
             //cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart!controller.ShoppingCartLocal");

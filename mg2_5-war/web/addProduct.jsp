@@ -40,6 +40,7 @@ and open the template in the editor.
                     <legend>Product information:</legend>
                     Name: <input name="name" type="text"><br>
                     Quantity: <input name="quantity" type="text"><br>
+                    Category: <input name="category" type="text"><br>
                     Price: <input name="price" type="text"><br>
                     Cost: <input name="cost" type="text"><br>
                     Description:<br>
