@@ -19,10 +19,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 
-/**
- *
- * @author Jusio
- */
 public class GetInitialDataCommand extends FrontCommand {
 
     @Override
