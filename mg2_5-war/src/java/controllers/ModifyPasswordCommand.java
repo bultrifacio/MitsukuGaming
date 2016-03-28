@@ -17,6 +17,12 @@ public class ModifyPasswordCommand extends FrontCommand {
     public void process() {
         try {
             HttpSession session = request.getSession(true);
+            if(((String)request.getParameter("pass1")).equals(((String)request.getParameter("pass2")))){
+                session.setAttribute("passNoEqual", 0);
+            }else{
+                session.setAttribute("passNoEqual", 1);
+                forward("/newPassword.jsp");
+            }
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> usersList = usersFacade.findAll();
             for (Users users : usersList) {

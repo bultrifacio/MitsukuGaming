@@ -33,6 +33,13 @@
         <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
         <script src="bootstrap/jquery.js"></script>
         <script src="bootstrap/bootstrap.min.js"></script>
+        <script>
+        function newPageFunction() {
+            var myWindow = window.open("", "", "width=600, height=100");
+            myWindow.document.write("<p>Your can reset your password in the following link: </p>\n\
+            http://localhost:8080/mg2_5-war/newPassword.jsp");
+        }
+        </script>
     </head>
     <body>
         <h1>Reset password</h1>
@@ -47,8 +54,10 @@
                     Integer validEmail = (Integer) session.getAttribute("validEmail");
 
                     if (validEmail != null) {
-                        if (validEmail == 1) {
-                            out.println("You have received a message to reset your password");
+                        if (validEmail==1){
+                            String usermail = (String) session.getAttribute("userEmail");
+                            out.println("You have received an email to reset your password");
+                            out.println("<input type=\"submit\" value=\"See email\" onclick=\"newPageFunction()\">");
                         } else {
                             out.println("That email doesn't exists in our system.<br>");
                             out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");

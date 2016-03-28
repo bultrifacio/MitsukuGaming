@@ -48,6 +48,13 @@
                 <input type="submit" value="Modify password">
                 <input type="hidden" name="command" value="ModifyPasswordCommand">
             </fieldset>
+            <%
+                if(((Integer)session.getAttribute("passNoEqual"))!=null){
+                    if(((Integer)session.getAttribute("passNoEqual"))==1){
+                        out.println("Please, enter equal password.");
+                    }
+                }
+            %>
         </form>
     </body>
 </html>
