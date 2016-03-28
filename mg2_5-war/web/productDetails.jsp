@@ -168,6 +168,7 @@
                     <%
                         }
                     %>
+
                 </c:forEach>
             </fieldset>
         </div>
