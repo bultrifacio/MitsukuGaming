@@ -43,6 +43,7 @@ public class AddProductCommand extends FrontCommand {
                     Float.parseFloat(request.getParameter("price")),
                     Float.parseFloat(request.getParameter("cost")), 
                     Integer.parseInt(request.getParameter("quantity")), 
+                    request.getParameter("category"),  
                     formatter.parse(date), 1);
             
             if (request.getParameter("available").equals("True")) {

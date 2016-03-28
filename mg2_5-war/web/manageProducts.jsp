@@ -48,6 +48,7 @@
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Available</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Cost</th>
                 <th>Options</th>
@@ -59,6 +60,7 @@
                     <td>${element.name}</td>
                     <td>${element.quantity}</td>
                     <td>${element.available}</td>
+                    <td>${element.category}</td>
                     <td>${element.price}</td>
                     <td>${element.cost}</td>
                     <td>
@@ -67,6 +69,7 @@
                             <input type="hidden" name="name" value="${element.name}">
                             <input type="hidden" name="quantity" value="${element.quantity}">
                             <input type="hidden" name="available" value="${element.available}">
+                            <input type="hidden" name="category" value="${element.category}">
                             <input type="hidden" name="price" value="${element.price}">
                             <input type="hidden" name="cost" value="${element.cost}">
 

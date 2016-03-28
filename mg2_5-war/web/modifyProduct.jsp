@@ -53,6 +53,8 @@
                     <input type="text" name="price" value="${element.price}"><br>
                     Cost:<br>
                     <input type="text" name="cost" value="${element.cost}"><br>
+                    Category:<br>
+                    <input type="text" name="category" value="${element.category}"><br>
                     Quantity:<br>
                     <input type="text" name="quantity" value="${element.quantity}"><br>
                     Release date:<br>
