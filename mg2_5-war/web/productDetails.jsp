@@ -73,6 +73,39 @@
                     ${element.description}<br>
                     <b>Synopsis:</b><br>
                     ${element.synopsis}<br><br>
+
+                    <fieldset>
+                        
+                        <c:forEach var="attribute" items="${productList}">
+                            <tr>
+                                <td>${attribute.productId}</td>
+                                <td>${attribute.name}</td>
+                                <td>${attribute.quantity}</td>
+                                <td>${attribute.available}</td>
+                                <td>${attribute.category}</td>
+                                <td>${attribute.price}</td>
+                                <td>${attribute.cost}</td>
+                                <td>
+                                    <form action="FrontController">
+                                        <input type="hidden" name="id" value="${attribute.productId}">
+                                        <input type="hidden" name="name" value="${attribute.name}">
+                                        <input type="hidden" name="quantity" value="${attribute.quantity}">
+                                        <input type="hidden" name="available" value="${attribute.available}">
+                                        <input type="hidden" name="category" value="${attribute.category}">
+                                        <input type="hidden" name="price" value="${attribute.price}">
+                                        <input type="hidden" name="cost" value="${attribute.cost}">
+
+                                        <input type="submit" value="Visit Product">
+                                        <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+
+                    </fieldset>
+
+
+
                     <fieldset>
                         <legend>User reviews</legend>
                         <%
@@ -117,7 +150,7 @@
                         <input type="submit" value="Add to cart">
                         <input type="hidden" name="command" value="AddToCartCommand">
                     </form>
-                    
+
                     <%
                         if (loggedUser != null) {
                     %>
