@@ -94,6 +94,7 @@
                                 for (Users owner : reviewOwners) {
                                     if (owner.getUserId() == review.getUserId()) {
                                         out.println(owner.getName() + "<br>");
+                                        break;
                                     }
                                 }
                                 Date reviewDate = review.getDate();
