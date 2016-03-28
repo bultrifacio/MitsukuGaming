@@ -31,8 +31,8 @@ public class GetInitialDataCommand extends FrontCommand {
         try {
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
-            List<Product> productListT = productFacade.findAll();
-            List<Product> productList = new ArrayList<>();
+            List<Product> productList = productFacade.findAll();
+            /*List<Product> productList = new ArrayList<>();
             List<Sales> sales = salesFacade.findAll();
             TreeMap<Integer,Integer> sinRepeticion = new TreeMap<>();
             for (Sales sale : sales) {
