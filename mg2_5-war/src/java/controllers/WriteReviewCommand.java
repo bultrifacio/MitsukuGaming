@@ -32,7 +32,7 @@ public class WriteReviewCommand extends FrontCommand {
                     date);
             
             reviewFacade.create(review);
-            forward("/FrontController?command=ShowProductDetailsCommand");
+            forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(WriteReviewCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

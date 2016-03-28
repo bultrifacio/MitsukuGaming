@@ -64,7 +64,7 @@
                         <li>
                             <%
                                 Users loggedUser = (Users) session.getAttribute("loggedUser");
-
+                                out.println("<br>");
                                 if (loggedUser != null) {
                                     out.println("<input type=\"text\" name=\"username\" value=\"Welcome " + loggedUser.getName() + "\">");
                                     out.println("<form action=\"FrontController\">");
@@ -81,8 +81,8 @@
                                     out.println("<input type=\"password\" name=\"password\" placeholder=\"Password\">");
                                     out.println("<input type=\"hidden\" name=\"command\" value=\"LoginCommand\">");
                                     out.println("<input type=\"submit\" value=\"Login\">");
-                                    out.println("</form>");
                                     out.println("<a href=\"resetPassword.jsp\">Forgot password?</a>");
+                                    out.println("</form>");
                                 }
                             %>
                         </li>
@@ -111,11 +111,8 @@
                         %>
                     </div>
                 </div>
-
                 <div class="col-md-9">
-
                     <div class="row carousel-holder">
-
                         <div class="col-md-12">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -142,7 +139,6 @@
                                 </a>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row">

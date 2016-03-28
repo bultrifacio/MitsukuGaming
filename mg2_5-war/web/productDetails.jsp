@@ -94,6 +94,7 @@
                                 for (Users owner : reviewOwners) {
                                     if (owner.getUserId() == review.getUserId()) {
                                         out.println(owner.getName() + "<br>");
+                                        break;
                                     }
                                 }
                                 Date reviewDate = review.getDate();
@@ -115,6 +116,8 @@
 
                         <input type="submit" value="Add to cart">
                         <input type="hidden" name="command" value="AddToCartCommand">
+                        <input type="submit" value="Add to my wishlist">
+                        <input type="hidden" name="command" value="AddToWishListCommand">
                     </form>
                 </c:forEach>
             </fieldset>
