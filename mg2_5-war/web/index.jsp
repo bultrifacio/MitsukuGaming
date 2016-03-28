@@ -81,6 +81,7 @@
                                     out.println("<input type=\"hidden\" name=\"command\" value=\"LoginCommand\">");
                                     out.println("<input type=\"submit\" value=\"Login\">");
                                     out.println("</form>");
+                                    out.println("<a href=\"resetPassword.jsp\">Forgot password?</a>");
                                 }
                             %>
                         </li>
