@@ -117,7 +117,8 @@
                         <input type="submit" value="Add to cart">
                         <input type="hidden" name="command" value="AddToCartCommand">
                     </form>
-                    
+
+
                     <%
                         if (loggedUser != null) {
                     %>
@@ -135,6 +136,7 @@
                     <%
                         }
                     %>
+
                 </c:forEach>
             </fieldset>
         </div>

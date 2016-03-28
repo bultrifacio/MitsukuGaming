@@ -106,7 +106,13 @@
                         <a href="#" class="list-group-item">Category</a>
                         <%
                             if (loggedUser != null) {
-                                out.println("<a href=\"wishList.jsp\" class=\"list-group-item\"> My Wishlist  </a>");
+                                out.println("<form action=\"FrontController\">");
+                                out.println("<a href=\"\" class=\"list-group-item\"> My Wishlist  </a>");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyWishListCommand\"");
+                                //out.println("<input type=\"submit\" value=\"showMyWishList\" value=\"ShowCartCommand\"");
+                                //<input type="hidden" name="command" value="ShowCartCommand">
+                                //<input type="submit" value="Show cart" class="btn-link">
+                                out.println("</form>");
                             }
                         %>
                         <div class="list-group-item">
