@@ -59,6 +59,14 @@
                         <li>
                             <a href="#">Contact</a>
                         </li>
+                        <li>
+                            <form action="FrontController">
+                                <input type="text">
+                                <input type="text">
+                                <input type="hidden" name="command" value="LoginCommand">
+                                <input type="submit">
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
