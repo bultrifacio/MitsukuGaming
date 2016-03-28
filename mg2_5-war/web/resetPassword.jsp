@@ -37,7 +37,7 @@
         function newPageFunction() {
             var myWindow = window.open("", "", "width=600, height=100");
             myWindow.document.write("<p>Your can reset your password in the following link: </p>\n\
-            http://localhost:8080/mg2_5-war/newPassword.jsp");
+            <a href=\"http://localhost:8080/mg2_5-war/newPassword.jsp\">");
         }
         </script>
     </head>
