@@ -109,6 +109,7 @@
                                 out.println("<form action=\"FrontController\">");
                                 out.println("<a href=\"\" class=\"list-group-item\"> My Wishlist  </a>");
                                 out.println("<input type=\"hidden\" name=\"command\" value=\"showMyWishListCommand\"");
+                                out.println("<input type=\"submit\" value=\"My Wishlist\"");
                                 //out.println("<input type=\"submit\" value=\"showMyWishList\" value=\"ShowCartCommand\"");
                                 //<input type="hidden" name="command" value="ShowCartCommand">
                                 //<input type="submit" value="Show cart" class="btn-link">
@@ -121,6 +122,12 @@
                             <input type="hidden" name="command" value="SearchCommand">
                             <input type="submit" value="Search">
                             </form>
+                            
+                            <form action="FrontController">
+                            <input type="hidden" name="command" value="showMyWishListCommand">
+                            <input type="submit" value="My Wishlist">
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

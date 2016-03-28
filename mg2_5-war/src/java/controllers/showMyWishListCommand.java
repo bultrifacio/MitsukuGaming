@@ -5,10 +5,20 @@
  */
 package controllers;
 
+import controller.ProductFacade;
+import controller.WishlistFacade;
+import entities.Product;
+import entities.Users;
+import entities.Wishlist;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,12 +28,37 @@ public class showMyWishListCommand extends FrontCommand {
 
     public void process() {
         try {
-            forward("/wishlist.jsp");
+
+            HttpSession session = request.getSession(true);
+            Users loggedUser = (Users) session.getAttribute("loggedUser");
+
+            WishlistFacade wishListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/WishlistFacade");
+            ProductFacade productListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
+            List<Product> productList = new ArrayList<>();
+            
+            List<Wishlist> wishlist = wishListFacade.findAll();
+            List<Wishlist> wishlistFiltre = new ArrayList<>();
+            
+            for (Wishlist wishlistProduct : wishlist) {
+                if (wishlistProduct.getUserId() == loggedUser.getUserId()){
+                    wishlistFiltre.add(wishlistProduct);
+                }
+            }
+            
+            for (Wishlist wishlistobject : wishlistFiltre) {
+                productList.add(productListFacade.find(wishlistobject.getProductId()+""));
+            }
+            
+            request.setAttribute("productList", productList);
+            forward("/wishList.jsp");
+
         } catch (ServletException ex) {
             Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
