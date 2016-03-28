@@ -60,18 +60,19 @@
                         <li>
                             <a href="#">Contact</a>
                         </li>
+
                         <li>
-                            <% 
+                            <%
                                 Users loggedUser = (Users) session.getAttribute("loggedUser");
-                                
+
                                 if (loggedUser != null) {
                                     out.println("<input type=\"text\" name=\"username\" value=\"Welcome " + loggedUser.getName() + "\">");
                                     out.println("<form action=\"FrontController\">");
                                     out.println("<input type=\"hidden\" name=\"command\" value=\"ShowProfileCommand\">");
                                     out.println("<input type=\"hidden\" name=\"id\" value=\"" + loggedUser.getUserId() + "\">");
-                                    out.println("<input type=\"hidden\" name=\"name\" value=\"" + loggedUser.getName()+ "\">");
-                                    out.println("<input type=\"hidden\" name=\"email\" value=\"" + loggedUser.getEmail()+ "\">");
-                                    out.println("<input type=\"hidden\" name=\"password\" value=\"" + loggedUser.getPassword()+ "\">");
+                                    out.println("<input type=\"hidden\" name=\"name\" value=\"" + loggedUser.getName() + "\">");
+                                    out.println("<input type=\"hidden\" name=\"email\" value=\"" + loggedUser.getEmail() + "\">");
+                                    out.println("<input type=\"hidden\" name=\"password\" value=\"" + loggedUser.getPassword() + "\">");
                                     out.println("<input type=\"submit\" value=\"Modify profile\">");
                                     out.println("</form>");
                                 } else {
@@ -103,6 +104,11 @@
                         <a href="userformjsp.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
                         <a href="#" class="list-group-item">Category</a>
+                        <%
+                            if (loggedUser != null) {
+                                out.println("<a href=\"wishList.jsp\" class=\"list-group-item\"> My Wishlist  </a>");
+                            }
+                        %>
                     </div>
                 </div>
 
@@ -145,7 +151,7 @@
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/320x150" alt="">
                                     <div class="caption">
-                                        
+
                                         <h4>
                                             <form action="FrontController">
                                                 <input type="hidden" name="id" value="${element.productId}">
@@ -302,7 +308,7 @@
                             </div>
                         </div>
                         -->
-                        
+
                         <!-- <div class="col-sm-4 col-lg-4 col-md-4">
                             <h4><a href="#">Like this template?</a>
                             </h4>
