@@ -8,16 +8,14 @@ package controllers;
 import controller.ProductFacade;
 import controller.SalesFacade;
 import entities.Product;
-import entities.Sales;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 public class GetInitialDataCommand extends FrontCommand {
 
@@ -25,6 +23,8 @@ public class GetInitialDataCommand extends FrontCommand {
     public void process() {
         ProductFacade productFacade;
         try {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("currency", "Euro");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
             List<Product> productList = productFacade.findAll();

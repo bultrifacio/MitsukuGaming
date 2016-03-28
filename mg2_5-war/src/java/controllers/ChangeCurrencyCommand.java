@@ -16,16 +16,30 @@ import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 public class ChangeCurrencyCommand extends FrontCommand {
 
     @Override
     public void process() {
         try {
+            HttpSession session = request.getSession(true);
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
+            
+            float rate = (float) 0.0;
+            if (request.getParameter("currency").equals("Euro")) {
+                rate = (float) 1.11970;
+                session.setAttribute("currency", "Dollar");
+            } else {
+                if (request.getParameter("currency").equals("Dollar")) {
+                    rate = (float) 1.0;
+                    session.setAttribute("currency", "Euro");
+                }
+            }
+            
             List<Product> productList = productFacade.findAll();
             List<Product> changedCurrencyList = new ArrayList<>();
-            float rate = (float) 1.2;
+            
             for (Product product : productList) {
                 product.setPrice(rate * product.getPrice());
                 changedCurrencyList.add(product);

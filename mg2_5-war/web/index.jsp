@@ -86,6 +86,21 @@
                                 }
                             %>
                         </li>
+                        <li>
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ChangeCurrencyCommand">
+                                <%
+                                    String currency = (String) session.getAttribute("currency");
+                                    if (currency.equals("Euro")) {
+                                        out.println("<input type=\"submit\" name=\"currency\" value=\"Euro\">");
+                                    } else {
+                                        if (currency.equals("Dollar")) {
+                                            out.println("<input type=\"submit\" name=\"currency\" value=\"Dollar\">");
+                                        }
+                                    }
+                                %>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -169,7 +184,21 @@
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>
                                         </h4>
-                                        <h4 class="pull-right">${element.price} &euro;</h4>
+                                        <h4 class="pull-right">${element.price} 
+                                            <%
+                                                if (currency.equals("Euro")) {
+                                            %>
+                                            &euro;
+                                            <%
+                                                } else {
+                                                    if (currency.equals("Dollar")) {
+                                            %>
+                                            $
+                                            <%
+                                                    }
+                                                }
+                                            %>
+                                        </h4>
                                         <p>${element.description}</p>
                                     </div>
                                     <div class="ratings">
