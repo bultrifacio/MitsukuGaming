@@ -75,7 +75,7 @@
                     ${element.synopsis}<br><br>
 
                     <fieldset>
-                        
+                        <b>Similar Games:</b><br>
                         <c:forEach var="attribute" items="${productList}">
                             <tr>
                                 <td>${attribute.productId}</td>
