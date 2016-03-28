@@ -109,6 +109,13 @@
                                 out.println("<a href=\"wishList.jsp\" class=\"list-group-item\"> My Wishlist  </a>");
                             }
                         %>
+                        <div class="list-group-item">
+                            <form action="FrontController">
+                            <input type="text" name="search" placeholder="Search a game">
+                            <input type="hidden" name="command" value="SearchCommand">
+                            <input type="submit" value="Search">
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9">
