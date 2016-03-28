@@ -61,14 +61,16 @@ public class BuyCommand extends FrontCommand {
 
                 salesFacade.create(venta);
             }
-            try (PrintWriter writer = new PrintWriter("C:\\Users\\Blarzek\\Documents\\Ticket.txt", "UTF-8")) {
+            // CAMBIAR UBICACION FICHERO
+            try (PrintWriter writer = new PrintWriter("Ticket.txt", "UTF-8")) {
                 writer.println("Thanks for your purchase:");
                 writer.println("Product name - Price");
                 for (Product product : cart.getContents()) {
                     writer.println(product.getName() + " - " + product.getPrice());
                 }
             }
-            forward("/FrontController?command=GetInitialDataCommand");
+            forward("/purchaseCompleted.jsp");
+            //forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(BuyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

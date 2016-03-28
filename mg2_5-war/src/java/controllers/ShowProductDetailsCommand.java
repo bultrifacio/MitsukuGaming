@@ -25,6 +25,19 @@ public class ShowProductDetailsCommand extends FrontCommand {
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
             List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
+           
+            List<Product> Productcategory = productFacade.findAll();
+            List<Product> productList = new  ArrayList<>();
+            
+            for (Product product2 : Productcategory) {
+                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("id")))){
+                    productList.add(product2);
+                }
+            }
+            
+            
+            
+            
             
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             List<Review> reviewList = reviewFacade.findAll();
@@ -41,6 +54,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
             }
             
             request.setAttribute("selectedProduct", selectedProduct);
+            request.setAttribute("productList", productList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
             forward("/productDetails.jsp");
