@@ -118,7 +118,25 @@
                         <input type="hidden" name="command" value="AddToCartCommand">
                     </form>
 
-                        
+
+                    <%
+                        if (loggedUser != null) {
+                            
+                            out.println("<form action=\"FrontController\">");
+                            out.println("<input type=\"hidden\" name=\"id\" value=\"${element.productId}\">");
+                            out.println("<input type=\"hidden\" name=\"name\" value=\"${element.name}\">");
+                            out.println("<input type=\"hidden\" name=\"quantity\" value=\"${element.quantity}\">");
+                            out.println("<input type=\"hidden\" name=\"id\" value=\"${element.available}\">");
+                            out.println("<input type=\"hidden\" name=\"id\" value=\"${element.price}\">");
+                            out.println("<input type=\"hidden\" name=\"id\" value=\"${element.cost}\">");
+                            
+                            out.println("<input type=\"submit\" value=\"Add to my wishlist \">");
+                            out.println("<input type=\"hidden\" name=\"command\" value=\"AddToWishListCommand\">");
+                            out.println("</form>");
+                        }
+                    %>
+                    
+                    <!--
                     <form action="FrontController">
                         <input type="hidden" name="id" value="${element.productId}">
                         <input type="hidden" name="name" value="${element.name}">
@@ -126,11 +144,12 @@
                         <input type="hidden" name="available" value="${element.available}">
                         <input type="hidden" name="price" value="${element.price}">
                         <input type="hidden" name="cost" value="${element.cost}">
-                        
+
                         <input type="submit" value="Add to my wishlist">
                         <input type="hidden" name="command" value="AddToWishListCommand">
                     </form>
-
+                    -->
+                    
                 </c:forEach>
             </fieldset>
         </div>
