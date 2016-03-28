@@ -11,6 +11,7 @@ import entities.Product;
 import entities.Sales;
 import entities.ShoppingCartLocal;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,13 +61,15 @@ public class BuyCommand extends FrontCommand {
 
                 salesFacade.create(venta);
             }
-            
+            try (PrintWriter writer = new PrintWriter("C:\\Users\\Blarzek\\Documents\\Ticket.txt", "UTF-8")) {
+                writer.println("Thanks for your purchase:");
+                writer.println("Product name - Price");
+                for (Product product : cart.getContents()) {
+                    writer.println(product.getName() + " - " + product.getPrice());
+                }
+            }
             forward("/FrontController?command=GetInitialDataCommand");
-        } catch (NamingException ex) {
-            Logger.getLogger(BuyCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(BuyCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(BuyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
