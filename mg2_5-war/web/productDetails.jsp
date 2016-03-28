@@ -86,7 +86,7 @@
                                 out.println("<input type=\"submit\" value=\"Write a review\">");
                                 out.println("</form>");
                             }
-                            
+
                             List<Review> productReviews = (List<Review>) request.getAttribute("productReviews");
                             List<Users> reviewOwners = (List<Users>) request.getAttribute("reviewOwners");
                             for (Review review : productReviews) {
@@ -116,9 +116,13 @@
 
                         <input type="submit" value="Add to cart">
                         <input type="hidden" name="command" value="AddToCartCommand">
+                    </form>
+
+                    <form action="FrontController">
                         <input type="submit" value="Add to my wishlist">
                         <input type="hidden" name="command" value="AddToWishListCommand">
                     </form>
+
                 </c:forEach>
             </fieldset>
         </div>
