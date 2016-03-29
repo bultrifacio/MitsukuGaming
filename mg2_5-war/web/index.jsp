@@ -118,6 +118,7 @@
                     <div class="list-group">
                         <a href="userformjsp.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
+                        <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <a href="#" class="list-group-item">Category</a>
                         <%
                             if (loggedUser != null) {
@@ -130,6 +131,12 @@
                                 //<input type="submit" value="Show cart" class="btn-link">
                                 out.println("</form>");
                                 out.println("</div>");
+                                out.println("<div class=\"list-group-item\">");
+                                out.println("<form action=\"FrontController\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyPurchaseHistoryCommand\">");
+                                out.println("<input type=\"submit\" value=\"My Purchase History\" class=\"btn-link2\">");
+                                out.println("</form>");
+                                out.println("</div>");
                             }
                         %>
                         <div class="list-group-item">
@@ -138,7 +145,12 @@
                                 <input type="hidden" name="command" value="SearchCommand">
                                 <input type="submit" value="Search">
                             </form>
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ShowPopularProductsCommand">
+                                <input type="submit" value="Show Popular Products">
+                            </form>
                         </div>
+
                         <!--
                         <form action="FrontController">
                         <input type="hidden" name="command" value="showMyWishListCommand">
