@@ -6772,4 +6772,17 @@ button.close {
     font-family:inherit;
     font-size:inherit;
 }
+.btn-link2{
+    border:none;
+    outline:none;
+    background:none;
+    cursor:pointer;
+    color:#555555;
+    padding:0;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    font-family:inherit;
+    font-size:inherit;
+}
 /*# sourceMappingURL=bootstrap.css.map */

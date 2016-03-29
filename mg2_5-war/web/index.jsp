@@ -121,29 +121,30 @@
                         <a href="#" class="list-group-item">Category</a>
                         <%
                             if (loggedUser != null) {
+                                out.println("<div class=\"list-group-item\">");
                                 out.println("<form action=\"FrontController\">");
-                                out.println("<a href=\"\" class=\"list-group-item\"> My Wishlist  </a>");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyWishListCommand\"");
-                                out.println("<input type=\"submit\" value=\"My Wishlist\"");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyWishListCommand\">");
+                                out.println("<input type=\"submit\" value=\"My Wishlist\" class=\"btn-link2\">");
                                 //out.println("<input type=\"submit\" value=\"showMyWishList\" value=\"ShowCartCommand\"");
                                 //<input type="hidden" name="command" value="ShowCartCommand">
                                 //<input type="submit" value="Show cart" class="btn-link">
                                 out.println("</form>");
+                                out.println("</div>");
                             }
                         %>
                         <div class="list-group-item">
                             <form action="FrontController">
-                            <input type="text" name="search" placeholder="Search a game">
-                            <input type="hidden" name="command" value="SearchCommand">
-                            <input type="submit" value="Search">
+                                <input type="text" name="search" placeholder="Search a game">
+                                <input type="hidden" name="command" value="SearchCommand">
+                                <input type="submit" value="Search">
                             </form>
-                            
-                            <form action="FrontController">
-                            <input type="hidden" name="command" value="showMyWishListCommand">
-                            <input type="submit" value="My Wishlist">
-                            </form>
-                            
                         </div>
+                        <!--
+                        <form action="FrontController">
+                        <input type="hidden" name="command" value="showMyWishListCommand">
+                        <input type="submit" value="My Wishlist" class="list-group-item">
+                        </form>
+                        -->
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -197,8 +198,8 @@
                                             %>
                                             &euro;
                                             <%
-                                                } else {
-                                                    if (currency.equals("Dollar")) {
+                                            } else {
+                                                if (currency.equals("Dollar")) {
                                             %>
                                             $
                                             <%
