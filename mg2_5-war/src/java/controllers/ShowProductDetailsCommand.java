@@ -55,9 +55,6 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
 
-            HttpSession session = request.getSession(true);
-            session.setAttribute("actualPage", "/FrontController?command=ShowProductDetailsCommand");
-
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);

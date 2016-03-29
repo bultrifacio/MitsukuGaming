@@ -22,11 +22,7 @@ public class LoginCommand extends FrontCommand {
             if (loggedUser.getPassword().equals(request.getParameter("password"))) {
                 session.setAttribute("loggedUser", loggedUser);
             }
-            String aux = (String) session.getAttribute("actualPage");
-            
-            request.setAttribute("id",(String) request.getParameter("id"));
-            
-            forward((String) session.getAttribute("actualPage"));
+            forward("/FrontController?command=GetInitialDataCommand");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
