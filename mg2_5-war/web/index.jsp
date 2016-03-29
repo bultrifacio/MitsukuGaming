@@ -200,6 +200,7 @@
                                             <form action="FrontController">
                                                 <input type="hidden" name="id" value="${element.productId}">
                                                 <input type="hidden" name="category" value="${element.category}">
+                                                <input type="hidden" name="price" value="${element.price}">
                                                 <input type="submit" value="${element.name}" class="btn-link">
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>

@@ -180,6 +180,11 @@
                             out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
                             out.println("<input type=\"text\" name=\"text\" placeholder=\"Write your review here\">");
                             out.println("<input type=\"text\" name=\"score\" placeholder=\"Your score\">");
+                    %>
+                    <c:forEach var="attribute" items="${productList}">
+                        <input type="hidden" name="price" value="${attribute.price}">
+                    </c:forEach>
+                    <%
                             out.println("<input type=\"hidden\" name=\"command\" value=\"WriteReviewCommand\">");
                             out.println("<input type=\"submit\" value=\"Write a review\">");
                             out.println("</form>");

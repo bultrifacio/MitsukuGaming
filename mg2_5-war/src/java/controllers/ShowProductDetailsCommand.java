@@ -25,7 +25,10 @@ public class ShowProductDetailsCommand extends FrontCommand {
 
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
             List<Product> selectedProduct = new ArrayList<>();
+            float aux = Float.parseFloat(request.getParameter("price"));
+            product.setPrice(Float.parseFloat(request.getParameter("price")));
             selectedProduct.add(product);
+            
 
             List<Product> Productcategory = productFacade.findAll();
             List<Product> productList = new ArrayList<>();
