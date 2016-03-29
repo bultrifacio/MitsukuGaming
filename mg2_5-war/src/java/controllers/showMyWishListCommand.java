@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import controller.ProductFacade;
@@ -20,10 +15,6 @@ import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Jusio
- */
 public class showMyWishListCommand extends FrontCommand {
 
     public void process() {
@@ -57,11 +48,7 @@ public class showMyWishListCommand extends FrontCommand {
             request.setAttribute("productListFiltre", productListFiltre);
             forward("/wishList.jsp");
 
-        } catch (ServletException ex) {
-            Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
+        } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(showMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
