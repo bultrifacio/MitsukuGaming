@@ -25,6 +25,7 @@ public class GetInitialDataCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
             session.setAttribute("currency", "Euro");
+            session.setAttribute("actualPage", "FrontController");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
             List<Product> productList = productFacade.findAll();

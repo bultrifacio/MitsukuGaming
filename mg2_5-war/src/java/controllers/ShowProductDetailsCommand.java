@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 public class ShowProductDetailsCommand extends FrontCommand {
 
@@ -21,38 +22,42 @@ public class ShowProductDetailsCommand extends FrontCommand {
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            
+
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
             List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
-           
+
             List<Product> Productcategory = productFacade.findAll();
-            List<Product> productList = new  ArrayList<>();
-            
+            List<Product> productList = new ArrayList<>();
+
             for (Product product2 : Productcategory) {
-                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("id")))){
+                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("id")))) {
                     productList.add(product2);
                 }
             }
-            
+
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             List<Review> reviewList = reviewFacade.findAll();
             List<Review> productReviews = new ArrayList<>();
-            
+
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> reviewOwners = new ArrayList<>();
-            
+
             for (Review review : reviewList) {
                 if (review.getProductId() == Integer.parseInt(request.getParameter("id"))) {
                     productReviews.add(review);
                     reviewOwners.add(usersFacade.find(review.getUserId()));
                 }
             }
-            
+
             request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("productList", productList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
+
+            HttpSession session = request.getSession(true);
+            session.setAttribute("actualPage", "/FrontController?command=ShowProductDetailsCommand");
+
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
