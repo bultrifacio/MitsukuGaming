@@ -16,7 +16,7 @@ public class CheckoutCommand extends FrontCommand {
         try {
         HttpSession session = request.getSession(true);
         ShoppingCartLocal cart = (ShoppingCartLocal) session.getAttribute("Cart");
-        if(cart == null){
+        if (cart == null){
             forward("/showCart.jsp");
         }
         Iterator<Product> itr = cart.getContents().iterator();

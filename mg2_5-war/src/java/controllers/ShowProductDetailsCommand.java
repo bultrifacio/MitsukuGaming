@@ -21,15 +21,22 @@ public class ShowProductDetailsCommand extends FrontCommand {
     @Override
     public void process() {
         try {
+            HttpSession session = request.getSession(true);
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
 
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
+            
+            String currency = (String) session.getAttribute("currency");
+            if (!currency.equals("Euro")) {
+                if (currency.equals("Dollar")) {
+                    product.setPrice((float) 1.11970 * product.getPrice());
+                }
+            }
+
             List<Product> selectedProduct = new ArrayList<>();
-            float aux = Float.parseFloat(request.getParameter("price"));
-            product.setPrice(Float.parseFloat(request.getParameter("price")));
+            //product.setPrice(Float.parseFloat(request.getParameter("price")));
             selectedProduct.add(product);
             
-
             List<Product> Productcategory = productFacade.findAll();
             List<Product> productList = new ArrayList<>();
 

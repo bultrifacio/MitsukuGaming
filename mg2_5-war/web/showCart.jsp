@@ -60,9 +60,7 @@
             <form action="FrontController">
                 <input type="hidden" name="id" value="${element.productId}">
                 <input type="hidden" name="command" value="CheckoutCommand">
-                <input type="submit" value="BUY!">
-                <input name="command" value="CheckoutCommand" type="hidden"><br>
-                <input value="Reserva" type="submit"><br>
+                <input type="submit" value="Checkout">
             </form>
         </div>
     </body>

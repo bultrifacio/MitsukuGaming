@@ -24,11 +24,25 @@ public class GetInitialDataCommand extends FrontCommand {
         ProductFacade productFacade;
         try {
             HttpSession session = request.getSession(true);
+            
+            // Cada vez que se vuelve a la pagina principal, se reinicia la moneda actual a Euro
+            // Hay que cambiar esto de sitio
             session.setAttribute("currency", "Euro");
+            
             session.setAttribute("actualPage", "FrontController");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
+            
             List<Product> productList = productFacade.findAll();
+            
+            String currency = (String) session.getAttribute("currency");
+            if (!currency.equals("Euro")) {
+                for (Product product : productList) {
+                    if (currency.equals("Dollar")) {
+                        product.setPrice((float) 1.11970 * product.getPrice());
+                    }
+                }
+            }
             /*List<Product> productList = new ArrayList<>();
             List<Sales> sales = salesFacade.findAll();
             TreeMap<Integer,Integer> sinRepeticion = new TreeMap<>();

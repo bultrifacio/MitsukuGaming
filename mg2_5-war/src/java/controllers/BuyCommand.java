@@ -12,9 +12,7 @@ import entities.Sales;
 import entities.ShoppingCartLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -32,6 +30,7 @@ import javax.servlet.http.HttpSession;
  */
 public class BuyCommand extends FrontCommand {
 
+    @Override
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");

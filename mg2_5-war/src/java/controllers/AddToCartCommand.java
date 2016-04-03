@@ -6,13 +6,8 @@
 package controllers;
 
 import controller.ProductFacade;
-import entities.Product;
-import entities.ShoppingCart;
 import entities.ShoppingCartLocal;
 import java.io.IOException;
-import static java.lang.System.out;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -39,10 +34,10 @@ public class AddToCartCommand extends FrontCommand {
             }
             cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
             request.setAttribute("cart", cart.getContents());
-            forward("/showCart.jsp");
+            //forward("/showCart.jsp");
+            forward("/FrontController?command=ShowCartCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
