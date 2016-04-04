@@ -21,6 +21,9 @@ public class MailBoxCommand extends FrontCommand {
             String email = user.getEmail();
             String data = request.getParameter("suggestion");
             //C:\Users\Usuario\GlassFish_Server\glassfish\domains\domain1\config\.\SuggestionFile.txt
+            
+            //Esta es -> C:\Users\alumno\AppData\Roaming\NetBeans\8.0\config\GF_4.0\domain1\config uyh
+
             BufferedWriter out = new BufferedWriter(new FileWriter("./suggestion.txt") );
             out.write(data);
             out.close();

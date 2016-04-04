@@ -10,6 +10,7 @@ import controller.SalesFacade;
 import entities.Product;
 import entities.Sales;
 import entities.ShoppingCartLocal;
+import entities.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -42,8 +43,9 @@ public class BuyCommand extends FrontCommand {
 
             while (itr.hasNext()) {
                 Product element = itr.next();
-                element.setQuantity(element.getQuantity() - 1);
-                productFacade.edit(element);
+                Product newElement = productFacade.find(element.getProductId());
+                newElement.setQuantity(newElement.getQuantity() - 1);
+                productFacade.edit(newElement);
 
                 int randomId = new Random().nextInt(1000000);
                 List<Sales> randomList = salesFacade.findAll();
@@ -55,10 +57,16 @@ public class BuyCommand extends FrontCommand {
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String date = new Date().toString();
+                Sales venta;
                 //String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-                Sales venta = new Sales(randomId, element.getProductId(), 42, new Date());
-
-                salesFacade.create(venta);
+                if (session.getAttribute("loggedUser") == null) {
+                    venta = new Sales(randomId, element.getProductId(), 0, new Date());
+                    salesFacade.create(venta);
+                } else {
+                    Users loggedUser = (Users) session.getAttribute("loggedUser");
+                    venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date());
+                    salesFacade.create(venta);
+                }
             }
             // CAMBIAR UBICACION FICHERO
             try (PrintWriter writer = new PrintWriter("Ticket.txt", "UTF-8")) {
@@ -68,6 +76,8 @@ public class BuyCommand extends FrontCommand {
                     writer.println(product.getName() + " - " + product.getPrice());
                 }
             }
+            cart.remove();
+            session.setAttribute("Cart", null);
             forward("/purchaseCompleted.jsp");
             //forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {

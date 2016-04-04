@@ -7,6 +7,7 @@
 package entities;
 
 import java.util.ArrayList;
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
 /**
@@ -35,10 +36,7 @@ public class ShoppingCart implements ShoppingCartLocal {
         return Cart;
     }
     
-    /**
-     *
-     */
-    @Override
+    @Remove
     public void remove(){
         Cart = null;
     }

@@ -41,6 +41,7 @@ public class ChangeCurrencyCommand extends FrontCommand {
             List<Product> productList = productFacade.findAll();
             //List<Product> changedCurrencyList = new ArrayList<>();
             
+            
             String currency = (String) session.getAttribute("currency");
             if (!currency.equals("Euro")) {
                 for (Product product : productList) {
@@ -57,8 +58,9 @@ public class ChangeCurrencyCommand extends FrontCommand {
             }
             */
             //request.setAttribute("productList", changedCurrencyList);
-            request.setAttribute("productList", productList);
-            forward("/index.jsp");
+            //request.setAttribute("productList", productList);
+            
+            forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ChangeCurrencyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
