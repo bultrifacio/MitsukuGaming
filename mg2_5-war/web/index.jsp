@@ -75,6 +75,10 @@
                                     out.println("<input type=\"hidden\" name=\"password\" value=\"" + loggedUser.getPassword() + "\">");
                                     out.println("<input type=\"submit\" value=\"Modify profile\">");
                                     out.println("</form>");
+                                    out.println("<form action=\"FrontController\">");
+                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowCartCommand\">");
+                                    out.println("<input type=\"submit\" value=\"Show cart\" class=\"btn-link\">");
+                                    out.println("</form>");
                                 } else {
                                     out.println("<form action=\"FrontController\">");
                                     out.println("<input type=\"text\" name=\"username\" placeholder=\"Username\">");
@@ -82,6 +86,10 @@
                                     out.println("<input type=\"hidden\" name=\"command\" value=\"LoginCommand\">");
                                     out.println("<input type=\"submit\" value=\"Login\">");
                                     out.println("<a href=\"resetPassword.jsp\">Forgot password?</a>");
+                                    out.println("</form>");
+                                    out.println("<form action=\"FrontController\">");
+                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowCartCommand\">");
+                                    out.println("<input type=\"submit\" value=\"Show cart\" class=\"btn-link\">");
                                     out.println("</form>");
                                 }
                             %>
