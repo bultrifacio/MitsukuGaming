@@ -39,45 +39,13 @@
                 </select>
                 <input name="command" value="BuyCommand" type="hidden"><br>
                 <input value="Buy" type="submit"><br>
-            </form><%--
-            <%@if($payment){
-                switch ($_POST['payment']) {
-                    case label1:
-                        code to be executed if n=label1;
-                        break;
-                    case label2:
-                        code to be executed if n=label2;
-                        break;
-                    case label3:
-                        code to be executed if n=label3;
-                        break;
-                    ...
-                    default:
-                        code to be executed if n is different from all labels;
-                }
-            }%>
-            <%--<script>
-            function showPayment() {
-                var value = $_POST['payment'];
-                switch(payment) {
-                    case 1:
-                        <form >
-                        </form>
-                        break;
-                    case 2:
-                        code block
-                        break;
-                    case 3:
-                        code block
-                        break;
-                    case 4:
-                        code block
-                        break;
-                    default:
-                        default code block
-                }
-            }
-            </script>--%>
+            </form>
+
+            <form action="FrontController">
+                <input name="command" value="ShowFollowerListToBuyCommand" type="hidden"><br>
+                <input value="Buy for your friend" type="submit"><br>
+            </form>
+            
         </div>
     </body>
 </html>
