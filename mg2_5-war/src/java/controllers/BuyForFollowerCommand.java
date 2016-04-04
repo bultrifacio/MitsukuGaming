@@ -56,11 +56,11 @@ public class BuyForFollowerCommand extends FrontCommand {
                 Sales venta;
                 //String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
                 if (session.getAttribute("loggedUser") == null) {
-                    venta = new Sales(randomId, element.getProductId(), 0, new Date());
+                    venta = new Sales(randomId, element.getProductId(), 0, new Date(),request.getParameter("payment"));
                     salesFacade.create(venta);
                 } else {
                     Users loggedUser = (Users) session.getAttribute("loggedUser");
-                    venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date());
+                    venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date(),request.getParameter("payment"));
                     salesFacade.create(venta);
                 }
             }

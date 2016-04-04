@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -53,6 +54,9 @@ public class Sales implements Serializable {
     @Column(name = "DATE")
     @Temporal(TemporalType.DATE)
     private Date date;
+    @Size(min = 1, max = 144)
+    @Column(name = "METHOD")
+    private String method;
 
     public Sales() {
     }
@@ -61,11 +65,12 @@ public class Sales implements Serializable {
         this.saleId = saleId;
     }
 
-    public Sales(Integer saleId, int productId, int userId, Date date) {
+    public Sales(Integer saleId, int productId, int userId, Date date, String method) {
         this.saleId = saleId;
         this.productId = productId;
         this.userId = userId;
         this.date = date;
+        this.method = method;
     }
 
     public Integer getSaleId() {
@@ -98,6 +103,14 @@ public class Sales implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     @Override

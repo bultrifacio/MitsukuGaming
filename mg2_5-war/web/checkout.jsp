@@ -32,10 +32,10 @@
             </form><br><br>
             <form action="FrontController">
                 <select name="payment" onchange="">
-                    <option value="1">Visa</option>
-                    <option value="2">MasterCard</option>
-                    <option value="3">PayPal</option>
-                    <option value="4">Wire transfer</option>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Wire transfer">Wire transfer</option>
                 </select>
                 <input name="command" value="BuyCommand" type="hidden"><br>
                 <input value="Buy" type="submit"><br>

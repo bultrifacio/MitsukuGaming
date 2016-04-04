@@ -221,6 +221,14 @@
                     <input type="submit" value="Add to cart">
                     <input type="hidden" name="command" value="AddToCartCommand">
                 </form>
+                    
+                <form action="FrontController">
+                    <input type="hidden" name="id" value="${element.productId}">
+                    <input type="hidden" name="name" value="${element.name}">
+                    
+                    <input type="submit" value="Stats">
+                    <input type="hidden" name="command" value="ShowProductStatsCommand">
+                </form>
 
                 <%
                     if (loggedUser != null) {
