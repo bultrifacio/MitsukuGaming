@@ -127,6 +127,10 @@
                 ${element.price}<br>
 
                 <%
+                    String category = (String) request.getAttribute("category");
+                %>
+                
+                <%
                     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                     List<Product> list = (List<Product>) request.getAttribute("selectedProduct");
                     Date releaseDate = list.get(0).getReleaseDate();
@@ -176,11 +180,15 @@
                     <%
                         loggedUser = (Users) session.getAttribute("loggedUser");
                         if (loggedUser != null) {
-                            out.println("<form action=\"FrontController\">");
-                            out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
-                            out.println("<input type=\"text\" name=\"text\" placeholder=\"Write your review here\">");
-                            out.println("<input type=\"text\" name=\"score\" placeholder=\"Your score\">");
                     %>
+                    <form action="FrontController">
+                        <%
+                            out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
+                            out.println("<input type=\"hidden\" name=\"category\" value=\"" + (String) category + "\">");
+                        %>
+                        <input type="text" name="text" placeholder="Write your review here">
+                        <input type="text" name="score" placeholder="Your score">
+
                     <c:forEach var="attribute" items="${productList}">
                         <input type="hidden" name="price" value="${attribute.price}">
                     </c:forEach>

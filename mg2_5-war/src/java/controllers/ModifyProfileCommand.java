@@ -31,7 +31,7 @@ public class ModifyProfileCommand extends FrontCommand {
             userList.add(users);
             session.setAttribute("loggedUser", users);
             request.setAttribute("userInfo", userList);
-            forward("/index.jsp");
+            forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ModifyProfileCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

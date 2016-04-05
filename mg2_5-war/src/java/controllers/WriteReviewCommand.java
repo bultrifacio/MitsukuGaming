@@ -31,6 +31,8 @@ public class WriteReviewCommand extends FrontCommand {
                     loggedUser.getUserId(),
                     date);
             
+            request.setAttribute("id", request.getAttribute("productId"));
+            request.setAttribute("category", request.getAttribute("category"));
             reviewFacade.create(review);
             request.setAttribute("price", request.getAttribute("price"));
             forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
