@@ -133,7 +133,7 @@
                             if (loggedUser != null) {
                                 out.println("<div class=\"list-group-item\">");
                                 out.println("<form action=\"FrontController\">");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyWishListCommand\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyWishListCommand\">");
                                 out.println("<input type=\"submit\" value=\"My Wishlist\" class=\"btn-link2\">");
                                 //out.println("<input type=\"submit\" value=\"showMyWishList\" value=\"ShowCartCommand\"");
                                 //<input type="hidden" name="command" value="ShowCartCommand">
@@ -149,7 +149,7 @@
                                 
                                 out.println("<div class=\"list-group-item\">");
                                 out.println("<form action=\"FrontController\">");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyFollowingListCommand\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyFollowingListCommand\">");
                                 out.println("<input type=\"submit\" value=\"My following list\" class=\"btn-link2\">");
                                 out.println("</form>");
                                 out.println("</div>");

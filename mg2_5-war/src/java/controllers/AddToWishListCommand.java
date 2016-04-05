@@ -29,11 +29,7 @@ public class AddToWishListCommand extends FrontCommand {
 
             forward("/FrontController?command=GetInitialDataCommand");
 
-        } catch (NamingException ex) {
-            Logger.getLogger(AddToWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(AddToWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 
