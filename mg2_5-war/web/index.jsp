@@ -58,7 +58,7 @@
                             <a href="#">Services</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="supportform.jsp">Contact</a>
                         </li>
 
                         <li>
@@ -115,7 +115,8 @@
             </div>
             <!-- /.container -->
         </nav>
-
+        <br>
+        <br>
         <!-- Page Content -->
         <div class="container">
 
@@ -143,6 +144,13 @@
                                 out.println("<form action=\"FrontController\">");
                                 out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyPurchaseHistoryCommand\">");
                                 out.println("<input type=\"submit\" value=\"My Purchase History\" class=\"btn-link2\">");
+                                out.println("</form>");
+                                out.println("</div>");
+                                
+                                out.println("<div class=\"list-group-item\">");
+                                out.println("<form action=\"FrontController\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"showMyFollowingListCommand\">");
+                                out.println("<input type=\"submit\" value=\"My following list\" class=\"btn-link2\">");
                                 out.println("</form>");
                                 out.println("</div>");
                             }

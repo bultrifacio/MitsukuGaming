@@ -36,7 +36,7 @@ public class ModifyPasswordCommand extends FrontCommand {
                 }
                 
             }
-            forward("/index.jsp");
+            forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ModifyPasswordCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
