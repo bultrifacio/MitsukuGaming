@@ -116,7 +116,8 @@
         </form><br><br>
         <fieldset>
             <legend>Product information:</legend>
-            
+            <div class="row">
+                <div class="col-md-9">
             <div class="row carousel-holder">
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -132,10 +133,23 @@
                             </c:forEach>
                         </ol>
                         <div class="carousel-inner">
+                            <% boolean active = true; %>
+                            
                             <c:forEach var="element" items="${imageFilter}">
+                                <% 
+                                    if (active) {
+                                %>
                                 <div class="item active">
                                     <img class="slide-image" src="img/${element.path}" alt="">
                                 </div>
+                                <%
+                                    active = false;
+                                    } else {
+                                %>
+                                <div class="item">
+                                    <img class="slide-image" src="img/${element.path}" alt="">
+                                </div>
+                                <% } %>
                             </c:forEach>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -289,6 +303,8 @@
                 %>
 
             </c:forEach>
+                </div>
+            </div>
         </fieldset>
     </div>
 </body>
