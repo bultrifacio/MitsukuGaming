@@ -1,8 +1,10 @@
 package controllers;
 
+import controller.ImageFacade;
 import controller.ProductFacade;
 import controller.ReviewFacade;
 import controller.UsersFacade;
+import entities.Image;
 import entities.Product;
 import entities.Review;
 import entities.Users;
@@ -62,6 +64,16 @@ public class ShowProductDetailsCommand extends FrontCommand {
                 }
             }
 
+            ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
+            List<Image> imageList = imageFacade.findAll();
+            List<Image> imageFilter = new ArrayList<>();
+            for (Image image : imageList) {
+                if (image.getProductId() == product.getProductId()){
+                    imageFilter.add(image);
+                }
+            }
+            
+            request.setAttribute("imageFilter", imageFilter);
             request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("productList", productList);
             request.setAttribute("productReviews", productReviews);

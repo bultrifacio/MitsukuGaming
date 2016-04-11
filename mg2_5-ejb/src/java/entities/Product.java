@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findByReleaseDate", query = "SELECT p FROM Product p WHERE p.releaseDate = :releaseDate"),
     @NamedQuery(name = "Product.findByAvailable", query = "SELECT p FROM Product p WHERE p.available = :available")})
 public class Product implements Serializable {
+    @Size(max = 50)
+    @Column(name = "LOGO")
+    private String logo;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
     private Float price;
@@ -210,6 +213,14 @@ public class Product implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
     
 }

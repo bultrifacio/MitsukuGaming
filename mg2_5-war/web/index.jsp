@@ -209,9 +209,8 @@
                         <c:forEach var="element" items="${productList}">
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 <div class="thumbnail">
-                                    <img src="http://placehold.it/320x150" alt="">
+                                    <img src="img/${element.logo}" alt="">
                                     <div class="caption">
-
                                         <h4>
                                             <form action="FrontController">
                                                 <input type="hidden" name="id" value="${element.productId}">

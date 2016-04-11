@@ -116,6 +116,38 @@
         </form><br><br>
         <fieldset>
             <legend>Product information:</legend>
+            
+            <div class="row carousel-holder">
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <%
+                                int index = 0;
+                            %>
+                            <c:forEach var="element" items="${imageFilter}">
+                                <li data-target="img/${element.path}" data-slide-to="<%= index%>" class="active"></li>
+                                <%
+                                    index++;
+                                %>
+                            </c:forEach>
+                        </ol>
+                        <div class="carousel-inner">
+                            <c:forEach var="element" items="${imageFilter}">
+                                <div class="item active">
+                                    <img class="slide-image" src="img/${element.path}" alt="">
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
             <c:forEach var="element" items="${selectedProduct}">
                 <b>ID:</b><br>
                 ${element.productId}<br>
