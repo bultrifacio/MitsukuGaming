@@ -72,7 +72,8 @@ public class ShowProductDetailsCommand extends FrontCommand {
                     imageFilter.add(image);
                 }
             }
-            
+            request.setAttribute("name", product.getName());
+            request.setAttribute("available", product.getAvailable());
             request.setAttribute("imageFilter", imageFilter);
             request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("productList", productList);

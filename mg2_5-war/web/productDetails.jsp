@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buy product</title>
+        <title>Buy <%= request.getAttribute("name") %> on Mitsuku Gaming</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -107,9 +107,9 @@
                 <!-- /.navbar-collapse -->
             </div>
         </nav>
-        <br><br><br><br>
+        
         <div class="container">
-        <h1>Buy product</h1>
+        <h1>Buy <%= request.getAttribute("name") %></h1>
         <form action="FrontController">
             <input type="hidden" name="command" value="ShowCartCommand">
             <input type="submit" value="Show cart" class="btn-link">
@@ -172,8 +172,8 @@
             </div>
             
             <c:forEach var="element" items="${selectedProduct}">
-                <b>ID:</b><br>
-                ${element.productId}<br>
+                <!-- <b>ID:</b><br>
+                ${element.productId}<br> -->
                 <b>Product name:</b><br>
                 ${element.name}<br>
                 <b>Category:</b><br>
@@ -193,9 +193,20 @@
                 %>
 
                 <b>Release date:</b><br>
-                <%= formatedDate%><br>
+                <%= formatedDate %><br>
                 <b>Available:</b><br>
-                ${element.available}<br>
+                <% 
+                    //if ((int) request.getAttribute("available") == 1) {
+                %>
+                Yes
+                <%
+                //} else if ((int) request.getAttribute("available") == 0) {
+                %>
+                No
+                <%
+                //}
+                %>
+                <!-- ${element.available} --><br>
                 <b>Description:</b><br>
                 ${element.description}<br>
                 <b>Synopsis:</b><br>
