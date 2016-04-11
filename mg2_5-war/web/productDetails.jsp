@@ -30,10 +30,10 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link href="bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-        <script src="bootstrap/jquery.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
         <!-- Navigation -->
@@ -124,17 +124,26 @@
                         <ol class="carousel-indicators">
                             <%
                                 int index = 0;
+                                boolean active = true;
                             %>
                             <c:forEach var="element" items="${imageFilter}">
+                                <% 
+                                    if (active) { 
+                                %>
                                 <li data-target="img/${element.path}" data-slide-to="<%= index%>" class="active"></li>
+                                <% 
+                                    active = false;
+                                    } else {    
+                                %>
+                                <li data-target="img/${element.path}" data-slide-to="<%= index%>"></li>
                                 <%
+                                    }
                                     index++;
                                 %>
                             </c:forEach>
                         </ol>
                         <div class="carousel-inner">
-                            <% boolean active = true; %>
-                            
+                            <% active = true; %>
                             <c:forEach var="element" items="${imageFilter}">
                                 <% 
                                     if (active) {

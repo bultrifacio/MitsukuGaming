@@ -14,10 +14,10 @@
         <title>Mitsuku Gaming</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="bootstrap/shop-homepage.css" rel="stylesheet">
+        <link href="css/shop-homepage.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,10 +26,10 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link href="bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
-        <script src="bootstrap/jquery.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
     </head>
 
