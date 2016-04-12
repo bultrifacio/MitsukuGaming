@@ -60,37 +60,51 @@
                         <li>
                             <a href="supportform.jsp">Contact</a>
                         </li>
-
                         <li>
                             <%
                                 Users loggedUser = (Users) session.getAttribute("loggedUser");
-                                out.println("<br>");
                                 if (loggedUser != null) {
-                                    out.println("<input type=\"text\" name=\"username\" value=\"Welcome " + loggedUser.getName() + "\">");
-                                    out.println("<form action=\"FrontController\">");
-                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowProfileCommand\">");
-                                    out.println("<input type=\"hidden\" name=\"id\" value=\"" + loggedUser.getUserId() + "\">");
-                                    out.println("<input type=\"hidden\" name=\"name\" value=\"" + loggedUser.getName() + "\">");
-                                    out.println("<input type=\"hidden\" name=\"email\" value=\"" + loggedUser.getEmail() + "\">");
-                                    out.println("<input type=\"hidden\" name=\"password\" value=\"" + loggedUser.getPassword() + "\">");
-                                    out.println("<input type=\"submit\" value=\"Modify profile\">");
-                                    out.println("</form>");
-                                    out.println("<form action=\"FrontController\">");
-                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowCartCommand\">");
-                                    out.println("<input type=\"submit\" value=\"Show cart\" class=\"btn-link\">");
-                                    out.println("</form>");
+                                    %>
+                                    <input type="text" name="username" value="Welcome <%= loggedUser.getName() %>">
+                                    <form method="post" action="FrontController">
+                                        <input type="hidden" name="command" value="ShowProfileCommand">
+                                        <input type="hidden" name="id" value="<%= loggedUser.getUserId() %>">
+                                        <input type="hidden" name="name" value="<%= loggedUser.getName() %>">
+                                        <input type="hidden" name="email" value="<%= loggedUser.getEmail() %>">
+                                        <input type="hidden" name="password" value="<%= loggedUser.getPassword() %>">
+                                        <input type="submit" value="Modify profile">
+                                    </form>
+                                    <form method="post" action="FrontController">
+                                        <input type="hidden" name="command" value="ShowCartCommand">
+                                        <input type="submit" value="Show cart" class="btn-link">
+                                    </form>
+                                    <%
                                 } else {
-                                    out.println("<form action=\"FrontController\">");
-                                    out.println("<input type=\"text\" name=\"username\" placeholder=\"Username\">");
-                                    out.println("<input type=\"password\" name=\"password\" placeholder=\"Password\">");
-                                    out.println("<input type=\"hidden\" name=\"command\" value=\"LoginCommand\">");
-                                    out.println("<input type=\"submit\" value=\"Login\">");
-                                    out.println("<a href=\"resetPassword.jsp\">Forgot password?</a>");
-                                    out.println("</form>");
-                                    out.println("<form action=\"FrontController\">");
-                                    out.println("<input type=\"hidden\" name=\"command\" value=\"ShowCartCommand\">");
-                                    out.println("<input type=\"submit\" value=\"Show cart\" class=\"btn-link\">");
-                                    out.println("</form>");
+                                    %> 
+                                    <form method="post" action="FrontController">
+                                        <input type="text" name="email" placeholder="Email">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="hidden" name="command" value="LoginCommand">
+                                        <input type="submit" value="Login">
+                                    </form>
+                                    <%
+                                        /*
+                                                boolean wrongEmail = (boolean) session.getAttribute("wrongEmail");
+                                        if (wrongEmail) {
+                                            out.println("That email doesn't exists in our system.<br>");
+                                        }
+                                        boolean wrongPassword = (boolean) session.getAttribute("wrongPassword");
+                                        if (wrongPassword) {
+                                            out.println("You have entered a wrong password.<br>");
+                                        }
+                                        */
+                                    %>
+                                    <a href="resetPassword.jsp">Forgot password?</a>
+                                    <form action="FrontController">
+                                        <input type="hidden" name="command" value="ShowCartCommand">
+                                        <input type="submit" value="Show cart" class="btn-link">
+                                    </form>
+                            <%
                                 }
                             %>
                         </li>
@@ -212,7 +226,7 @@
                                     <img src="img/${element.logo}" alt="">
                                     <div class="caption">
                                         <h4>
-                                            <form action="FrontController">
+                                            <form method="post" action="FrontController">
                                                 <input type="hidden" name="id" value="${element.productId}">
                                                 <input type="hidden" name="category" value="${element.category}">
                                                 <input type="hidden" name="price" value="${element.price}">

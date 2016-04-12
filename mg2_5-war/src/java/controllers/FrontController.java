@@ -12,8 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        FrontCommand command = null;
+        try {
+            command = getCommand(request);
+        } catch (Exception ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        command.init(getServletContext(), request, response);
+        command.process();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -26,15 +33,8 @@ public class FrontController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response){
-        FrontCommand command = null;
-        try {
-            command = getCommand(request);
-        } catch (Exception ex) {
-            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        command.init(getServletContext(), request, response);
-        command.process();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        processRequest(request, response);
     }
 
     private FrontCommand getCommand(HttpServletRequest request) throws Exception {

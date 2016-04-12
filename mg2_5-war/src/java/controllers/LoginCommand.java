@@ -3,6 +3,7 @@ package controllers;
 import controller.UsersFacade;
 import entities.Users;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -17,10 +18,25 @@ public class LoginCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
-            // Modificar ID que se busca
-            Users loggedUser = usersFacade.find(1);
-            if (loggedUser.getPassword().equals(request.getParameter("password"))) {
-                session.setAttribute("loggedUser", loggedUser);
+            List<Users> userList = usersFacade.findAll();
+            boolean wrongPassword = false;
+            session.setAttribute("wrongEmail", false);
+            for (Users user : userList) {
+                if (user.getEmail().equals(request.getParameter("email"))) {
+                    if (user.getPassword().equals(request.getParameter("password"))) {
+                        session.setAttribute("loggedUser", user);
+                        wrongPassword = false;
+                        session.setAttribute("wrongPassword", false);
+                        break;
+                    } else {
+                        session.setAttribute("wrongPassword", true);
+                        wrongPassword = true;
+                        break;
+                    }
+                }
+            }
+            if (wrongPassword){
+                session.setAttribute("wrongEmail", true);
             }
             forward("/FrontController?command=GetInitialDataCommand");
         } catch (ServletException | IOException | NamingException ex) {
