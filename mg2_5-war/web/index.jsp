@@ -75,6 +75,10 @@
                                         <input type="submit" value="Modify profile">
                                     </form>
                                     <form method="post" action="FrontController">
+                                        <input type="hidden" name="command" value="LogoutCommand">
+                                        <input type="submit" value="Logout" class="btn-link">
+                                    </form>
+                                    <form method="post" action="FrontController">
                                         <input type="hidden" name="command" value="ShowCartCommand">
                                         <input type="submit" value="Show cart" class="btn-link">
                                     </form>
@@ -88,16 +92,19 @@
                                         <input type="submit" value="Login">
                                     </form>
                                     <%
-                                        /*
-                                                boolean wrongEmail = (boolean) session.getAttribute("wrongEmail");
-                                        if (wrongEmail) {
-                                            out.println("That email doesn't exists in our system.<br>");
+                                        
+                                        //boolean wrongEmail = (boolean) session.getAttribute("wrongEmail");
+                                        if ((Integer) session.getAttribute("wrongEmail") != null) {
+                                            if ((Integer) session.getAttribute("wrongEmail") == 1) {
+                                                out.println("<div class=\"error-text\">That email doesn't exists in our system.<br></div>");
+                                            } else {
+                                                //boolean wrongPassword = (boolean) session.getAttribute("wrongPassword");
+                                                if ((Integer) session.getAttribute("wrongPassword") == 1) {
+                                                    out.println("<div class=\"error-text\">You have entered a wrong password.<br></div>");
+                                                }
+                                            }
                                         }
-                                        boolean wrongPassword = (boolean) session.getAttribute("wrongPassword");
-                                        if (wrongPassword) {
-                                            out.println("You have entered a wrong password.<br>");
-                                        }
-                                        */
+                                        
                                     %>
                                     <a href="resetPassword.jsp">Forgot password?</a>
                                     <form action="FrontController">

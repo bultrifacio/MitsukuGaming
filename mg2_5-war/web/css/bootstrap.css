@@ -6809,4 +6809,8 @@ button.close {
     font-family:inherit;
     font-size:inherit;
 }
+
+.error-text{
+    color:#bb020b;
+}
 /*# sourceMappingURL=bootstrap.css.map */
