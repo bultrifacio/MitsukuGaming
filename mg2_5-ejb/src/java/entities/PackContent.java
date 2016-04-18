@@ -24,56 +24,56 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alumno
  */
 @Entity
-@Table(name = "WISHLIST")
+@Table(name = "PACK_CONTENT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Wishlist.findAll", query = "SELECT w FROM Wishlist w"),
-    @NamedQuery(name = "Wishlist.findByWishId", query = "SELECT w FROM Wishlist w WHERE w.wishId = :wishId"),
-    @NamedQuery(name = "Wishlist.findByUserId", query = "SELECT w FROM Wishlist w WHERE w.userId = :userId"),
-    @NamedQuery(name = "Wishlist.findByProductId", query = "SELECT w FROM Wishlist w WHERE w.productId = :productId")})
-public class Wishlist implements Serializable {
+    @NamedQuery(name = "PackContent.findAll", query = "SELECT p FROM PackContent p"),
+    @NamedQuery(name = "PackContent.findById", query = "SELECT p FROM PackContent p WHERE p.id = :id"),
+    @NamedQuery(name = "PackContent.findByPackId", query = "SELECT p FROM PackContent p WHERE p.packId = :packId"),
+    @NamedQuery(name = "PackContent.findByProductId", query = "SELECT p FROM PackContent p WHERE p.productId = :productId")})
+public class PackContent implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "WISH_ID")
-    private Integer wishId;
+    @Column(name = "ID")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "USER_ID")
-    private int userId;
+    @Column(name = "PACK_ID")
+    private int packId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRODUCT_ID")
     private int productId;
 
-    public Wishlist() {
+    public PackContent() {
     }
 
-    public Wishlist(Integer wishId) {
-        this.wishId = wishId;
+    public PackContent(Integer id) {
+        this.id = id;
     }
 
-    public Wishlist(Integer wishId, int userId, int productId) {
-        this.wishId = wishId;
-        this.userId = userId;
+    public PackContent(Integer id, int packId, int productId) {
+        this.id = id;
+        this.packId = packId;
         this.productId = productId;
     }
 
-    public Integer getWishId() {
-        return wishId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setWishId(Integer wishId) {
-        this.wishId = wishId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getPackId() {
+        return packId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPackId(int packId) {
+        this.packId = packId;
     }
 
     public int getProductId() {
@@ -87,18 +87,18 @@ public class Wishlist implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (wishId != null ? wishId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Wishlist)) {
+        if (!(object instanceof PackContent)) {
             return false;
         }
-        Wishlist other = (Wishlist) object;
-        if ((this.wishId == null && other.wishId != null) || (this.wishId != null && !this.wishId.equals(other.wishId))) {
+        PackContent other = (PackContent) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -106,7 +106,7 @@ public class Wishlist implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Wishlist[ wishId=" + wishId + " ]";
+        return "entities.PackContent[ id=" + id + " ]";
     }
     
 }

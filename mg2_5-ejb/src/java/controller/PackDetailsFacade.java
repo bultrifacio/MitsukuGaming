@@ -1,12 +1,12 @@
 package controller;
 
-import entities.Review;
+import entities.PackDetails;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ReviewFacade extends AbstractFacade<Review> {
+public class PackDetailsFacade extends AbstractFacade<PackDetails> {
     @PersistenceContext(unitName = "mg2_5-ejbPU")
     private EntityManager em;
 
@@ -15,8 +15,8 @@ public class ReviewFacade extends AbstractFacade<Review> {
         return em;
     }
 
-    public ReviewFacade() {
-        super(Review.class);
+    public PackDetailsFacade() {
+        super(PackDetails.class);
     }
     
 }

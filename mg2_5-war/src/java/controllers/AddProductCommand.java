@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import controller.ProductFacade;
@@ -11,17 +6,12 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 
-/**
- *
- * @author juancarlos
- */
 public class AddProductCommand extends FrontCommand {
 
     @Override
@@ -30,21 +20,15 @@ public class AddProductCommand extends FrontCommand {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             String date = request.getParameter("date");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            int randomId = new Random().nextInt(1000000);
-            List<Product> randomList = productFacade.findAll();
-            for (Product productRandom : randomList) {
-                if(randomId==productRandom.getProductId()){
-                    randomId = new Random().nextInt(1000000);
-                }
-            }
-            Product product = new Product(
-                    randomId,
-                    request.getParameter("name"), 
-                    Float.parseFloat(request.getParameter("price")),
-                    Float.parseFloat(request.getParameter("cost")), 
-                    Integer.parseInt(request.getParameter("quantity")), 
-                    request.getParameter("category"),  
-                    formatter.parse(date), 1);
+            Product product = new Product();
+            product.setName(request.getParameter("name"));
+            product.setPrice(Float.parseFloat(request.getParameter("price")));
+            product.setCost(Float.parseFloat(request.getParameter("cost")));
+            product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+            product.setCategory(request.getParameter("category"));
+            product.setReleaseDate(formatter.parse(date));
+            product.setLogo(request.getParameter("logo"));
+            product.setDiscount(Integer.parseInt(request.getParameter("discount")));
             
             if (request.getParameter("available").equals("True")) {
                 product.setAvailable(1);
