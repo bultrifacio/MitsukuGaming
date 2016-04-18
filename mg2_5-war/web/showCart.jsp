@@ -32,6 +32,8 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <div class="container">
             <h1>Cart</h1>
             <form action="FrontController">

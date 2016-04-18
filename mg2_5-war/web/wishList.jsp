@@ -13,6 +13,8 @@
         <title>Wishlist</title>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <div class="container">
             <h1>WishList</h1>
             <form action="FrontController">

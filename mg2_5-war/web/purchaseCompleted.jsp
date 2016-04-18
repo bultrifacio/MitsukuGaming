@@ -35,6 +35,8 @@
         <script src="bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <h1>Purchase completed</h1>
         <form action="FrontController">
             <input type="hidden" name="command">

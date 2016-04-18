@@ -7,6 +7,8 @@
         <title>Suggestions Mailbox</title>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <form action="FrontController">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">

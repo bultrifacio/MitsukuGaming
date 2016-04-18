@@ -16,6 +16,8 @@
         <title>Modify User</title>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <h1>Modify User</h1>
         <form action="FrontController">
             <fieldset>

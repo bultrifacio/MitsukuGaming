@@ -20,16 +20,13 @@ public class LoginCommand extends FrontCommand {
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> userList = usersFacade.findAll();
             boolean wrongEmail = false;
-            //session.setAttribute("wrongEmail", false);
             session.setAttribute("wrongEmail", 0);
             for (Users user : userList) {
                 if (user.getEmail().equals(request.getParameter("email"))) {
                     if (user.getPassword().equals(request.getParameter("password"))) {
                         session.setAttribute("loggedUser", user);
-                        //session.setAttribute("wrongPassword", false);
                         session.setAttribute("wrongPassword", 0);
                     } else {
-                        //session.setAttribute("wrongPassword", true);
                         session.setAttribute("wrongPassword", 1);
                     }
                     wrongEmail = false;
@@ -39,7 +36,6 @@ public class LoginCommand extends FrontCommand {
                 }
             }
             if (wrongEmail) {
-                //session.setAttribute("wrongEmail", true);
                 session.setAttribute("wrongEmail", 1);
             }
             forward("/FrontController?command=GetInitialDataCommand");

@@ -42,6 +42,8 @@
         </script>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <h1>Reset password</h1>
         <form action="FrontController">
             <input type="hidden" name="command">

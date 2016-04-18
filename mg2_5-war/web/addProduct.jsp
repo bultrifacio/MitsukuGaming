@@ -29,6 +29,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <div class="container">
             <h1>Add a product</h1>
             <form action="FrontController">

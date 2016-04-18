@@ -10,6 +10,8 @@
         <title>Buy For Friend</title>
     </head>
     <body>
+        <%@include file="header.jsp" %>
+        <br>
         <div class="container">
             <h1>Buy for your friend</h1>
             <h2>Please, select a friend for buying the game.</h2>
