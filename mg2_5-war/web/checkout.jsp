@@ -42,10 +42,16 @@
             </form>
 
             <form action="FrontController">
+                <select name="payment" onchange="">
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Wire transfer">Wire transfer</option>
+                </select>
                 <input name="command" value="ShowFollowerListToBuyCommand" type="hidden"><br>
                 <input value="Buy for your friend" type="submit"><br>
             </form>
-            
+
         </div>
     </body>
 </html>

@@ -8,6 +8,7 @@ package controllers;
 import controller.FollowerListFacade;
 import controller.UsersFacade;
 import entities.FollowerList;
+import entities.NameAndFollowID;
 import entities.Users;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,13 +33,12 @@ public class ShowFollowerListToBuyCommand extends FrontCommand {
             Users loggedUser = (Users) session.getAttribute("loggedUser");
             List<FollowerList> followersList = followerListFacade.findAll();
             List<Users> usersList = users.findAll();
-            List<FollowerList> followersListFiltre = new ArrayList<>();
             List<NameAndFollowID> namesAndFollowsIDs = new ArrayList<>();
 
             for (FollowerList follower : followersList) {
                 if (follower.getUserId() == loggedUser.getUserId()) {
                     for (Users user : usersList) {
-                        if (user.getUserId() == follower.getUserId()) {
+                        if (user.getUserId() == follower.getFollower()) {
                             namesAndFollowsIDs.add(new NameAndFollowID(user.getName(), user.getUserId()));
                             break;
                         }
@@ -47,6 +47,9 @@ public class ShowFollowerListToBuyCommand extends FrontCommand {
             }
 
             request.setAttribute("namesAndFollowsIDs", namesAndFollowsIDs);
+            String aux = (String) request.getParameter("payment");
+            request.setAttribute("payment", aux);
+            
             forward("/buyForFriend.jsp");
 
         } catch (NamingException ex) {
@@ -57,33 +60,6 @@ public class ShowFollowerListToBuyCommand extends FrontCommand {
             Logger.getLogger(ShowFollowerListToBuyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
-
-    private class NameAndFollowID {
-
-        public String name;
-        public int id;
-        
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public NameAndFollowID(String name, int id) {
-            this.name = name;
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getId() {
-            return id;
-        }
     }
 
 }

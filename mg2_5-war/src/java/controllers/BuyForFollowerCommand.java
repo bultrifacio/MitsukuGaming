@@ -60,6 +60,7 @@ public class BuyForFollowerCommand extends FrontCommand {
                     salesFacade.create(venta);
                 } else {
                     Users loggedUser = (Users) session.getAttribute("loggedUser");
+                    String aux = request.getParameter("payment");
                     venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date(),request.getParameter("payment"));
                     salesFacade.create(venta);
                 }
