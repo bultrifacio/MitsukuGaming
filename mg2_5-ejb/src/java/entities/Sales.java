@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,12 +35,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sales.findBySaleId", query = "SELECT s FROM Sales s WHERE s.saleId = :saleId"),
     @NamedQuery(name = "Sales.findByProductId", query = "SELECT s FROM Sales s WHERE s.productId = :productId"),
     @NamedQuery(name = "Sales.findByUserId", query = "SELECT s FROM Sales s WHERE s.userId = :userId"),
-    @NamedQuery(name = "Sales.findByDate", query = "SELECT s FROM Sales s WHERE s.date = :date")})
+    @NamedQuery(name = "Sales.findByDate", query = "SELECT s FROM Sales s WHERE s.date = :date"),
+    @NamedQuery(name = "Sales.findByMethod", query = "SELECT s FROM Sales s WHERE s.method = :method")})
 public class Sales implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "SALE_ID")
     private Integer saleId;
     @Basic(optional = false)
@@ -54,6 +57,8 @@ public class Sales implements Serializable {
     @Column(name = "DATE")
     @Temporal(TemporalType.DATE)
     private Date date;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 144)
     @Column(name = "METHOD")
     private String method;
@@ -104,7 +109,7 @@ public class Sales implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-    
+
     public String getMethod() {
         return method;
     }

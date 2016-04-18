@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package entities;
 
 import java.io.Serializable;
@@ -11,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -22,10 +18,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author alumno
- */
 @Entity
 @Table(name = "PRODUCT")
 @XmlRootElement
@@ -33,27 +25,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
     @NamedQuery(name = "Product.findByProductId", query = "SELECT p FROM Product p WHERE p.productId = :productId"),
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
-    @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
-    @NamedQuery(name = "Product.findByCost", query = "SELECT p FROM Product p WHERE p.cost = :cost"),
     @NamedQuery(name = "Product.findByQuantity", query = "SELECT p FROM Product p WHERE p.quantity = :quantity"),
     @NamedQuery(name = "Product.findByReleaseDate", query = "SELECT p FROM Product p WHERE p.releaseDate = :releaseDate"),
-    @NamedQuery(name = "Product.findByAvailable", query = "SELECT p FROM Product p WHERE p.available = :available")})
+    @NamedQuery(name = "Product.findByAvailable", query = "SELECT p FROM Product p WHERE p.available = :available"),
+    @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
+    @NamedQuery(name = "Product.findByCost", query = "SELECT p FROM Product p WHERE p.cost = :cost"),
+    @NamedQuery(name = "Product.findByCategory", query = "SELECT p FROM Product p WHERE p.category = :category"),
+    @NamedQuery(name = "Product.findByLogo", query = "SELECT p FROM Product p WHERE p.logo = :logo"),
+    @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount")})
 public class Product implements Serializable {
-    @Size(max = 50)
-    @Column(name = "LOGO")
-    private String logo;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "PRICE")
-    private Float price;
-    @Column(name = "COST")
-    private Float cost;
-    @Size(max = 15)
-    @Column(name = "CATEGORY")
-    private String category;
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "PRODUCT_ID")
     private Integer productId;
     @Basic(optional = false)
@@ -82,6 +66,21 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "AVAILABLE")
     private int available;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "PRICE")
+    private Float price;
+    @Column(name = "COST")
+    private Float cost;
+    @Size(max = 15)
+    @Column(name = "CATEGORY")
+    private String category;
+    @Size(max = 50)
+    @Column(name = "LOGO")
+    private String logo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DISCOUNT")
+    private int discount;
 
     public Product() {
     }
@@ -90,15 +89,13 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public Product(Integer productId, String name, float price, float cost, int quantity, String category,Date releaseDate, int available) {
+    public Product(Integer productId, String name, int quantity, Date releaseDate, int available, int discount) {
         this.productId = productId;
         this.name = name;
-        this.price = price;
-        this.cost = cost;
         this.quantity = quantity;
-        this.category = category;
         this.releaseDate = releaseDate;
         this.available = available;
+        this.discount = discount;
     }
 
     public Integer getProductId() {
@@ -108,14 +105,6 @@ public class Product implements Serializable {
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
-    
-    public String getProductCategory() {
-        return category;
-    }
-
-    public void setProductCategory(String category) {
-        this.category = category;
-    }
 
     public String getName() {
         return name;
@@ -124,7 +113,6 @@ public class Product implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getDescription() {
         return description;
@@ -166,31 +154,6 @@ public class Product implements Serializable {
         this.available = available;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (productId != null ? productId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Product)) {
-            return false;
-        }
-        Product other = (Product) object;
-        if ((this.productId == null && other.productId != null) || (this.productId != null && !this.productId.equals(other.productId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "entities.Product[ productId=" + productId + " ]";
-    }
-
     public Float getPrice() {
         return price;
     }
@@ -221,6 +184,39 @@ public class Product implements Serializable {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (productId != null ? productId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Product)) {
+            return false;
+        }
+        Product other = (Product) object;
+        if ((this.productId == null && other.productId != null) || (this.productId != null && !this.productId.equals(other.productId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "entities.Product[ productId=" + productId + " ]";
     }
     
 }
