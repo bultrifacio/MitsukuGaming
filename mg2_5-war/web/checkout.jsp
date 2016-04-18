@@ -28,10 +28,7 @@
         <br>
         <div class="container">
             <h1>Payment method</h1>
-            <form action="FrontController">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
+            <br><br>
             <form action="FrontController">
                 <select name="payment" onchange="">
                     <option value="Visa">Visa</option>

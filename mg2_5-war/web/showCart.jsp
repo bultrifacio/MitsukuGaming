@@ -36,10 +36,7 @@
         <br>
         <div class="container">
             <h1>Cart</h1>
-            <form action="FrontController">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
+            <br><br>
             <table border="1">
                 <tr>
                     <th>Name</th>
@@ -48,7 +45,21 @@
                 <c:forEach var="element" items="${cart}">
                     <tr>
                         <td>${element.name}</td>
-                        <td>${element.price}</td>
+                        <td>${element.price}
+                            <%
+                                if (currency.equals("Euro")) {
+                            %>
+                            &euro;
+                            <%
+                                } else {
+                                    if (currency.equals("Dollar")) {
+                            %>
+                            $
+                            <%
+                                    }
+                                }
+                            %>
+                        </td>
                         <td>
                             <form action="FrontController">
                                 <input type="hidden" name="id" value="${element.productId}">

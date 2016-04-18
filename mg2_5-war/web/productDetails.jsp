@@ -40,10 +40,7 @@
         <br>
         <div class="container">
         <h1>Buy <%= request.getAttribute("name") %></h1>
-        <form action="FrontController">
-            <input type="hidden" name="command" value="ShowCartCommand">
-            <input type="submit" value="Show cart" class="btn-link">
-        </form><br><br>
+        <br><br>
         <fieldset>
             <legend>Product information:</legend>
             <div class="row">
@@ -109,7 +106,21 @@
                 <b>Category:</b><br>
                 ${element.category}<br>
                 <b>Price:</b><br>
-                ${element.price}<br>
+                ${element.price}
+                <%
+                    if (currency.equals("Euro")) {
+                %>
+                &euro;
+                <%
+                } else {
+                    if (currency.equals("Dollar")) {
+                %>
+                $
+                <%
+                        }
+                    }
+                %>
+                <br>
 
                 <%
                     String category = (String) request.getAttribute("category");

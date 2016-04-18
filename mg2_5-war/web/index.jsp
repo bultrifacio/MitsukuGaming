@@ -48,31 +48,35 @@
                         <a href="userformjsp.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
-                        <a href="#" class="list-group-item">Category</a>
+                        <div class="list-group-item">
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ShowPopularProductsCommand">
+                                <input type="submit" value="Show Popular Products" class="btn-link2">
+                            </form>
+                        </div>
+                        
                         <%
                             if (loggedUser != null) {
-                                out.println("<div class=\"list-group-item\">");
-                                out.println("<form action=\"FrontController\">");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyWishListCommand\">");
-                                out.println("<input type=\"submit\" value=\"My Wishlist\" class=\"btn-link2\">");
-                                //out.println("<input type=\"submit\" value=\"showMyWishList\" value=\"ShowCartCommand\"");
-                                //<input type="hidden" name="command" value="ShowCartCommand">
-                                //<input type="submit" value="Show cart" class="btn-link">
-                                out.println("</form>");
-                                out.println("</div>");
-                                out.println("<div class=\"list-group-item\">");
-                                out.println("<form action=\"FrontController\">");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyPurchaseHistoryCommand\">");
-                                out.println("<input type=\"submit\" value=\"My Purchase History\" class=\"btn-link2\">");
-                                out.println("</form>");
-                                out.println("</div>");
-                                
-                                out.println("<div class=\"list-group-item\">");
-                                out.println("<form action=\"FrontController\">");
-                                out.println("<input type=\"hidden\" name=\"command\" value=\"ShowMyFollowingListCommand\">");
-                                out.println("<input type=\"submit\" value=\"My following list\" class=\"btn-link2\">");
-                                out.println("</form>");
-                                out.println("</div>");
+                        %>
+                        <div class="list-group-item">
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ShowMyWishListCommand">
+                                <input type="submit" value="My Wishlist" class="btn-link2">
+                            </form>
+                        </div>
+                        <div class="list-group-item">
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ShowMyPurchaseHistoryCommand">
+                                <input type="submit" value="My Purchase History" class="btn-link2">
+                            </form>
+                        </div>
+                        <div class="list-group-item">
+                            <form action="FrontController">
+                                <input type="hidden" name="command" value="ShowMyFollowingListCommand">
+                                <input type="submit" value="My following list" class="btn-link2">
+                            </form>
+                        </div>
+                        <%    
                             }
                         %>
                         <div class="list-group-item">
@@ -81,12 +85,23 @@
                                 <input type="hidden" name="command" value="SearchCommand">
                                 <input type="submit" value="Search">
                             </form>
+                            <br>
                             <form action="FrontController">
-                                <input type="hidden" name="command" value="ShowPopularProductsCommand">
-                                <input type="submit" value="Show Popular Products">
+                                <input type="text" name="minimum" placeholder="Minimum">
+                                <input type="text" name="maximum" placeholder="Maximum">
+                                <input type="hidden" name="command" value="SearchByPriceCommand">
+                                <input type="submit" value="Filter by price">
+                            </form>
+                            <br>
+                            <form action="FrontController">
+                                <input type="radio" name="category" value="FPS"> FPS<br>
+                                <input type="radio" name="category" value="Stealth" checked> Stealth<br>
+                                <input type="radio" name="category" value="RPG" checked> RPG<br>
+                                <input type="hidden" name="command" value="SearchByCategoryCommand">
+                                <input type="submit" value="Search by category">
                             </form>
                         </div>
-
+                        
                         <!--
                         <form action="FrontController">
                         <input type="hidden" name="command" value="showMyWishListCommand">

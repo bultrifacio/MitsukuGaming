@@ -37,13 +37,13 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <h1>Purchase completed</h1>
-        <form action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController">
-            <div>Thanks for your purchase!</div>
-        </form>
+        <div class="container">
+            <h1>Purchase completed</h1>
+            <br><br>
+            <form action="FrontController">
+                <div>Thanks for your purchase!<br>
+                You will receive an email soon. Check your mailbox.</div>
+            </form>
+        </div>
     </body>
 </html>

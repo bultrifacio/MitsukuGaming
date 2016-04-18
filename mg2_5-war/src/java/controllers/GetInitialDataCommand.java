@@ -9,6 +9,7 @@ import controller.ProductFacade;
 import controller.SalesFacade;
 import entities.Product;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,22 +30,21 @@ public class GetInitialDataCommand extends FrontCommand {
             // Hay que cambiar esto de sitio
             if (session.getAttribute("currency") == null) {
                 session.setAttribute("currency", "Euro");
+                session.setAttribute("rate", (float) 1.0);
             }
 
             session.setAttribute("actualPage", "FrontController");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
 
             List<Product> productList = productFacade.findAll();
-
-            String currency = (String) session.getAttribute("currency");
-            if (!currency.equals("Euro")) {
-                for (Product product : productList) {
-                    if (currency.equals("Dollar")) {
-                        product.setPrice((float) 1.11970 * product.getPrice());
-                    }
-                }
+            List<Product> convertedList = new ArrayList<>();
+            
+            for (Product product : productList) {
+                product.setPrice((float) session.getAttribute("rate") * product.getPrice());
+                convertedList.add(product);
             }
-            request.setAttribute("productList", productList);
+            //request.setAttribute("productList", productList);
+            request.setAttribute("productList", convertedList);
             forward("/index.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(GetInitialDataCommand.class.getName()).log(Level.SEVERE, null, ex);
