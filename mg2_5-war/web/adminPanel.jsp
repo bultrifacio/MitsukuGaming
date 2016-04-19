@@ -48,6 +48,11 @@ and open the template in the editor.
                 <input type="submit" value="Manage users">
                 <input type="hidden" name="command" value="ShowUsersCommand">
             </form>
+            
+            <form method="post" action="FrontController">
+                <input type="hidden" name="command" value="ShowPacksCommand">
+                <input type="submit" value="Manage packs">
+            </form>
         </div>
     </body>
 </html>
