@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyProduct
-    Created on : 14-mar-2016, 17:12:50
-    Author     : Ismael
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="entities.Users"%>

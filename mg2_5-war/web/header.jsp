@@ -1,9 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : 18-abr-2016, 16:25:02
-    Author     : Blarzek
---%>
-
 <%@page import="entities.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

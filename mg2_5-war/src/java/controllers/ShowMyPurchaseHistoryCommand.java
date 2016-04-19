@@ -15,10 +15,6 @@ import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author alumno
- */
 public class ShowMyPurchaseHistoryCommand extends FrontCommand {
 
     ProductFacade productFacade;

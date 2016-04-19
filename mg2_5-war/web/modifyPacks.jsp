@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyPacks
-    Created on : 19-abr-2016, 12:00:05
-    Author     : alumno
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>

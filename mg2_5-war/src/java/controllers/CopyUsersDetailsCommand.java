@@ -18,9 +18,8 @@ public class CopyUsersDetailsCommand extends FrontCommand {
         try {
             UsersFacade userFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             Users product = userFacade.find(Integer.parseInt(request.getParameter("id")));
-            List<Users> usersList = new ArrayList<Users>();
+            List<Users> usersList = new ArrayList<>();
             usersList.add(product);
-            
             request.setAttribute("usersList", usersList);
             forward("/modifyUser.jsp");
         } catch (NamingException | ServletException | IOException ex) {

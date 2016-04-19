@@ -1,9 +1,3 @@
-<%-- 
-    Document   : unknown.jsp
-    Created on : 14-mar-2016, 12:12:24
-    Author     : ENTRAR
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

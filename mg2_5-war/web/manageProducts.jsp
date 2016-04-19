@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manageProducts
-    Created on : 14-mar-2016, 16:40:59
-    Author     : Blarzek
---%>
-
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

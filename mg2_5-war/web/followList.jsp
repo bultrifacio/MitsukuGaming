@@ -1,9 +1,3 @@
-<%-- 
-    Document   : followList
-    Created on : 31-mar-2016, 21:43:39
-    Author     : hector
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>

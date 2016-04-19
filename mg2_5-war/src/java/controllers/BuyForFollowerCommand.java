@@ -32,7 +32,6 @@ public class BuyForFollowerCommand extends FrontCommand {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
-
             HttpSession session = request.getSession(true);
             ShoppingCartLocal cart = (ShoppingCartLocal) session.getAttribute("Cart");
             Iterator<Product> itr = cart.getContents().iterator();
@@ -42,27 +41,23 @@ public class BuyForFollowerCommand extends FrontCommand {
                 Product newElement = productFacade.find(element.getProductId());
                 newElement.setQuantity(newElement.getQuantity() - 1);
                 productFacade.edit(newElement);
-
-                int randomId = new Random().nextInt(1000000);
-                List<Sales> randomList = salesFacade.findAll();
-                for (Sales productRandom : randomList) {
-                    if (randomId == productRandom.getProductId()) {
-                        randomId = new Random().nextInt(1000000);
-                    }
-                }
-
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String date = new Date().toString();
-                Sales venta;
-                //String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
                 if (session.getAttribute("loggedUser") == null) {
-                    venta = new Sales(randomId, element.getProductId(), 0, new Date(),request.getParameter("payment"));
-                    salesFacade.create(venta);
+                    Sales sale = new Sales();
+                    sale.setDate(new Date());
+                    sale.setMethod(request.getParameter("payment"));
+                    sale.setProductId(element.getProductId());
+                    sale.setUserId(0);
+                    salesFacade.create(sale);
                 } else {
                     Users loggedUser = (Users) session.getAttribute("loggedUser");
-                    String aux = request.getParameter("payment");
-                    venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date(),request.getParameter("payment"));
-                    salesFacade.create(venta);
+                    Sales sale = new Sales();
+                    sale.setDate(new Date());
+                    sale.setMethod(request.getParameter("payment"));
+                    sale.setProductId(element.getProductId());
+                    sale.setUserId(loggedUser.getUserId());
+                    salesFacade.create(sale);
                 }
             }
             // CAMBIAR UBICACION FICHERO
@@ -76,7 +71,6 @@ public class BuyForFollowerCommand extends FrontCommand {
             cart.remove();
             session.setAttribute("Cart", null);
             forward("/purchaseCompleted.jsp");
-            //forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(BuyForFollowerCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

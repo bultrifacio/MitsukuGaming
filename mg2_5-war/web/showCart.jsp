@@ -1,9 +1,3 @@
-<%-- 
-    Document   : cart
-    Created on : 15-mar-2016, 19:21:01
-    Author     : Blarzek
---%>
-
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

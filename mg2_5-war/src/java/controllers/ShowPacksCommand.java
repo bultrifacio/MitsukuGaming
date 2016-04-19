@@ -17,10 +17,8 @@ public class ShowPacksCommand extends FrontCommand {
         try {
             PackDetailsFacade packsDetailsFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/PackDetailsFacade");
             List<PackDetails> packList = packsDetailsFacade.findAll();
-            
             request.setAttribute("packList", packList);
             forward("/managePacks.jsp");
-            
         } catch (NamingException | IOException | ServletException ex) {
             Logger.getLogger(ShowPacksCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

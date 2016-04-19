@@ -1,9 +1,3 @@
-<%-- 
-    Document   : newPassword
-    Created on : 28-mar-2016, 13:47:20
-    Author     : ENTRAR
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>

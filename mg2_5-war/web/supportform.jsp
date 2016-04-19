@@ -1,9 +1,3 @@
-<%-- 
-    Document   : supportform
-    Created on : 28-mar-2016, 5:49:28
-    Author     : Ismael
---%>
-
 <%@page import="entities.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

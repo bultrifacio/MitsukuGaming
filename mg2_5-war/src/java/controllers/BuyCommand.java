@@ -57,7 +57,6 @@ public class BuyCommand extends FrontCommand {
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String date = new Date().toString();
-                Sales venta;
                 if (session.getAttribute("loggedUser") == null) {
                     Sales sale = new Sales();
                     sale.setDate(new Date());

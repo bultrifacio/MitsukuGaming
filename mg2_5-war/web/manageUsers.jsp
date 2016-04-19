@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manageUsers
-    Created on : 14-mar-2016, 16:40:59
-    Author     : Ismael
---%>
-
 <%@page import="entities.Users"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

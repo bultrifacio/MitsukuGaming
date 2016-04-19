@@ -1,9 +1,3 @@
-<%-- 
-    Document   : productDetails
-    Created on : 16-mar-2016, 11:27:06
-    Author     : alumno
---%>
-
 <%@page import="entities.Review"%>
 <%@page import="entities.Users"%>
 <%@page import="java.util.Date"%>

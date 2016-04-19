@@ -19,7 +19,6 @@ public class ModifyProductCommand extends FrontCommand {
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String dateInString = request.getParameter("release");
             Date releaseDate = null;
@@ -28,7 +27,6 @@ public class ModifyProductCommand extends FrontCommand {
 
             } catch (ParseException e) {
             }
-
             Product product = new Product();
             product.setProductId(Integer.parseInt(request.getParameter("id")));
             product.setName(request.getParameter("name"));
@@ -43,7 +41,6 @@ public class ModifyProductCommand extends FrontCommand {
             product.setDescription(request.getParameter("description"));
             product.setSynopsis(request.getParameter("synopsis"));
             productFacade.edit(product);
-
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);
             forward("/manageProducts.jsp");
