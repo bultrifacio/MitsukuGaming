@@ -1,6 +1,3 @@
-
-
-
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -33,11 +30,11 @@
         <br>
         <div class="container">
             <h1>Manage Packs</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="addPack.jsp">
+            <form action="addPack.jsp" method="post">
                 <input type="submit" value="Add Pack">
             </form>
 
@@ -56,7 +53,7 @@
                         <td>${element.description}</td>
                         <td>${element.discount}</td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.packId}">
                                 <input type="hidden" name="name" value="${element.name}">
                                 <input type="hidden" name="quantity" value="${element.description}">
@@ -65,7 +62,7 @@
                                 <input type="submit" value="Modify Packs">
                                 <input type="hidden" name="command" value="CopyPackDetailsCommand">
                             </form>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.packId}">
                                 <input type="submit" value="Remove Pack">
                                 <input type="hidden" name="command" value="RemovePackCommand">

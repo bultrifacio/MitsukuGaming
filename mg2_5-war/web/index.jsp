@@ -150,39 +150,43 @@
                                                 <input type="hidden" name="id" value="${element.productId}">
                                                 <input type="hidden" name="category" value="${element.category}">
                                                 <input type="hidden" name="price" value="${element.price}">
+
                                                 <input type="submit" value="${element.name}" class="btn-link">
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>
-                                        </h4>
-                                        <h4 class="pull-right">${element.price} 
-                                            <%
-                                                if (currency.equals("Euro")) {
-                                            %>
-                                            &euro;
-                                            <%
-                                            } else {
-                                                if (currency.equals("Dollar")) {
-                                            %>
-                                            $
-                                            <%
-                                                    }
-                                                }
-                                            %>
-                                        </h4>
-                                        <p>${element.description}</p>
-                                    </div>
-                                    <div class="ratings">
-                                        <p class="pull-right">15 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
+                                        </h4><div>
+                                            <table class="tabledetails">
+                                                <tr><td>${element.description}</td>
+                                                    <td align="right"><strong>${element.price} 
+                                                            <%
+                                                                if (currency.equals("Euro")) {
+                                                            %>
+                                                            &euro;
+                                                            <%
+                                                            } else if (currency.equals("Dollar")) {
+                                                            %>
+                                                            $
+                                                            <%
+                                                                }
+                                                            %></strong></td>
+                                                </tr>
+                                                <tr><td></td><td align="right"><font color="green">
+                                                        <strong><c:if test="${element.discount != 0}">${element.discount} %</c:if>
+                                                            </strong></font></td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="ratings">
+                                            <p>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -239,15 +243,8 @@
                 </div>
             </footer>
 
-        </div>
-        <!-- /.container -->
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
 
-    </body>
 
 </html>

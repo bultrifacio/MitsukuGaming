@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyPacks
-    Created on : 19-abr-2016, 12:00:05
-    Author     : alumno
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>
@@ -40,11 +34,11 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Modify Pack</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>Pack information:</legend>
                 <c:forEach var="element" items="${packList}">

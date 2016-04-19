@@ -34,7 +34,6 @@ public class AddToCartCommand extends FrontCommand {
             }
             cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
             request.setAttribute("cart", cart.getContents());
-            //forward("/showCart.jsp");
             forward("/FrontController?command=ShowCartCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToCartCommand.class.getName()).log(Level.SEVERE, null, ex);

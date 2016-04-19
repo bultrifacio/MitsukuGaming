@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import controller.FollowerListFacade;
@@ -13,7 +8,6 @@ import entities.Users;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -29,12 +23,10 @@ public class ShowFollowerListToBuyCommand extends FrontCommand {
         try {
             FollowerListFacade followerListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/FollowerListFacade");
             UsersFacade users = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
-
             Users loggedUser = (Users) session.getAttribute("loggedUser");
             List<FollowerList> followersList = followerListFacade.findAll();
             List<Users> usersList = users.findAll();
             List<NameAndFollowID> namesAndFollowsIDs = new ArrayList<>();
-
             for (FollowerList follower : followersList) {
                 if (follower.getUserId() == loggedUser.getUserId()) {
                     for (Users user : usersList) {
@@ -45,18 +37,11 @@ public class ShowFollowerListToBuyCommand extends FrontCommand {
                     }
                 }
             }
-
             request.setAttribute("namesAndFollowsIDs", namesAndFollowsIDs);
             String aux = (String) request.getParameter("payment");
             request.setAttribute("payment", aux);
-            
             forward("/buyForFriend.jsp");
-
-        } catch (NamingException ex) {
-            Logger.getLogger(ShowFollowerListToBuyCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(ShowFollowerListToBuyCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowFollowerListToBuyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 

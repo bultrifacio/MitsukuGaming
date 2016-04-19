@@ -18,7 +18,6 @@ public class ModifyUsersCommand extends FrontCommand {
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             Users user = new Users(Integer.parseInt(request.getParameter("id")),request.getParameter("name"),request.getParameter("email"),request.getParameter("password"));
             usersFacade.edit(user);
-            
             List<Users> usersList = usersFacade.findAll();
             request.setAttribute("usersList", usersList);
             forward("/manageUsers.jsp");

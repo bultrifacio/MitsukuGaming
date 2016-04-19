@@ -34,7 +34,7 @@
         <br>
         <div class="container">
         <h1>Product Stats</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <input type="hidden" name="command" value="ShowCartCommand">
             <input type="submit" value="Show cart" class="btn-link">
         </form><br><br>

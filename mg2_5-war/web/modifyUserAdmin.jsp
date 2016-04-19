@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyUserAdmin
-    Created on : 15-mar-2016, 13:20:42
-    Author     : ENTRAR
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -17,13 +17,11 @@ public class ShowProfileCommand extends FrontCommand {
     public void process() {
         try {
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
-            
             Users user = usersFacade.find(1);
             List<Users> userList = new ArrayList<Users>();
             userList.add(user);
             request.setAttribute("userInfo", userList);
             forward("/modifyProfile.jsp");
-            
         } catch (NamingException | IOException | ServletException ex) {
             Logger.getLogger(ShowProfileCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

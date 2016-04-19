@@ -17,10 +17,8 @@ public class ShowUsersCommand extends FrontCommand {
         try {
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> usersList = usersFacade.findAll();
-            
             request.setAttribute("usersList", usersList);
             forward("/manageUsers.jsp");
-            
         } catch (NamingException | IOException | ServletException ex) {
             Logger.getLogger(ShowUsersCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

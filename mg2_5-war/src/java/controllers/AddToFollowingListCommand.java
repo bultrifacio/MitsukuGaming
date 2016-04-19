@@ -34,23 +34,17 @@ public class AddToFollowingListCommand extends FrontCommand{
             
             for (Users listuser : userlist) {
                 if (listuser.getName().toLowerCase().equals(nametofollow.toLowerCase())){ 
-                    followerListFacade.create(new FollowerList(0,
-                            loggedUser.getUserId(), listuser.getUserId()));
+                    FollowerList list=new FollowerList();
+                    list.setUserId(loggedUser.getUserId());
+                    list.setFollower(listuser.getUserId());
+                    followerListFacade.create(list);
                     break;
                     
                 }
                 
             }
-            
-            
-
             forward("/FrontController?command=GetInitialDataCommand");
-
-        } catch (NamingException ex) {
-            Logger.getLogger(AddToFollowingListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(AddToFollowingListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(AddToFollowingListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

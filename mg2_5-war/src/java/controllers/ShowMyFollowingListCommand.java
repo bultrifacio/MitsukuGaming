@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import controller.FollowerListFacade;
@@ -31,20 +26,13 @@ public class ShowMyFollowingListCommand extends FrontCommand {
             FollowerListFacade FollowerListFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/FollowerListFacade");
             List<Users> usersList =new ArrayList<>();;
             List<FollowerList> followlist = FollowerListFacade.findAll();
-            List<FollowerList> followlistFiltre = new ArrayList<>();
-            
             for (FollowerList followlistuser : followlist) {
                 if (followlistuser.getUserId() == loggedUser.getUserId()){ 
-                    //followlistFiltre.add(followlistuser);
                     usersList.add(usersFacade.find(followlistuser.getFollower()));
                 }
-               
             }
-            System.out.println(followlistFiltre.size());//borrar
-            //request.setAttribute("followlistFiltre", followlistFiltre);
             request.setAttribute("usersList", usersList);
             forward("/followList.jsp");
-
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(ShowMyFollowingListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

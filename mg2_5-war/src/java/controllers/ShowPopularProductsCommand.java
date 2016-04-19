@@ -14,10 +14,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 
-/**
- *
- * @author alumno
- */
 public class ShowPopularProductsCommand extends FrontCommand {
 
     ProductFacade productFacade;
@@ -37,7 +33,6 @@ public class ShowPopularProductsCommand extends FrontCommand {
                 } else {
                     sinRepeticion.put(sale.getProductId(), 1);
                 }
-
             }
             for (Integer id : sinRepeticion.keySet()) {
                 for (Product product : productListT) {

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : cart
-    Created on : 15-mar-2016, 19:21:01
-    Author     : Blarzek
---%>
-
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,6 +35,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Discount</th>
                 </tr>       
                 <c:forEach var="element" items="${cart}">
                     <tr>
@@ -60,8 +55,9 @@
                                 }
                             %>
                         </td>
+                        <td><font color="green">${element.discount} %</font></td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
                                 <input type="hidden" name="command" value="RemoveFromCartCommand">
                                 <input type="submit" value="Remove from cart">
@@ -70,7 +66,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="id" value="${element.productId}">
                 <input type="hidden" name="command" value="CheckoutCommand">
                 <input type="submit" value="Checkout">

@@ -1,11 +1,8 @@
 package controllers;
 
 import controller.ProductFacade;
-import controller.SalesFacade;
 import entities.Product;
-import entities.Sales;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +19,6 @@ public class ShowShopProductsCommand extends FrontCommand {
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);
             forward("/showProducts.jsp");
-            
         } catch (NamingException | IOException | ServletException ex) {
             Logger.getLogger(ShowShopProductsCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

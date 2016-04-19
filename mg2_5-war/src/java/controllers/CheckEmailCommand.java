@@ -3,7 +3,6 @@ package controllers;
 import controller.UsersFacade;
 import entities.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,13 +21,8 @@ public class CheckEmailCommand extends FrontCommand {
             List<Users> usersList = usersFacade.findAll();
             for (Users users : usersList) {
                 if (users.getEmail().equals(request.getParameter("email"))) {
-                    //PrintWriter writer = new PrintWriter("C:\\Users\\ENTRAR\\Documents\\Recover_Password.txt", "UTF-8");
-                    //writer.println("Your can reset your password in the following link: ");
-                    //writer.println("http://localhost:8080/mg2_5-war/newPassword.jsp");
-                    //writer.close();
                     session.setAttribute("validEmail", 1);
                     session.setAttribute("userEmail", users.getEmail());
-
                     forward("/resetPassword.jsp");
                 }
             }

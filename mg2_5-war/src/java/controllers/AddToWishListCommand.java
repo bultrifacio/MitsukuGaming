@@ -19,14 +19,15 @@ public class AddToWishListCommand extends FrontCommand {
     @Override
     public void process() {
         try {
-
             HttpSession session = request.getSession(true);
             Users loggedUser = (Users) session.getAttribute("loggedUser");
             WishlistFacade wishList = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/WishlistFacade");
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
-            wishList.create(new Wishlist(new Random().nextInt(10000000), loggedUser.getUserId(), product.getProductId()));
-
+            Wishlist list = new Wishlist();
+            list.setUserId(loggedUser.getUserId());
+            list.setProductId(product.getProductId());
+            wishList.create(list);
             forward("/FrontController?command=GetInitialDataCommand");
 
         } catch (NamingException | ServletException | IOException ex) {

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : userFormServlet
-    Created on : 12-mar-2016, 23:12:30
-    Author     : Jusio
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

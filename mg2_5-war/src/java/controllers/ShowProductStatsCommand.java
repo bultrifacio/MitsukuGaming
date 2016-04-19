@@ -34,7 +34,6 @@ public class ShowProductStatsCommand extends FrontCommand {
                     salesProduct++;
                 }
             }
-
             int wishProduct = 0; //Number of wish of this product.
             for (Wishlist wish : wishlist) {
                 if (( (int) wish.getProductId()) == Integer.parseInt(request.getParameter("id"))) {
@@ -60,8 +59,6 @@ public class ShowProductStatsCommand extends FrontCommand {
                     wire_transfer++;
                 }
             }
-            //HttpSession session = request.getSession(true);
-            //session.setAttribute("actualPage", "/FrontController?command=ShowProductDetailsCommand");
             request.setAttribute("name", product.getName());
             request.setAttribute("salesProduct", salesProduct);
             request.setAttribute("wishProduct", wishProduct);
@@ -69,7 +66,6 @@ public class ShowProductStatsCommand extends FrontCommand {
             request.setAttribute("MethodMasterCard", mastercard);
             request.setAttribute("MethodPaypal", paypal);
             request.setAttribute("MethodWireTranfer", wire_transfer);
-            
             forward("/productStats.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductStatsCommand.class.getName()).log(Level.SEVERE, null, ex);
