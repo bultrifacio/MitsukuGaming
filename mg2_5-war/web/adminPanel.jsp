@@ -1,15 +1,14 @@
-<%-- 
-    Document   : modifyUserAdmin
-    Created on : 15-mar-2016, 13:20:42
-    Author     : ENTRAR
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modify user</title>
+        <title>Admin Panel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,19 +31,22 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <h1>Modify user</h1>
+            <h1>Admin Panel</h1>
             <br><br>
-            <form method="post" action="ModifyUserFormServlet">
-                <fieldset>
-                    <legend>Personal information:</legend>
-                    User name:<br>
-                    <input type="text" name="name" value=""><br>
-                    User email:<br>
-                    <input type="text" name="email" value=""><br>
-                    User pass:<br>
-                    <input type="text" name="password" value=""><br>
-                    <input type="submit" name="bt" value="Submit">
-                </fieldset>
+
+            <form method="post" action="FrontController">
+                <input type="hidden" name="command" value="ShowShopProductsCommand">
+                <input type="submit" value="Show all products">
+            </form>
+
+            <form method="post" action="FrontController">
+                <input type="hidden" name="command" value="ShowProductsCommand">
+                <input type="submit" value="Manage products">
+            </form>
+
+            <form method="post" action="FrontController">
+                <input type="submit" value="Manage users">
+                <input type="hidden" name="command" value="ShowUsersCommand">
             </form>
         </div>
     </body>
