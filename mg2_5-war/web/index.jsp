@@ -45,7 +45,7 @@
                 <div class="col-md-3">
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
-                        <a href="userformjsp.jsp" class="list-group-item">Register</a>
+                        <a href="register.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">

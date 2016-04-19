@@ -38,10 +38,7 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>New password</h1>
-        <form method="post" action="FrontController">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
+        <br><br>
         <form method="post" action="FrontController">
             <fieldset>
                 <legend>Insert the new password:</legend>
