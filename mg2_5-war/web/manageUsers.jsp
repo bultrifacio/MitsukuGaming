@@ -36,7 +36,7 @@
         <br>
         <div class="container">
             <h1>Manage Users</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
@@ -57,7 +57,7 @@
                         <td>${element.email}</td>
                         <td>${element.password}</td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.userId}">
                                 <input type="hidden" name="name" value="${element.name}">
                                 <input type="hidden" name="email" value="${element.email}">

@@ -9,11 +9,11 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>Suggestions Mailbox:</legend>
                 <textarea name="suggestion" rows="10" cols="40"></textarea><br>

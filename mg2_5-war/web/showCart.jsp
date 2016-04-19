@@ -61,7 +61,7 @@
                             %>
                         </td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
                                 <input type="hidden" name="command" value="RemoveFromCartCommand">
                                 <input type="submit" value="Remove from cart">
@@ -70,7 +70,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="id" value="${element.productId}">
                 <input type="hidden" name="command" value="CheckoutCommand">
                 <input type="submit" value="Checkout">

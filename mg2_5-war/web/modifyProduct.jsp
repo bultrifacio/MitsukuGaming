@@ -39,11 +39,11 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Modify Product</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>Product information:</legend>
                 <c:forEach var="element" items="${productList}">
@@ -55,6 +55,8 @@
                     <input type="text" name="price" value="${element.price}"><br>
                     Cost:<br>
                     <input type="text" name="cost" value="${element.cost}"><br>
+                    Discount:<br>
+                    <input type="text" name="discount" value="${element.discount}"><br>
                     Category:<br>
                     <input type="text" name="category" value="${element.category}"><br>
                     Quantity:<br>

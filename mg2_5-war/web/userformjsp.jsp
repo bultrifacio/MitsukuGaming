@@ -32,11 +32,11 @@
         <br>
         <div class="container">
             <h1>Register</h1>
-            <form method="post" action="FrontController">
+            <form method="post" action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form method="post" action="FrontController">
+            <form method="post" action="FrontController" method="post">
                 <fieldset>
                     <legend>Personal information:</legend>
                     Name:<br>

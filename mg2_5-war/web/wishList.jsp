@@ -17,7 +17,7 @@
         <br>
         <div class="container">
             <h1>WishList</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>

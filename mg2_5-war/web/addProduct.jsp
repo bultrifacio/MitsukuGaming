@@ -33,11 +33,11 @@ and open the template in the editor.
         <br>
         <div class="container">
             <h1>Add a product</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <fieldset>
                     <legend>Product information:</legend>
                     Name: <input name="name" type="text"><br>

@@ -19,7 +19,7 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Modify User</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>User information:</legend>
 

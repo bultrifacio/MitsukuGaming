@@ -36,11 +36,11 @@
         <br>
         <div class="container">
             <h1>Manage Products</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="addProduct.jsp">
+            <form action="addProduct.jsp" method="post">
                 <input type="submit" value="Add Product">
             </form>
 
@@ -53,6 +53,7 @@
                     <th>Category</th>
                     <th>Price</th>
                     <th>Cost</th>
+                    <th>Discount</th>
                     <th>Options</th>
                 </tr>
 
@@ -65,8 +66,9 @@
                         <td>${element.category}</td>
                         <td>${element.price}</td>
                         <td>${element.cost}</td>
+                        <td>${element.discount}</td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
                                 <input type="hidden" name="name" value="${element.name}">
                                 <input type="hidden" name="quantity" value="${element.quantity}">
@@ -74,11 +76,12 @@
                                 <input type="hidden" name="category" value="${element.category}">
                                 <input type="hidden" name="price" value="${element.price}">
                                 <input type="hidden" name="cost" value="${element.cost}">
+                                <input type="hidden" name="discount" value="${element.discount}">
 
                                 <input type="submit" value="Modify Product">
                                 <input type="hidden" name="command" value="CopyProductDetailsCommand">
                             </form>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
                                 <input type="submit" value="Remove Product">
                                 <input type="hidden" name="command" value="RemoveProductCommand">

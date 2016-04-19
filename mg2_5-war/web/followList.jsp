@@ -17,7 +17,7 @@
         <br>
         <div class="container">
             <h1>FollowList</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
@@ -30,7 +30,7 @@
                 <br><br>
             </c:forEach><br><br>
             
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="text" name="nametofollow" placeholder="Seguir a :">
                 <input type="hidden" name="command" value="AddToFollowingListCommand">
                 <input type="submit" value="Follow">

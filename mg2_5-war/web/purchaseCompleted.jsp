@@ -40,7 +40,7 @@
         <div class="container">
             <h1>Purchase completed</h1>
             <br><br>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <div>Thanks for your purchase!<br>
                 You will receive an email soon. Check your mailbox.</div>
             </form>

@@ -33,7 +33,7 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <fieldset>
                     <legend>Technical Support:</legend>
                     Explain your problem:<br>

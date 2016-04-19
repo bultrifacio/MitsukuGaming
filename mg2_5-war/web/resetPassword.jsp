@@ -45,11 +45,11 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Reset password</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>Insert your email:</legend>
                 <%
