@@ -6,7 +6,6 @@
 package controllers;
 
 import controller.ProductFacade;
-import controller.SalesFacade;
 import entities.Product;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,23 +36,25 @@ public class GetInitialDataCommand extends FrontCommand {
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
 
             List<Product> productList = productFacade.findAll();
-            List<Product> convertedList = new ArrayList<>();
-
-            for (Product product : productList) {
-                product.setPrice((float) session.getAttribute("rate") * product.getPrice());
-                convertedList.add(product);
-            }
-
             if (session.getAttribute("indexPagination") == null) {
                 session.setAttribute("indexPagination", 1);
+            } else {
+                session.setAttribute("indexPagination", Integer.parseInt(request.getParameter("index")));
             }
 
-            int indexPagination = (int) session.getAttribute("indexPagination");
+            int indexPagination = (Integer) session.getAttribute("indexPagination");
             int pages = 0;
             if ((productList.size() % 6) != 0) {
                 pages = (productList.size() / 6) + 1;
             } else {
                 pages = (productList.size() / 6);
+            }
+            
+            List<Product> paginatedList = productFacade.findRange(new int[]{indexPagination * 6 - 5, indexPagination * 6});
+            List<Product> convertedList = new ArrayList<>();
+            for (Product product : paginatedList) {
+                product.setPrice((float) session.getAttribute("rate") * product.getPrice());
+                convertedList.add(product);
             }
             
             session.setAttribute("pages", pages);

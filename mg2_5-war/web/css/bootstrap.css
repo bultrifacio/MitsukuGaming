@@ -6809,7 +6809,19 @@ button.close {
     font-family:inherit;
     font-size:inherit;
 }
-
+.btn-link3 {
+    border:none;
+    outline:none;
+    background:none;
+    color:#ffffff;
+    cursor:pointer;
+    padding:0;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+    font-family:inherit;
+    font-size:inherit;
+}
 .error-text{
     color:#bb020b;
 }

@@ -34,7 +34,7 @@ public class AddToFollowingListCommand extends FrontCommand{
             
             for (Users listuser : userlist) {
                 if (listuser.getName().toLowerCase().equals(nametofollow.toLowerCase())){ 
-                    followerListFacade.create(new FollowerList(new Random().nextInt(10000000),
+                    followerListFacade.create(new FollowerList(0,
                             loggedUser.getUserId(), listuser.getUserId()));
                     break;
                     
