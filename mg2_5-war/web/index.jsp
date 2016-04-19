@@ -45,7 +45,7 @@
                 <div class="col-md-3">
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
-                        <a href="userformjsp.jsp" class="list-group-item">Register</a>
+                        <a href="register.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">
@@ -54,9 +54,8 @@
                                 <input type="submit" value="Show Popular Products" class="btn-link2">
                             </form>
                         </div>
-                        
-                        <%
-                            if (loggedUser != null) {
+
+                        <%                            if (loggedUser != null) {
                         %>
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
@@ -76,7 +75,7 @@
                                 <input type="submit" value="My following list" class="btn-link2">
                             </form>
                         </div>
-                        <%    
+                        <%
                             }
                         %>
                         <div class="list-group-item">
@@ -101,7 +100,7 @@
                                 <input type="submit" value="Search by category">
                             </form>
                         </div>
-                        
+
                         <!--
                         <form action="FrontController">
                         <input type="hidden" name="command" value="showMyWishListCommand">
@@ -151,40 +150,63 @@
                                                 <input type="hidden" name="id" value="${element.productId}">
                                                 <input type="hidden" name="category" value="${element.category}">
                                                 <input type="hidden" name="price" value="${element.price}">
+
                                                 <input type="submit" value="${element.name}" class="btn-link">
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>
-                                        </h4>
-                                        <h4 class="pull-right">${element.price} 
-                                            <%
-                                                if (currency.equals("Euro")) {
-                                            %>
-                                            &euro;
-                                            <%
-                                            } else {
-                                                if (currency.equals("Dollar")) {
-                                            %>
-                                            $
-                                            <%
-                                                    }
-                                                }
-                                            %>
-                                        </h4>
-                                        <p>${element.description}</p>
-                                    </div>
-                                    <div class="ratings">
-                                        <p class="pull-right">15 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
+                                        </h4><div>
+                                            <table class="tabledetails">
+                                                <tr><td>${element.description}</td>
+                                                    <td align="right"><strong>${element.price} 
+                                                            <%
+                                                                if (currency.equals("Euro")) {
+                                                            %>
+                                                            &euro;
+                                                            <%
+                                                            } else if (currency.equals("Dollar")) {
+                                                            %>
+                                                            $
+                                                            <%
+                                                                }
+                                                            %></strong></td>
+                                                </tr>
+                                                <tr><td></td><td align="right"><font color="green">
+                                                        <strong><c:if test="${element.discount != 0}">${element.discount} %</c:if>
+                                                            </strong></font></td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="ratings">
+                                            <p>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </c:forEach>
+
+                        <ul class="pagination">
+                            <%
+                                int pages = (Integer) session.getAttribute("pages");
+                                for (int i = 1; i <= pages; i++) {
+                            %>
+                            <li><a href="#"><%=i%></a></li>
+                                <%
+                                    }
+                                %>
+                        </ul>
+
+                        <!--
+                        <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+
                         <!-- 
                         <div class="col-sm-4 col-lg-4 col-md-4">
                             <div class="thumbnail">

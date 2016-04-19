@@ -30,6 +30,7 @@ public class ModifyProductCommand extends FrontCommand {
             }
 
             Product product = new Product();
+            product.setProductId(Integer.parseInt(request.getParameter("id")));
             product.setName(request.getParameter("name"));
             product.setPrice(Float.parseFloat(request.getParameter("price")));
             product.setCost(Float.parseFloat(request.getParameter("cost")));

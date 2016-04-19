@@ -1,21 +1,23 @@
 <%-- 
-    Document   : newPassword
-    Created on : 28-mar-2016, 13:47:20
-    Author     : ENTRAR
+    Document   : modifyPacks
+    Created on : 19-abr-2016, 12:00:05
+    Author     : alumno
 --%>
 
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>
 <%@page import="entities.Product"%>
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Insert new password</title>
+        <title>Modify Pack</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -37,23 +39,27 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <h1>New password</h1>
-        <br><br>
-        <form method="post" action="FrontController">
+        <h1>Modify Pack</h1>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command">
+            <input type="submit" value="Go to Main page" class="btn-link">
+        </form><br><br>
+        <form action="FrontController" method="post">
             <fieldset>
-                <legend>Insert the new password:</legend>
-                <input type="password" name="pass1" placeholder="Insert your password">
-                <input type="password" name="pass2" placeholder="Repeat your password">
-                <input type="submit" value="Modify password">
-                <input type="hidden" name="command" value="ModifyPasswordCommand">
+                <legend>Pack information:</legend>
+                <c:forEach var="element" items="${packList}">
+                    ID:<br>
+                    <input type="text" name="id" value="${element.packId}"><br>
+                    Pack name:<br>
+                    <input type="text" name="name" value="${element.name}"><br>
+                    Description:<br>
+                    <input type="text" name="price" value="${element.description}"><br>
+                    Discount:<br>
+                    <input type="text" name="cost" value="${element.discount}"><br>
+                    <input type="hidden" name="command" value="ModifyPackCommand">
+                    <input type="submit"  value="Save changes">
+                </c:forEach>
             </fieldset>
-            <%
-                if(((Integer)session.getAttribute("passNoEqual"))!=null){
-                    if(((Integer)session.getAttribute("passNoEqual"))==1){
-                        out.println("Please, enter equal password.");
-                    }
-                }
-            %>
         </form>
     </body>
 </html>

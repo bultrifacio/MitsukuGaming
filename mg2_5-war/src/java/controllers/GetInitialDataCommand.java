@@ -38,11 +38,25 @@ public class GetInitialDataCommand extends FrontCommand {
 
             List<Product> productList = productFacade.findAll();
             List<Product> convertedList = new ArrayList<>();
-            
+
             for (Product product : productList) {
                 product.setPrice((float) session.getAttribute("rate") * product.getPrice());
                 convertedList.add(product);
             }
+
+            if (session.getAttribute("indexPagination") == null) {
+                session.setAttribute("indexPagination", 1);
+            }
+
+            int indexPagination = (int) session.getAttribute("indexPagination");
+            int pages = 0;
+            if ((productList.size() % 6) != 0) {
+                pages = (productList.size() / 6) + 1;
+            } else {
+                pages = (productList.size() / 6);
+            }
+            
+            session.setAttribute("pages", pages);
             //request.setAttribute("productList", productList);
             request.setAttribute("productList", convertedList);
             forward("/index.jsp");
