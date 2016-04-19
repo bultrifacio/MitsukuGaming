@@ -102,7 +102,7 @@
                                         
                                     %>
                                     <a href="resetPassword.jsp">Forgot password?</a>
-                                    <form action="FrontController">
+                                    <form method="post" action="FrontController">
                                         <input type="hidden" name="command" value="ShowCartCommand">
                                         <input type="submit" value="Show cart" class="btn-link">
                                     </form>
@@ -111,7 +111,7 @@
                             %>
                         </li>
                         <li>
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ChangeCurrencyCommand">
                                 <%
                                     String currency = (String) session.getAttribute("currency");

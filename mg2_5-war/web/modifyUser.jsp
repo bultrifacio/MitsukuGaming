@@ -37,11 +37,8 @@
         <br>
         <div class="container">
             <h1>Modify User</h1>
-            <form action="FrontController">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <form action="FrontController">
+            <br><br>
+            <form method="post" action="FrontController">
                 <fieldset>
                     <legend>User information:</legend>
 

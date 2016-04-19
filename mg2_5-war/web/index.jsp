@@ -45,11 +45,11 @@
                 <div class="col-md-3">
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
-                        <a href="userformjsp.jsp" class="list-group-item">Register</a>
-                        <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
+                        <a href="register.jsp" class="list-group-item">Register</a>
+                        <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPopularProductsCommand">
                                 <input type="submit" value="Show Popular Products" class="btn-link2">
                             </form>
@@ -58,19 +58,19 @@
                         <%                            if (loggedUser != null) {
                         %>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyWishListCommand">
                                 <input type="submit" value="My Wishlist" class="btn-link2">
                             </form>
                         </div>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyPurchaseHistoryCommand">
                                 <input type="submit" value="My Purchase History" class="btn-link2">
                             </form>
                         </div>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyFollowingListCommand">
                                 <input type="submit" value="My following list" class="btn-link2">
                             </form>
@@ -79,20 +79,20 @@
                             }
                         %>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="text" name="search" placeholder="Search a game">
                                 <input type="hidden" name="command" value="SearchCommand">
                                 <input type="submit" value="Search">
                             </form>
                             <br>
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="text" name="minimum" placeholder="Minimum">
                                 <input type="text" name="maximum" placeholder="Maximum">
                                 <input type="hidden" name="command" value="SearchByPriceCommand">
                                 <input type="submit" value="Filter by price">
                             </form>
                             <br>
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="radio" name="category" value="FPS"> FPS<br>
                                 <input type="radio" name="category" value="Stealth" checked> Stealth<br>
                                 <input type="radio" name="category" value="RPG" checked> RPG<br>

@@ -32,11 +32,11 @@
         <br>
         <div class="container">
             <h1>Register</h1>
-            <form action="FrontController">
+            <form method="post" action="FrontController">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="FrontController">
+            <form method="post" action="FrontController">
                 <fieldset>
                     <legend>Personal information:</legend>
                     Name:<br>
@@ -45,7 +45,7 @@
                     <input type="password" name="password" placeholder="Enter Your Password"><br><br>
                     Email:<br>
                     <input type="text" name="email" placeholder="Enter Your Email"><br><br>
-                    <input type="hidden" name="command" value="UsersCommand">
+                    <input type="hidden" name="command" value="RegisterCommand">
                     <input type="submit" value="Register">
                 </fieldset>
             </form>
