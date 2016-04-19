@@ -58,14 +58,21 @@ public class BuyCommand extends FrontCommand {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String date = new Date().toString();
                 Sales venta;
-                //String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
                 if (session.getAttribute("loggedUser") == null) {
-                    venta = new Sales(randomId, element.getProductId(), 0, new Date(),request.getParameter("payment"));
-                    salesFacade.create(venta);
+                    Sales sale = new Sales();
+                    sale.setDate(new Date());
+                    sale.setMethod(request.getParameter("payment"));
+                    sale.setProductId(element.getProductId());
+                    sale.setUserId(0);
+                    salesFacade.create(sale);
                 } else {
                     Users loggedUser = (Users) session.getAttribute("loggedUser");
-                    venta = new Sales(randomId, element.getProductId(), loggedUser.getUserId(), new Date(),request.getParameter("payment"));
-                    salesFacade.create(venta);
+                    Sales sale = new Sales();
+                    sale.setDate(new Date());
+                    sale.setMethod(request.getParameter("payment"));
+                    sale.setProductId(element.getProductId());
+                    sale.setUserId(loggedUser.getUserId());
+                    salesFacade.create(sale);
                 }
             }
             // CAMBIAR UBICACION FICHERO
@@ -73,13 +80,12 @@ public class BuyCommand extends FrontCommand {
                 writer.println("Thanks for your purchase:");
                 writer.println("Product name - Price");
                 for (Product product : cart.getContents()) {
-                    writer.println(product.getName() + " - " + product.getPrice());
+                    writer.println(product.getName() + " - " + (product.getPrice()-(product.getPrice()*(product.getDiscount()*100))));
                 }
             }
             cart.remove();
             session.setAttribute("Cart", null);
             forward("/purchaseCompleted.jsp");
-            //forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(BuyCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

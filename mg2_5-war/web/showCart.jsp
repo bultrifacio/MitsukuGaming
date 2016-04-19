@@ -41,6 +41,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Discount</th>
                 </tr>       
                 <c:forEach var="element" items="${cart}">
                     <tr>
@@ -60,6 +61,7 @@
                                 }
                             %>
                         </td>
+                        <td><font color="green">${element.discount} %</font></td>
                         <td>
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
