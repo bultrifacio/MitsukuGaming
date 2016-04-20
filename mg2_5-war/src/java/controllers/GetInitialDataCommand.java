@@ -36,10 +36,16 @@ public class GetInitialDataCommand extends FrontCommand {
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
 
             List<Product> productList = productFacade.findAll();
+
             if (session.getAttribute("indexPagination") == null) {
                 session.setAttribute("indexPagination", 1);
             } else {
-                session.setAttribute("indexPagination", Integer.parseInt(request.getParameter("index")));
+                Integer aux = (Integer) session.getAttribute("indexPagination");
+                if (request.getParameter("index") == null) {
+                    session.setAttribute("indexPagination", aux);
+                } else {
+                    session.setAttribute("indexPagination", Integer.parseInt(request.getParameter("index")));
+                }
             }
 
             int indexPagination = (Integer) session.getAttribute("indexPagination");
@@ -49,14 +55,14 @@ public class GetInitialDataCommand extends FrontCommand {
             } else {
                 pages = (productList.size() / 6);
             }
-            
+
             List<Product> paginatedList = productFacade.findRange(new int[]{indexPagination * 6 - 5, indexPagination * 6});
             List<Product> convertedList = new ArrayList<>();
             for (Product product : paginatedList) {
                 product.setPrice((float) session.getAttribute("rate") * product.getPrice());
                 convertedList.add(product);
             }
-            
+
             session.setAttribute("pages", pages);
             //request.setAttribute("productList", productList);
             request.setAttribute("productList", convertedList);
