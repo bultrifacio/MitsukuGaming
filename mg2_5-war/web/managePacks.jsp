@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Products</title>
+        <title>Manage Packs</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,56 +29,43 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <h1>Manage Products</h1>
+            <h1>Manage Packs</h1>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="addProduct.jsp" method="post">
-                <input type="submit" value="Add Product">
+            <form action="addPack.jsp" method="post">
+                <input type="submit" value="Add Pack">
             </form>
 
             <table border="1" class="table-striped">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Available</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Cost</th>
+                    <th>Description</th>
                     <th>Discount</th>
-                    <th>Options</th>
                 </tr>
 
-                <c:forEach var="element" items="${productList}">
+                <c:forEach var="element" items="${packList}">
                     <tr>
-                        <td>${element.productId}</td>
+                        <td>${element.packId}</td>
                         <td>${element.name}</td>
-                        <td>${element.quantity}</td>
-                        <td>${element.available}</td>
-                        <td>${element.category}</td>
-                        <td>${element.price}</td>
-                        <td>${element.cost}</td>
+                        <td>${element.description}</td>
                         <td>${element.discount}</td>
                         <td>
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="id" value="${element.packId}">
                                 <input type="hidden" name="name" value="${element.name}">
-                                <input type="hidden" name="quantity" value="${element.quantity}">
-                                <input type="hidden" name="available" value="${element.available}">
-                                <input type="hidden" name="category" value="${element.category}">
-                                <input type="hidden" name="price" value="${element.price}">
-                                <input type="hidden" name="cost" value="${element.cost}">
-                                <input type="hidden" name="discount" value="${element.discount}">
-
-                                <input type="submit" value="Modify Product">
-                                <input type="hidden" name="command" value="CopyProductDetailsCommand">
+                                <input type="hidden" name="quantity" value="${element.description}">
+                                <input type="hidden" name="available" value="${element.discount}">
+                                
+                                <input type="submit" value="Modify Packs">
+                                <input type="hidden" name="command" value="CopyPackDetailsCommand">
                             </form>
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
-                                <input type="submit" value="Remove Product">
-                                <input type="hidden" name="command" value="RemoveProductCommand">
+                                <input type="hidden" name="id" value="${element.packId}">
+                                <input type="submit" value="Remove Pack">
+                                <input type="hidden" name="command" value="RemovePackCommand">
                             </form>
                         </td>
                     </tr>

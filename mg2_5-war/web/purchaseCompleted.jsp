@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyProduct
-    Created on : 14-mar-2016, 17:12:50
-    Author     : Blarzek
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>
@@ -40,7 +34,7 @@
         <div class="container">
             <h1>Purchase completed</h1>
             <br><br>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <div>Thanks for your purchase!<br>
                 You will receive an email soon. Check your mailbox.</div>
             </form>

@@ -45,55 +45,54 @@
                 <div class="col-md-3">
                     <p class="lead">Shop Name</p>
                     <div class="list-group">
-                        <a href="userformjsp.jsp" class="list-group-item">Register</a>
-                        <a href="adminPanel.html" class="list-group-item">Admin Panel</a>
+                        <a href="register.jsp" class="list-group-item">Register</a>
+                        <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPopularProductsCommand">
                                 <input type="submit" value="Show Popular Products" class="btn-link2">
                             </form>
                         </div>
-                        
-                        <%
-                            if (loggedUser != null) {
+
+                        <%                            if (loggedUser != null) {
                         %>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyWishListCommand">
                                 <input type="submit" value="My Wishlist" class="btn-link2">
                             </form>
                         </div>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyPurchaseHistoryCommand">
                                 <input type="submit" value="My Purchase History" class="btn-link2">
                             </form>
                         </div>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyFollowingListCommand">
                                 <input type="submit" value="My following list" class="btn-link2">
                             </form>
                         </div>
-                        <%    
+                        <%
                             }
                         %>
                         <div class="list-group-item">
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="text" name="search" placeholder="Search a game">
                                 <input type="hidden" name="command" value="SearchCommand">
                                 <input type="submit" value="Search">
                             </form>
                             <br>
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="text" name="minimum" placeholder="Minimum">
                                 <input type="text" name="maximum" placeholder="Maximum">
                                 <input type="hidden" name="command" value="SearchByPriceCommand">
                                 <input type="submit" value="Filter by price">
                             </form>
                             <br>
-                            <form action="FrontController">
+                            <form method="post" action="FrontController">
                                 <input type="radio" name="category" value="FPS"> FPS<br>
                                 <input type="radio" name="category" value="Stealth" checked> Stealth<br>
                                 <input type="radio" name="category" value="RPG" checked> RPG<br>
@@ -101,7 +100,7 @@
                                 <input type="submit" value="Search by category">
                             </form>
                         </div>
-                        
+
                         <!--
                         <form action="FrontController">
                         <input type="hidden" name="command" value="showMyWishListCommand">
@@ -151,187 +150,83 @@
                                                 <input type="hidden" name="id" value="${element.productId}">
                                                 <input type="hidden" name="category" value="${element.category}">
                                                 <input type="hidden" name="price" value="${element.price}">
+
                                                 <input type="submit" value="${element.name}" class="btn-link">
                                                 <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                             </form>
-                                        </h4>
-                                        <h4 class="pull-right">${element.price} 
-                                            <%
-                                                if (currency.equals("Euro")) {
-                                            %>
-                                            &euro;
-                                            <%
-                                            } else {
-                                                if (currency.equals("Dollar")) {
-                                            %>
-                                            $
-                                            <%
-                                                    }
-                                                }
-                                            %>
-                                        </h4>
-                                        <p>${element.description}</p>
-                                    </div>
-                                    <div class="ratings">
-                                        <p class="pull-right">15 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
+                                        </h4><div>
+                                            <table class="tabledetails">
+                                                <tr><td>${element.description}</td>
+                                                    <td align="right"><strong>${element.price} 
+                                                            <%
+                                                                if (currency.equals("Euro")) {
+                                                            %>
+                                                            &euro;
+                                                            <%
+                                                            } else if (currency.equals("Dollar")) {
+                                                            %>
+                                                            $
+                                                            <%
+                                                                }
+                                                            %></strong></td>
+                                                </tr>
+                                                <tr><td></td><td align="right"><font color="green">
+                                                        <strong><c:if test="${element.discount != 0}">${element.discount} %</c:if>
+                                                            </strong></font></td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="ratings">
+                                            <p>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </c:forEach>
-                        <!-- 
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$24.99</h4>
-                                    <h4><a href="#">First Product</a>
-                                    </h4>
-                                    <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">15 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$64.99</h4>
-                                    <h4><a href="#">Second Product</a>
-                                    </h4>
-                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">12 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$74.99</h4>
-                                    <h4><a href="#">Third Product</a>
-                                    </h4>
-                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">31 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$84.99</h4>
-                                    <h4><a href="#">Fourth Product</a>
-                                    </h4>
-                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">6 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$94.99</h4>
-                                    <h4><a href="#">Fifth Product</a>
-                                    </h4>
-                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">18 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="http://placehold.it/320x150" alt="">
-                                <div class="caption">
-                                    <h4 class="pull-right">$42.0</h4>
-                                    <h4><a href="#">MY PRODUCT</a>
-                                    </h4>
-                                    <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">15 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-
-                        <!-- <div class="col-sm-4 col-lg-4 col-md-4">
-                            <h4><a href="#">Like this template?</a>
-                            </h4>
-                            <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                            <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                        </div> -->
-
                     </div>
-
                 </div>
-
+                <center>
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                            <%
+                                int pages = (Integer) session.getAttribute("pages");
+                                int indexPagination = (Integer) session.getAttribute("indexPagination");
+                                
+                                for (int i = 1; i <= pages; i++) {
+                                    if (i == indexPagination) {
+                            %>
+                        <li class="active">
+                            <a>
+                                <form method="post" action="FrontController">
+                                    <input type="hidden" name="command" value="GetInitialDataCommand">
+                                    <input type="submit" name="index" value="<%=i%>" class="btn-link3">
+                                </form>
+                            </a>
+                        </li>
+                        <%
+                            } else {
+                        %>
+                        <li>
+                            <a>
+                                <form method="post" action="FrontController">
+                                    <input type="hidden" name="command" value="GetInitialDataCommand">
+                                    <input type="submit" name="index" value="<%=i%>" class="btn-link">
+                                </form>
+                            </a>
+                        </li>
+                        <%
+                                }
+                            }
+                        %>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </center>
             </div>
-
         </div>
         <!-- /.container -->
 
@@ -348,15 +243,8 @@
                 </div>
             </footer>
 
-        </div>
-        <!-- /.container -->
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
 
-    </body>
 
 </html>

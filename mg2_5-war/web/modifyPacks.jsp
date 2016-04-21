@@ -1,16 +1,17 @@
-<%@page import="entities.Review"%>
-<%@page import="entities.Users"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.ParseException"%>
 <%@page import="java.util.Date"%>
 <%@page import="entities.Product"%>
-<%@page import="java.util.List"%>
+
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Product Stats</title>
+        <title>Modify Pack</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,30 +33,27 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <div class="container">
-        <h1>Product Stats</h1>
+        <h1>Modify Pack</h1>
         <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="ShowCartCommand">
-            <input type="submit" value="Show cart" class="btn-link">
+            <input type="hidden" name="command">
+            <input type="submit" value="Go to Main page" class="btn-link">
         </form><br><br>
-        <fieldset>
-            <legend>Product: ${name}</legend>
-                <b>Number of sales: </b>
-                ${salesProduct}<br>
-                <b>Number of wish: </b>
-                ${wishProduct}<br><br>
-                
-            <legend>Payment methods: </legend>
-                <b>Visa: </b>
-                ${MethodVisa}<br>
-                <b>MasterCard: </b>
-                ${MethodMasterCard}<br>
-                <b>Paypal: </b>
-                ${MethodPaypal}<br>
-                <b>Wire transfer: </b>
-                ${MethodWireTranfer}<br><br>
-        </fieldset>
-    </div>
-</body>
+        <form action="FrontController" method="post">
+            <fieldset>
+                <legend>Pack information:</legend>
+                <c:forEach var="element" items="${packList}">
+                    ID:<br>
+                    <input type="text" name="id" value="${element.packId}"><br>
+                    Pack name:<br>
+                    <input type="text" name="name" value="${element.name}"><br>
+                    Description:<br>
+                    <input type="text" name="price" value="${element.description}"><br>
+                    Discount:<br>
+                    <input type="text" name="cost" value="${element.discount}"><br>
+                    <input type="hidden" name="command" value="ModifyPackCommand">
+                    <input type="submit"  value="Save changes">
+                </c:forEach>
+            </fieldset>
+        </form>
+    </body>
 </html>
-

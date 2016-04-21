@@ -20,7 +20,6 @@ public class WriteReviewCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
-
             Date date = new Date();
             Users loggedUser = (Users) session.getAttribute("loggedUser");
             Review review = new Review(
@@ -30,7 +29,6 @@ public class WriteReviewCommand extends FrontCommand {
                     Integer.parseInt(request.getParameter("score")),
                     loggedUser.getUserId(),
                     date);
-            
             request.setAttribute("id", request.getAttribute("productId"));
             request.setAttribute("category", request.getAttribute("category"));
             reviewFacade.create(review);

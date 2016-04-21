@@ -18,9 +18,8 @@ public class CopyProductDetailsCommand extends FrontCommand {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
-            List<Product> productList = new ArrayList<Product>();
+            List<Product> productList = new ArrayList<>();
             productList.add(product);
-            
             request.setAttribute("productList", productList);
             forward("/modifyProduct.jsp");
         } catch (NamingException | ServletException | IOException ex) {

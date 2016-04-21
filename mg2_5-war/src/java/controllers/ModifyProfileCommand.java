@@ -25,9 +25,8 @@ public class ModifyProfileCommand extends FrontCommand {
                     request.getParameter("email"),
                     request.getParameter("password"));
             usersFacade.edit(user);
-            
             Users users = usersFacade.find(Integer.parseInt(request.getParameter("id")));
-            List<Users> userList = new ArrayList<Users>();
+            List<Users> userList = new ArrayList<>();
             userList.add(users);
             session.setAttribute("loggedUser", users);
             request.setAttribute("userInfo", userList);

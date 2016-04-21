@@ -16,7 +16,6 @@ public class RemoveProductCommand extends FrontCommand {
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-
             String actualId = request.getParameter("id");
             if (actualId != null) {
                 Product productDelete = productFacade.find(Integer.parseInt(actualId));
@@ -24,7 +23,6 @@ public class RemoveProductCommand extends FrontCommand {
                     productFacade.remove(productDelete);
                 }
             }
-            
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);
             forward("/manageProducts.jsp");

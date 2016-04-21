@@ -29,7 +29,7 @@
         <div class="container">
             <h1>Payment method</h1>
             <br><br>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <select name="payment" onchange="">
                     <option value="Visa">Visa</option>
                     <option value="MasterCard">MasterCard</option>
@@ -40,7 +40,7 @@
                 <input value="Buy" type="submit"><br>
             </form>
 
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <select name="payment" onchange="">
                     <option value="Visa">Visa</option>
                     <option value="MasterCard">MasterCard</option>

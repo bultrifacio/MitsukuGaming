@@ -15,7 +15,7 @@
         <div class="container">
             <h1>Buy for your friend</h1>
             <h2>Please, select a friend for buying the game.</h2>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
@@ -28,7 +28,7 @@
             <tr>
                 <td><%= follower.getName()%></td>
                 <td>
-                    <form action="FrontController">
+                    <form action="FrontController" method="post">
                         <input type="hidden" name="name" value="<%= follower.getId()%>">
                         <input type="hidden" name="payment" value="<%= request.getAttribute("payment") %>">
                         <input type="hidden" name="command" value="BuyForFollowerCommand">

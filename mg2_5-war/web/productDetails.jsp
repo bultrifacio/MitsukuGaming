@@ -1,9 +1,3 @@
-<%-- 
-    Document   : productDetails
-    Created on : 16-mar-2016, 11:27:06
-    Author     : alumno
---%>
-
 <%@page import="entities.Review"%>
 <%@page import="entities.Users"%>
 <%@page import="java.util.Date"%>
@@ -165,7 +159,7 @@
                             <td>${attribute.price}</td>
                             <td>${attribute.cost}</td>
                             <td>
-                                <form action="FrontController">
+                                <form action="FrontController" method="post">
                                     <input type="hidden" name="id" value="${attribute.productId}">
                                     <input type="hidden" name="name" value="${attribute.name}">
                                     <input type="hidden" name="quantity" value="${attribute.quantity}">
@@ -188,7 +182,7 @@
                         loggedUser = (Users) session.getAttribute("loggedUser");
                         if (loggedUser != null) {
                     %>
-                    <form action="FrontController">
+                    <form action="FrontController" method="post">
                         <%
                             out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
                             out.println("<input type=\"hidden\" name=\"category\" value=\"" + (String) category + "\">");
@@ -224,7 +218,7 @@
                     %>
                 </fieldset>
 
-                <form action="FrontController">
+                <form action="FrontController" method="post">
                     <input type="hidden" name="id" value="${element.productId}">
                     <!--
                     <input type="hidden" name="name" value="${element.name}">
@@ -237,7 +231,7 @@
                     <input type="hidden" name="command" value="AddToCartCommand">
                 </form>
                     
-                <form action="FrontController">
+                <form action="FrontController" method="post">
                     <input type="hidden" name="id" value="${element.productId}">
                     <input type="hidden" name="name" value="${element.name}">
                     
@@ -248,7 +242,7 @@
                 <%
                     if (loggedUser != null) {
                 %>
-                <form action="FrontController">
+                <form action="FrontController" method="post">
                     <input type="hidden" name="id" value="${element.productId}">
                     <input type="hidden" name="name" value="${element.name}">
                     <input type="hidden" name="quantity" value="${element.quantity}">

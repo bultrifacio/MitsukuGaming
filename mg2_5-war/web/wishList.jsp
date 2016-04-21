@@ -1,9 +1,3 @@
-<%-- 
-    Document   : wishList
-    Created on : 28-mar-2016, 19:42:01
-    Author     : Jusio
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -17,7 +11,7 @@
         <br>
         <div class="container">
             <h1>WishList</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>

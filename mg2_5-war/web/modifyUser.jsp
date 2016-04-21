@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyProduct
-    Created on : 14-mar-2016, 17:12:50
-    Author     : Ismael
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="entities.Users"%>
@@ -37,11 +31,8 @@
         <br>
         <div class="container">
             <h1>Modify User</h1>
-            <form action="FrontController">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <form action="FrontController">
+            <br><br>
+            <form method="post" action="FrontController">
                 <fieldset>
                     <legend>User information:</legend>
 

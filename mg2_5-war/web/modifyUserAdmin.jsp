@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyUserAdmin
-    Created on : 15-mar-2016, 13:20:42
-    Author     : ENTRAR
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,11 +27,8 @@
         <br>
         <div class="container">
             <h1>Modify user</h1>
-            <form action="FrontController">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <form action="ModifyUserFormServlet">
+            <br><br>
+            <form method="post" action="ModifyUserFormServlet">
                 <fieldset>
                     <legend>Personal information:</legend>
                     User name:<br>

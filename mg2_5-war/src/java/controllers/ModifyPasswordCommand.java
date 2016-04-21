@@ -17,24 +17,24 @@ public class ModifyPasswordCommand extends FrontCommand {
     public void process() {
         try {
             HttpSession session = request.getSession(true);
-            if(((String)request.getParameter("pass1")).equals(((String)request.getParameter("pass2")))){
+            if (((String) request.getParameter("pass1")).equals(((String) request.getParameter("pass2")))) {
                 session.setAttribute("passNoEqual", 0);
-            }else{
+            } else {
                 session.setAttribute("passNoEqual", 1);
                 forward("/newPassword.jsp");
             }
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> usersList = usersFacade.findAll();
             for (Users users : usersList) {
-                if(users.getEmail().equals(session.getAttribute("userEmail"))){
+                if (users.getEmail().equals(session.getAttribute("userEmail"))) {
                     Users user = new Users(users.getUserId(),
                             users.getName(),
                             users.getEmail(),
-                            request.getParameter("pass1"));   
+                            request.getParameter("pass1"));
                     usersFacade.edit(user);
                     break;
                 }
-                
+
             }
             forward("/FrontController?command=GetInitialDataCommand");
         } catch (NamingException | ServletException | IOException ex) {

@@ -22,9 +22,7 @@ public class ShowCartCommand extends FrontCommand{
                 cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
                 session.setAttribute("Cart", cart);
             }
-            
             ArrayList<Product> productList = cart.getContents();
-            
             String currency = (String) session.getAttribute("currency");
             if (!currency.equals("Euro")) {
                 for (Product product : productList) {
@@ -33,7 +31,6 @@ public class ShowCartCommand extends FrontCommand{
                     }
                 }
             }
-            
             request.setAttribute("cart", productList);
             forward("/showCart.jsp");
         } catch (ServletException | IOException | NamingException ex) {

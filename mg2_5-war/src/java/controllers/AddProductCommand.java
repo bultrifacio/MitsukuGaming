@@ -38,7 +38,6 @@ public class AddProductCommand extends FrontCommand {
             
             product.setDescription(request.getParameter("description"));
             product.setSynopsis(request.getParameter("synopsis"));
-            
             productFacade.create(product);
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);

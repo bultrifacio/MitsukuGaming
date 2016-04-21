@@ -1,9 +1,3 @@
-<%-- 
-    Document   : modifyProduct
-    Created on : 14-mar-2016, 17:12:50
-    Author     : Ismael
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="entities.Users"%>
@@ -19,7 +13,7 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Modify User</h1>
-        <form action="FrontController">
+        <form action="FrontController" method="post">
             <fieldset>
                 <legend>User information:</legend>
 

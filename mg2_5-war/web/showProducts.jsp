@@ -1,8 +1,3 @@
-<%-- 
-    Document   : showProducts
-    Created on : 15-mar-2016, 13:02:06
-    Author     : juancarlos
---%>
 <%@page import="entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,11 +30,11 @@
         <br>
         <div class="container">
             <h1>Show Products</h1>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
-            <form action="FrontController">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="ShowCartCommand">
                 <input type="submit" value="Show Cart">
             </form>
@@ -53,8 +48,9 @@
                         <td>${element.available}</td>
                         <td>${element.price}</td>
                         <td>${element.cost}</td>
+                        <td>${element.discount}</td>
                         <td>
-                            <form action="FrontController">
+                            <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">
                                 <input type="hidden" name="command" value="AddToCartCommand">
                                 <input type="submit" value="Add to cart">
