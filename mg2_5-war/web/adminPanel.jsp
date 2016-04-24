@@ -57,6 +57,10 @@ and open the template in the editor.
                 <input type="hidden" name="command" value="SendOffersCommand">
                 <input type="submit" value="Send offers">
             </form>
+            <form method="post" action="FrontController">
+                <input type="hidden" name="command" value="ShowBannedUsersCommand">
+                <input type="submit" value="Banned Users List">
+            </form>
         </div>
     </body>
 </html>

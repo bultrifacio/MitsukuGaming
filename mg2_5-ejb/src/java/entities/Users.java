@@ -34,6 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
 public class Users implements Serializable {
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "STATE")
+    private int state;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,12 +68,20 @@ public class Users implements Serializable {
     public Users(Integer userId) {
         this.userId = userId;
     }
-
-    public Users(Integer userId, String name, String email, String password) {
+    public Users(Integer userId, String name, String email, String password){
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
+        
+    }
+
+    public Users(Integer userId, String name, String email, String password, int state) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.state=state;
     }
 
     public Integer getUserId() {
@@ -126,6 +139,14 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "entities.Users[ userId=" + userId + " ]";
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
     
 }
