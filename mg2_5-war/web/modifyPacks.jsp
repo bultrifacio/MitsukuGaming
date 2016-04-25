@@ -47,9 +47,9 @@
                     Pack name:<br>
                     <input type="text" name="name" value="${element.name}"><br>
                     Description:<br>
-                    <input type="text" name="price" value="${element.description}"><br>
+                    <input type="text" name="description" value="${element.description}"><br>
                     Discount:<br>
-                    <input type="text" name="cost" value="${element.discount}"><br>
+                    <input type="text" name="discount" value="${element.discount}"><br>
                     <input type="hidden" name="command" value="ModifyPackCommand">
                     <input type="submit"  value="Save changes">
                 </c:forEach>
