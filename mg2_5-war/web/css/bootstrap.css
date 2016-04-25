@@ -6811,11 +6811,11 @@ button.close {
     color:#FFAF00;
 }
 
-.space-td {
-    padding-left: 10px;
+.small-space {
+    padding-left: 5px;
 }
 
-.space-currency {
+.large-space {
     padding-left: 60px;
 }
 

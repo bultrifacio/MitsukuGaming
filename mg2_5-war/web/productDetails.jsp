@@ -167,10 +167,10 @@
                                     <input type="hidden" name="category" value="${attribute.category}">
                                     <input type="hidden" name="price" value="${attribute.price}">
                                     <input type="hidden" name="cost" value="${attribute.cost}">
-
                                     <input type="submit" value="Visit Product">
                                     <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                 </form>
+                                <br>
                             </td>
                         </tr>
                     </c:forEach>
@@ -226,9 +226,11 @@
                     <input type="hidden" name="available" value="${element.available}">
                     <input type="hidden" name="price" value="${element.price}">
                     <input type="hidden" name="cost" value="${element.cost}">
-                    -->
+                    
                     <input type="submit" value="Add to cart">
+                    -->
                     <input type="hidden" name="command" value="AddToCartCommand">
+                    <input type="image" src="img/add-icon.png" alt="Submit Form" />
                 </form>
                     
                 <form action="FrontController" method="post">

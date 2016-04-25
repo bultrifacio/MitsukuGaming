@@ -97,15 +97,15 @@
 
                                     %>
                                 <form method="post" action="FrontController">
-                                    <td class="space-td">
+                                    <td class="small-space">
                                         <input type="text" name="email" placeholder="Email">
                                     </td>
-                                    <td class="space-td">
+                                    <td class="small-space">
                                         <input type="password" name="password" placeholder="Password">
                                     </td>
                                     <input type="hidden" name="command" value="LoginCommand">
-                                    <td>
-                                        <input type="submit" value="Login">
+                                    <td class="small-space">
+                                        <input type="submit" class="btn btn-success" value="Login">
                                     </td>
                                 </form>
                                 <%                                }
@@ -116,33 +116,38 @@
                                     }
                                 %>
 
-                                <td class="space-currency">
+                                <td class="large-space">
                                     <form method="post" action="FrontController">
                                         <input type="hidden" name="command" value="ChangeCurrencyCommand">
                                         <%
                                             String currency = (String) session.getAttribute("currency");
                                             if (currency.equals("Euro")) {
-                                                out.println("<input type=\"submit\" name=\"currency\" value=\"Euro\">");
+                                        %>
+                                        <input type="submit" name="currency" class="btn btn-warning" value="Euro">
+                                        <%
                                             } else {
                                                 if (currency.equals("Dollar")) {
-                                                    out.println("<input type=\"submit\" name=\"currency\" value=\"Dollar\">");
+                                        %>
+                                        <input type="submit" name="currency" class="btn btn-warning" value="Dollar">
+                                        <%
                                                 }
                                             }
                                         %>
                                     </form>
                                 </td>
-                                <td class="space-currency">
+                                <td class="large-space">
                                     <form method="post" action="FrontController">
                                         <input type="hidden" name="command" value="ShowCartCommand">
                                         <input type="image" src="img/cart-icon.png" alt="Submit Form" />
                                     </form>
                                 </td>
                                 <td>
-                                    <strong><p class="cart-btn">(<%=productNumber%>)</p></strong>
+                                    
+                                    <span class="badge"><%=productNumber%></span>
                                 </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="small-space">
                                         <a href="resetPassword.jsp">Forgot password?</a>
                                     </td>
                                 </tr>
