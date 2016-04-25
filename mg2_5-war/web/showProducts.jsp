@@ -30,15 +30,7 @@
         <br>
         <div class="container">
             <h1>Show Products</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command" value="ShowCartCommand">
-                <input type="submit" value="Show Cart">
-            </form>
-            <table border="1" class="table-striped">
+            <table class="table-striped table table-hover">
                 <c:forEach var="element" items="${productList}">
                     <tr>
                         <td>${element.productId}</td>

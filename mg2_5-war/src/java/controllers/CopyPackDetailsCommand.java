@@ -1,11 +1,7 @@
 package controllers;
 
-import controller.PackContentFacade;
-import entities.PackContent;
 import controller.PackDetailsFacade;
 import entities.PackDetails;
-import controller.ProductFacade;
-import entities.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ public class CopyPackDetailsCommand extends FrontCommand {
             List<PackDetails> packList = new ArrayList<>();
             packList.add(pack);
             request.setAttribute("packList", packList);
-            forward("/modifyPacks.jsp");
+            forward("/modifyPack.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(CopyPackDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

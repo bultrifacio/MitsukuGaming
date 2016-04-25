@@ -30,15 +30,11 @@
         <br>
         <div class="container">
             <h1>Manage Packs</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
             <form action="addPack.jsp" method="post">
                 <input type="submit" value="Add Pack">
             </form>
 
-            <table border="1" class="table-striped">
+            <table class="table-striped table table-hover">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -59,7 +55,7 @@
                                 <input type="hidden" name="quantity" value="${element.description}">
                                 <input type="hidden" name="available" value="${element.discount}">
                                 
-                                <input type="submit" value="Modify Packs">
+                                <input type="submit" value="Modify Pack">
                                 <input type="hidden" name="command" value="CopyPackDetailsCommand">
                             </form>
                             <form action="FrontController" method="post">

@@ -30,15 +30,7 @@
         <br>
         <div class="container">
             <h1>Manage Products</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <form action="addProduct.jsp" method="post">
-                <input type="submit" value="Add Product">
-            </form>
-
-            <table border="1" class="table-striped">
+            <table class="table-striped table table-hover">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>

@@ -35,7 +35,7 @@
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
 
-            <table border="1" class="table-striped">
+            <table class="table-striped table table-hover">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
