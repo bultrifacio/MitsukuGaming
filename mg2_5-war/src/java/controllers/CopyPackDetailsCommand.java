@@ -20,12 +20,12 @@ public class CopyPackDetailsCommand extends FrontCommand {
     @Override
     public void process() {
         try {
-            ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
-            List<Product> productList = new ArrayList<>();
-            productList.add(product);
-            request.setAttribute("productList", productList);
-            forward("/modifyProduct.jsp");
+            PackDetailsFacade packFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/PackDetailsFacade");
+            PackDetails pack = packFacade.find(Integer.parseInt(request.getParameter("id")));
+            List<PackDetails> packList = new ArrayList<>();
+            packList.add(pack);
+            request.setAttribute("packList", packList);
+            forward("/modifyPacks.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(CopyPackDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

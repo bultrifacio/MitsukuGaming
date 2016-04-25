@@ -1,3 +1,4 @@
+<%@page import="entities.Review"%>
 <%@page import="entities.Product"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.HashMap"%>
@@ -149,6 +150,7 @@
 
                         <%
                             List<Product> productList = (List<Product>) request.getAttribute("productList");
+                            List<Review> reviewList = (List<Review>)request.getAttribute("reviewList");
                             for (Product element : productList) {
                         %>
 
@@ -193,7 +195,16 @@
                                     </div>
                                 </div>
                                 <div class="ratings">
-                                    <p class="pull-right"> 10 reviews </p>
+                                    <p class="pull-right"> 
+                                        <%  
+                                           int reviewQuantity = 0;
+                                           for (int i = 0;i<reviewList.size();i++){
+                                               if (element.getProductId()==reviewList.get(i).getProductId())
+                                                   reviewQuantity++;
+                                           }
+                                        %>
+                                    <%=reviewQuantity%> reviews
+                                    </p>
                                     <p>
                                         <%
                                             HashMap<String, Integer> stars = (HashMap<String, Integer>) session.getAttribute("stars");
