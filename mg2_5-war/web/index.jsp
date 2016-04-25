@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="entities.Review"%>
 <%@page import="entities.Product"%>
 <%@page import="java.util.Iterator"%>
@@ -86,24 +87,34 @@
                         %>
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
-                                <input type="text" name="search" placeholder="Search a game">
+                                <input type="text" name="search" class="form-control" placeholder="Search a game">
                                 <input type="hidden" name="command" value="SearchCommand">
-                                <input type="submit" value="Search">
+                                <input type="submit" class="btn btn-primary" value="Search">
                             </form>
                             <br>
                             <form method="post" action="FrontController">
-                                <input type="text" name="minimum" placeholder="Minimum">
-                                <input type="text" name="maximum" placeholder="Maximum">
+                                <input type="text" name="minimum" class="form-control" placeholder="Minimum">
+                                <input type="text" name="maximum" class="form-control" placeholder="Maximum">
                                 <input type="hidden" name="command" value="SearchByPriceCommand">
-                                <input type="submit" value="Filter by price">
+                                <%
+                                    if ((Integer) session.getAttribute("wrongRange") != null) {
+                                        if ((Integer) session.getAttribute("wrongRange") == 1) {
+                                %>
+                                <div class="error-text">You have specified a wrong range.<br></div>
+                                    <%
+                                                session.setAttribute("wrongRange", 0);
+                                            }
+                                        }
+                                    %>
+                                <input type="submit" class="btn btn-primary" value="Filter by price">
                             </form>
                             <br>
                             <form method="post" action="FrontController">
-                                <input type="radio" name="category" value="FPS"> FPS<br>
-                                <input type="radio" name="category" value="Stealth" checked> Stealth<br>
-                                <input type="radio" name="category" value="RPG" checked> RPG<br>
+                                <input type="radio" name="category" value="FPS" checked> FPS<br>
+                                <input type="radio" name="category" value="Stealth"> Stealth<br>
+                                <input type="radio" name="category" value="RPG"> RPG<br>
                                 <input type="hidden" name="command" value="SearchByCategoryCommand">
-                                <input type="submit" value="Search by category">
+                                <input type="submit" class="btn btn-primary" value="Search by category">
                             </form>
                         </div>
 
@@ -150,7 +161,7 @@
 
                         <%
                             List<Product> productList = (List<Product>) request.getAttribute("productList");
-                            List<Review> reviewList = (List<Review>)request.getAttribute("reviewList");
+                            List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
                             for (Product element : productList) {
                         %>
 
@@ -169,41 +180,52 @@
                                         </form>
                                     </h4><div>
                                         <table class="tabledetails">
-                                            <tr><td><%=element.getDescription()%></td>
-                                                <td align="right"><strong><%=element.getPrice()%> 
+                                            <tr>
+                                                <td><%=element.getDescription()%></td>
+                                                <td align="right">
+                                                    <% 
+                                                        BigDecimal price = new BigDecimal(Float.toString(element.getPrice()));
+                                                        price = price.setScale(2, BigDecimal.ROUND_HALF_UP);       
+                                                    %>
+                                                    <strong><%=price%> 
                                                         <%
                                                             if (currency.equals("Euro")) {
                                                         %>
                                                         &euro;
                                                         <%
-                                                        } else if (currency.equals("Dollar")) {
+                                                            } else if (currency.equals("Dollar")) {
                                                         %>
                                                         $
                                                         <%
                                                             }
-                                                        %></strong></td>
-                                            </tr>
-                                            <tr><td></td><td align="right"><font color="green">
-                                                    <strong>
-                                                        <%if (element.getDiscount() != 0) {%>
-                                                        <%=element.getDiscount()%> %
-                                                        <%
-                                                            }
                                                         %>
-                                                    </strong></font></td></tr>
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td align="right">
+                                                    <font color="green">
+                                                    <% if (element.getDiscount() != 0) {%>
+                                                    <strong><%=element.getDiscount()%> %</strong>
+                                                    <% } %>
+                                                    </font>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="ratings">
                                     <p class="pull-right"> 
-                                        <%  
-                                           int reviewQuantity = 0;
-                                           for (int i = 0;i<reviewList.size();i++){
-                                               if (element.getProductId()==reviewList.get(i).getProductId())
-                                                   reviewQuantity++;
-                                           }
+                                        <%
+                                            int reviewQuantity = 0;
+                                            for (int i = 0; i < reviewList.size(); i++) {
+                                                if (element.getProductId() == reviewList.get(i).getProductId()) {
+                                                    reviewQuantity++;
+                                                }
+                                            }
                                         %>
-                                    <%=reviewQuantity%> reviews
+                                        <%=reviewQuantity%> reviews
                                     </p>
                                     <p>
                                         <%
@@ -211,15 +233,15 @@
                                             Integer productStars = stars.get(element.getName());
 
                                             for (int i = 0; i < 5; i++) {
-                                                if (i < productStars){
+                                                if (i < productStars) {
                                         %>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <%
-                                            }else{
+                                        } else {
                                         %>
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <%
-                                            }
+                                                }
                                             }
                                         %>     
                                     </p>
@@ -227,14 +249,15 @@
                             </div>
                         </div>
                         <%
-                                }
+                            }
                         %>
                     </div>
                 </div>
                 <center>
                     <ul class="pagination">
                         <li><a href="#">&laquo;</a></li>
-                            <%                                int pages = (Integer) session.getAttribute("pages");
+                            <%
+                                int pages = (Integer) session.getAttribute("pages");
                                 int indexPagination = (Integer) session.getAttribute("indexPagination");
 
                                 for (int i = 1; i <= pages; i++) {
@@ -268,23 +291,17 @@
                 </center>
             </div>
         </div>
-        <!-- /.container -->
-
-        <div class="container">
-
-            <hr>
-
-            <!-- Footer -->
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Mitsuku Gaming 2016</p>
-                    </div>
+    </body>
+    <!-- /.container -->
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</p>
                 </div>
-            </footer>
-
-
-
-
-
+            </div>
+        </footer>
+    </div>
 </html>

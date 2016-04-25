@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.HashMap"%>
@@ -61,7 +62,12 @@
 
                 <tr>
                     <td><%=product.getName()%></td>
-                    <td><%=product.getPrice()%>
+                    <td>
+                        <% 
+                            BigDecimal price = new BigDecimal(Float.toString(product.getPrice()));
+                            price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
+                        %>
+                        <%=price%>
                         <%
                             if (currency.equals("Euro")) {
                         %>
@@ -84,7 +90,12 @@
                         <%
                             if (product.getDiscount() > 0) {
                         %>
-                        <%=(product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0))) * (Integer) entry.getValue()%>
+                        <% 
+                            float p = (float) (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0))) * (Integer) entry.getValue();
+                            BigDecimal priceDiscounted = new BigDecimal(Float.toString(p));
+                            priceDiscounted = priceDiscounted.setScale(2, BigDecimal.ROUND_HALF_UP);
+                        %>
+                        <%=priceDiscounted%>
                         <% } else {%>
                         <%=product.getPrice() * (Integer) entry.getValue()%>
                         <% } %>
@@ -125,7 +136,12 @@
                         <strong>Total</strong>
                     </td>
                     <td>
-                        <%=(Float) session.getAttribute("total")%>
+                        <%
+                            float t = (Float) session.getAttribute("total");
+                            BigDecimal totalPrice = new BigDecimal(Float.toString(t));
+                            totalPrice = totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
+                        %>
+                        <%=totalPrice %>
                         <%
                             if (currency.equals("Euro")) {
                         %>
