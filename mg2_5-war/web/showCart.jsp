@@ -36,11 +36,16 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Discount</th>
-                </tr>       
-                <c:forEach var="element" items="${cart}">
+                    <th>Price with discount</th>
+                </tr>
+                <%
+                    for (Product product : cart.getContents()) {
+                        
+                %>
+                
                     <tr>
-                        <td>${element.name}</td>
-                        <td>${element.price}
+                        <td><%=product.getName() %></td>
+                        <td><%=product.getPrice() %>
                             <%
                                 if (currency.equals("Euro")) {
                             %>
@@ -55,19 +60,51 @@
                                 }
                             %>
                         </td>
-                        <td><font color="green">${element.discount} %</font></td>
+                        <td><font color="green"><%=product.getDiscount()%> %</font></td>
+                        <td>
+                            <%
+                            if (product.getDiscount() > 0) {
+                            %>
+                            <%=product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0)) %>
+                            <% } else { %>
+                            <%=product.getPrice() %>
+                            <% } %>
+                        </td>
                         <td>
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="id" value="<%=product.getProductId()%>">
                                 <input type="hidden" name="command" value="RemoveFromCartCommand">
                                 <input type="submit" value="Remove from cart">
                             </form>
                         </td>
                     </tr>
-                </c:forEach>
+                    <%
+                        }
+                    %>
+                    <tr>
+                        <td>
+                            <strong>Total</strong>
+                        </td>
+                        <td>
+                            <%=(Float)session.getAttribute("total")%>
+                            <%
+                                if (currency.equals("Euro")) {
+                            %>
+                            &euro;
+                            <%
+                                } else {
+                                    if (currency.equals("Dollar")) {
+                            %>
+                            $
+                            <%
+                                    }
+                                }
+                            %>
+                        </td>
+                    </tr>
             </table>
+            <br>
             <form action="FrontController" method="post">
-                <input type="hidden" name="id" value="${element.productId}">
                 <input type="hidden" name="command" value="CheckoutCommand">
                 <input type="submit" value="Checkout">
             </form>

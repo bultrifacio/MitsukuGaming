@@ -24,4 +24,6 @@ public interface ShoppingCartLocal {
 
     public void remove();
     
+    public float getTotal();
+    
 }

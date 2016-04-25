@@ -31,6 +31,7 @@ public class ShowCartCommand extends FrontCommand{
                     }
                 }
             }
+            session.setAttribute("total", cart.getTotal());
             request.setAttribute("cart", productList);
             forward("/showCart.jsp");
         } catch (ServletException | IOException | NamingException ex) {

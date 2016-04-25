@@ -40,4 +40,17 @@ public class ShoppingCart implements ShoppingCartLocal {
     public void remove(){
         Cart = null;
     }
+    
+    @Override
+    public float getTotal() {
+        float total = 0;
+        for (Product product : Cart) {
+            if (product.getDiscount() > 0) {
+                total += product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0));
+            } else {
+                total += product.getPrice();
+            }
+        }
+        return total;
+    }
 }
