@@ -6806,7 +6806,27 @@ button.close {
     font-family:inherit;
     font-size:inherit;
 }
-.error-text{
+
+.cart-btn {
+    color:#FFAF00;
+}
+
+.space-td {
+    padding-left: 10px;
+}
+
+.space-currency {
+    padding-left: 60px;
+}
+
+.error-text {
     color:#bb020b;
 }
+
+input#cart-icon {
+    background: #ccc url('img/cart-icon.png') no-repeat top left;
+    padding-left: 40px;
+    height: 40px;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

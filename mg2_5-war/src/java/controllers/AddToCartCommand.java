@@ -23,11 +23,10 @@ public class AddToCartCommand extends FrontCommand {
 
     @Override
     public void process() {
-        ShoppingCartLocal cart = null;
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             HttpSession session = request.getSession(true);
-            cart = (ShoppingCartLocal) session.getAttribute("Cart");
+            ShoppingCartLocal cart = (ShoppingCartLocal) session.getAttribute("Cart");
             if (cart == null) {
                 cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
                 session.setAttribute("Cart", cart);

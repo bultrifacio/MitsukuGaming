@@ -1,3 +1,4 @@
+<%@page import="entities.ShoppingCartLocal"%>
 <%@page import="entities.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -49,38 +50,38 @@
                             <a href="supportform.jsp">Contact</a>
                         </li>
                         <li>
-                            <%
-                                Users loggedUser = (Users) session.getAttribute("loggedUser");
-                                if (loggedUser != null) {
+                            <table>
+                                <tr>
+
+
+                                    <%
+                                        Users loggedUser = (Users) session.getAttribute("loggedUser");
+                                        if (loggedUser != null) {
                                     %>
-                                    <input type="text" name="username" value="Welcome <%= loggedUser.getName() %>">
-                                    <form method="post" action="FrontController">
-                                        <input type="hidden" name="command" value="ShowProfileCommand">
-                                        <input type="hidden" name="id" value="<%= loggedUser.getUserId() %>">
-                                        <input type="hidden" name="name" value="<%= loggedUser.getName() %>">
-                                        <input type="hidden" name="email" value="<%= loggedUser.getEmail() %>">
-                                        <input type="hidden" name="password" value="<%= loggedUser.getPassword() %>">
-                                        <input type="submit" value="Modify profile">
-                                    </form>
-                                    <form method="post" action="FrontController">
-                                        <input type="hidden" name="command" value="LogoutCommand">
-                                        <input type="submit" value="Logout" class="btn-link">
-                                    </form>
-                                    <form method="post" action="FrontController">
-                                        <input type="hidden" name="command" value="ShowCartCommand">
-                                        <input type="submit" value="Show cart" class="btn-link">
-                                    </form>
+                                    <td>
+                                        <input type="text" name="username" value="Welcome <%= loggedUser.getName()%>">
+                                    </td>
+                                    <td>
+                                        <form method="post" action="FrontController">
+                                            <input type="hidden" name="command" value="ShowProfileCommand">
+                                            <input type="hidden" name="id" value="<%= loggedUser.getUserId()%>">
+                                            <input type="hidden" name="name" value="<%= loggedUser.getName()%>">
+                                            <input type="hidden" name="email" value="<%= loggedUser.getEmail()%>">
+                                            <input type="hidden" name="password" value="<%= loggedUser.getPassword()%>">
+                                            <input type="submit" value="Modify profile">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="FrontController">
+                                            <input type="hidden" name="command" value="LogoutCommand">
+                                            <input type="submit" value="Logout" class="btn-link">
+                                        </form>
+                                    </td>
                                     <%
-                                } else {
-                                    %> 
-                                    <form method="post" action="FrontController">
-                                        <input type="text" name="email" placeholder="Email">
-                                        <input type="password" name="password" placeholder="Password">
-                                        <input type="hidden" name="command" value="LoginCommand">
-                                        <input type="submit" value="Login">
-                                    </form>
+                                    } else {
+                                    %>
+
                                     <%
-                                        
                                         if ((Integer) session.getAttribute("wrongEmail") != null) {
                                             if ((Integer) session.getAttribute("wrongEmail") == 1) {
                                                 out.println("<div class=\"error-text\">That email doesn't exists in our system.<br></div>");
@@ -93,31 +94,59 @@
                                                 }
                                             }
                                         }
-                                        
+
                                     %>
-                                    <a href="resetPassword.jsp">Forgot password?</a>
-                                    <form method="post" action="FrontController">
-                                        <input type="hidden" name="command" value="ShowCartCommand">
-                                        <input type="submit" value="Show cart" class="btn-link">
-                                    </form>
-                            <%
-                                }
-                            %>
-                        </li>
-                        <li>
-                            <form method="post" action="FrontController">
-                                <input type="hidden" name="command" value="ChangeCurrencyCommand">
-                                <%
-                                    String currency = (String) session.getAttribute("currency");
-                                    if (currency.equals("Euro")) {
-                                        out.println("<input type=\"submit\" name=\"currency\" value=\"Euro\">");
-                                    } else {
-                                        if (currency.equals("Dollar")) {
-                                            out.println("<input type=\"submit\" name=\"currency\" value=\"Dollar\">");
-                                        }
+                                <form method="post" action="FrontController">
+                                    <td class="space-td">
+                                        <input type="text" name="email" placeholder="Email">
+                                    </td>
+                                    <td class="space-td">
+                                        <input type="password" name="password" placeholder="Password">
+                                    </td>
+                                    <input type="hidden" name="command" value="LoginCommand">
+                                    <td>
+                                        <input type="submit" value="Login">
+                                    </td>
+                                </form>
+                                <%                                }
+                                    ShoppingCartLocal cart = (ShoppingCartLocal) session.getAttribute("Cart");
+                                    int productNumber = 0;
+                                    if (cart != null) {
+                                        productNumber = cart.getContents().size();
                                     }
                                 %>
-                            </form>
+
+                                <td class="space-currency">
+                                    <form method="post" action="FrontController">
+                                        <input type="hidden" name="command" value="ChangeCurrencyCommand">
+                                        <%
+                                            String currency = (String) session.getAttribute("currency");
+                                            if (currency.equals("Euro")) {
+                                                out.println("<input type=\"submit\" name=\"currency\" value=\"Euro\">");
+                                            } else {
+                                                if (currency.equals("Dollar")) {
+                                                    out.println("<input type=\"submit\" name=\"currency\" value=\"Dollar\">");
+                                                }
+                                            }
+                                        %>
+                                    </form>
+                                </td>
+                                <td class="space-currency">
+                                    <form method="post" action="FrontController">
+                                        <input type="hidden" name="command" value="ShowCartCommand">
+                                        <input type="image" src="img/cart-icon.png" alt="Submit Form" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <strong><p class="cart-btn">(<%=productNumber%>)</p></strong>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="resetPassword.jsp">Forgot password?</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </li>
                     </ul>
                 </div>
