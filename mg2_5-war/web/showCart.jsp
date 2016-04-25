@@ -42,6 +42,7 @@
                     <th>Quantity</th>
                     <th>Discount</th>
                     <th>Price with discount</th>
+                    <th></th>
                 </tr>
                 <%
                     HashMap<Integer, Integer> productQuantity = new HashMap<Integer, Integer>();
@@ -156,6 +157,8 @@
                             }
                         %>
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
             <br>

@@ -28,47 +28,48 @@
         <script src="bootstrap/jquery.js"></script>
         <script src="bootstrap/bootstrap.min.js"></script>
         <script>
-        function newPageFunction() {
-            var myWindow = window.open("", "", "width=600, height=100");
-            myWindow.document.write("<p>Your can reset your password in the following link: </p>\n\
+            function newPageFunction() {
+                var myWindow = window.open("", "", "width=600, height=100");
+                myWindow.document.write("<p>Your can reset your password in the following link: </p>\n\
             http://localhost:8080/mg2_5-war/newPassword.jsp");
-        }
+            }
         </script>
     </head>
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <h1>Reset password</h1>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController" method="post">
-            <fieldset>
-                <legend>Insert your email:</legend>
-                <%
-                    Integer validEmail = (Integer) session.getAttribute("validEmail");
+        <div class="container">
+            <h1>Reset password</h1>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController" method="post">
+                <fieldset>
+                    <legend>Insert your email:</legend>
+                    <%                    Integer validEmail = (Integer) session.getAttribute("validEmail");
 
-                    if (validEmail != null) {
-                        if (validEmail==1){
-                            String usermail = (String) session.getAttribute("userEmail");
-                            out.println("You have received an email to reset your password");
-                            out.println("<input type=\"submit\" value=\"See email\" onclick=\"newPageFunction()\">");
+                        if (validEmail != null) {
+                            if (validEmail == 1) {
+                                String usermail = (String) session.getAttribute("userEmail");
+                                out.println("You have received an email to reset your password");
+                                out.println("<input type=\"submit\" value=\"See email\" onclick=\"newPageFunction()\">");
+                            } else {
+                                out.println("That email doesn't exists in our system.<br>");
+                                out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
+                                out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
+                                out.println("<input type=\"submit\"  value=\"Reset password\">");
+                            }
+
                         } else {
-                            out.println("That email doesn't exists in our system.<br>");
                             out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
                             out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
                             out.println("<input type=\"submit\"  value=\"Reset password\">");
                         }
 
-                    } else {
-                        out.println("<input type=\"text\" name=\"email\" placeholder=\"Insert your email\">");
-                        out.println("<input type=\"hidden\" name=\"command\" value=\"CheckEmailCommand\">");
-                        out.println("<input type=\"submit\"  value=\"Reset password\">");
-                    }
-
-                %>
-            </fieldset>
-        </form>
+                    %>
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

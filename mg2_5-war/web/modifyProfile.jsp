@@ -12,31 +12,31 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <h1>Modify User</h1>
-        <form action="FrontController" method="post">
-            <fieldset>
-                <legend>User information:</legend>
+        <div class="container">
+            <h1>Modify User</h1>
+            <form action="FrontController" method="post">
+                <fieldset>
+                    <legend>User information:</legend>
 
-                <%
+                    <%
+                        //Product product = (Product) session.getAttribute("product");
+                        //if (product != null) {
+                    %>
 
-                    //Product product = (Product) session.getAttribute("product");
-                    //if (product != null) {
-
-                %>
-
-                <c:forEach var="element" items="${userInfo}">
-                    ID:<br>
-                    <input type="text" name="id" readonly="readonly" value="${element.userId}"><br>
-                    User name:<br>
-                    <input type="text" name="name" value="${element.name}"><br>
-                    Email:<br>
-                    <input type="text" name="email" value="${element.email}"><br>
-                    Password:<br>
-                    <input type="text" name="password" value="${element.password}"><br>
-                    <input type="hidden" name="command" value="ModifyProfileCommand">
-                    <input type="submit"  value="Save changes">
-                </c:forEach>
-            </fieldset>
-        </form>
+                    <c:forEach var="element" items="${userInfo}">
+                        ID:<br>
+                        <input type="text" name="id" readonly="readonly" value="${element.userId}"><br>
+                        User name:<br>
+                        <input type="text" name="name" value="${element.name}"><br>
+                        Email:<br>
+                        <input type="text" name="email" value="${element.email}"><br>
+                        Password:<br>
+                        <input type="text" name="password" value="${element.password}"><br>
+                        <input type="hidden" name="command" value="ModifyProfileCommand">
+                        <input type="submit"  value="Save changes">
+                    </c:forEach>
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

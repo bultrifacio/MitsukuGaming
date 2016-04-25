@@ -59,7 +59,7 @@
                                         if (loggedUser != null) {
                                     %>
                                     <td>
-                                        <input type="text" name="username" value="Welcome <%= loggedUser.getName()%>">
+                                        <input type="text" name="username" value="Welcome <%= loggedUser.getName()%>" disabled>
                                     </td>
                                     <td>
                                         <form method="post" action="FrontController">
@@ -68,13 +68,13 @@
                                             <input type="hidden" name="name" value="<%= loggedUser.getName()%>">
                                             <input type="hidden" name="email" value="<%= loggedUser.getEmail()%>">
                                             <input type="hidden" name="password" value="<%= loggedUser.getPassword()%>">
-                                            <input type="submit" value="Modify profile">
+                                            <input type="submit" class="small-space" value="Modify profile">
                                         </form>
                                     </td>
                                     <td>
                                         <form method="post" action="FrontController">
                                             <input type="hidden" name="command" value="LogoutCommand">
-                                            <input type="submit" value="Logout" class="btn-link">
+                                            <input type="submit" value="Logout" class="btn-link small-space">
                                         </form>
                                     </td>
                                     <%
