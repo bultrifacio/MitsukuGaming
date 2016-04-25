@@ -1,6 +1,7 @@
 package controllers;
 
 import controller.UsersFacade;
+import entities.PasswordEncryption;
 import entities.Users;
 import java.io.IOException;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ModifyPasswordCommand extends FrontCommand {
                     Users user = new Users(users.getUserId(),
                             users.getName(),
                             users.getEmail(),
-                            request.getParameter("pass1"));
+                            PasswordEncryption.encrypt(request.getParameter("pass1")));
                     usersFacade.edit(user);
                     break;
                 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import controller.UsersFacade;
+import entities.PasswordEncryption;
 import entities.Users;
 import java.io.IOException;
 import java.util.List;
@@ -21,9 +22,10 @@ public class LoginCommand extends FrontCommand {
             List<Users> userList = usersFacade.findAll();
             boolean wrongEmail = false;
             session.setAttribute("wrongEmail", 0);
+            System.out.println("La password encriptada es: " + PasswordEncryption.encrypt(request.getParameter("password")));
             for (Users user : userList) {
                 if (user.getEmail().equals(request.getParameter("email"))) {
-                    if (user.getPassword().equals(request.getParameter("password"))) {
+                    if (user.getPassword().equals(PasswordEncryption.encrypt(request.getParameter("password")))) {
                         session.setAttribute("loggedUser", user);
                         session.setAttribute("wrongPassword", 0);
                     } else {
