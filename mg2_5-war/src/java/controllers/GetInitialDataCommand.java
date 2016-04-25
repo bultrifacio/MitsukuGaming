@@ -6,9 +6,12 @@
 package controllers;
 
 import controller.ProductFacade;
+import controller.ReviewFacade;
 import entities.Product;
+import entities.Review;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,8 +37,10 @@ public class GetInitialDataCommand extends FrontCommand {
 
             session.setAttribute("actualPage", "FrontController");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-
+            ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
+            
             List<Product> productList = productFacade.findAll();
+            List<Review> reviewList = reviewFacade.findAll();
 
             if (session.getAttribute("indexPagination") == null) {
                 session.setAttribute("indexPagination", 1);
@@ -63,14 +68,44 @@ public class GetInitialDataCommand extends FrontCommand {
                 convertedList.add(product);
             }
 
+            HashMap<String, Integer> starsMap = countStars(convertedList);
+            session.setAttribute("stars", starsMap);
             session.setAttribute("pages", pages);
             //request.setAttribute("productList", productList);
             request.setAttribute("productList", convertedList);
+            request.setAttribute("reviewList", reviewList);
             forward("/index.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(GetInitialDataCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private HashMap<String, Integer> countStars(List<Product> convertedList) throws NamingException {
+        HashMap<String, Integer> starsMap = new HashMap<>();
+
+        ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
+        List<Review> reviewList = reviewFacade.findAll();
+        Integer mean = 0;
+        Integer reviewQuantity = 0;
+
+        for (Product product : convertedList) {
+            for (Review review : reviewList) {
+                if (review.getProductId() == product.getProductId()) {
+                    mean += review.getScore();
+                    reviewQuantity++;
+                }
+            }
+            if (reviewQuantity > 0) {
+                starsMap.put(product.getName(), mean / reviewQuantity / 2);
+            } else {
+                starsMap.put(product.getName(), 0);
+            }
+            mean = 0;
+            reviewQuantity = 0;
+        }
+
+        return starsMap;
     }
 
 }

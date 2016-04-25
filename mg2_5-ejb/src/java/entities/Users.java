@@ -73,7 +73,7 @@ public class Users implements Serializable {
         this.name = name;
         this.email = email;
         this.password = password;
-        
+        this.state = 1;
     }
 
     public Users(Integer userId, String name, String email, String password, int state) {

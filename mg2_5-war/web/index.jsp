@@ -1,3 +1,8 @@
+<%@page import="entities.Product"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="entities.Users"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -107,6 +112,7 @@
                         <input type="submit" value="My Wishlist" class="list-group-item">
                         </form>
                         -->
+
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -140,63 +146,86 @@
                     </div>
 
                     <div class="row">
-                        <c:forEach var="element" items="${productList}">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="img/${element.logo}" alt="">
-                                    <div class="caption">
-                                        <h4>
-                                            <form method="post" action="FrontController">
-                                                <input type="hidden" name="id" value="${element.productId}">
-                                                <input type="hidden" name="category" value="${element.category}">
-                                                <input type="hidden" name="price" value="${element.price}">
 
-                                                <input type="submit" value="${element.name}" class="btn-link">
-                                                <input type="hidden" name="command" value="ShowProductDetailsCommand">
-                                            </form>
-                                        </h4><div>
-                                            <table class="tabledetails">
-                                                <tr><td>${element.description}</td>
-                                                    <td align="right"><strong>${element.price} 
-                                                            <%
-                                                                if (currency.equals("Euro")) {
-                                                            %>
-                                                            &euro;
-                                                            <%
-                                                            } else if (currency.equals("Dollar")) {
-                                                            %>
-                                                            $
-                                                            <%
-                                                                }
-                                                            %></strong></td>
-                                                </tr>
-                                                <tr><td></td><td align="right"><font color="green">
-                                                        <strong><c:if test="${element.discount != 0}">${element.discount} %</c:if>
-                                                            </strong></font></td></tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="ratings">
-                                            <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            </p>
-                                        </div>
+                        <%
+                            List<Product> productList = (List<Product>) request.getAttribute("productList");
+                            for (Product element : productList) {
+                        %>
+
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="img/<%=element.getLogo()%>" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        <form method="post" action="FrontController">
+                                            <input type="hidden" name="id" value="<%=element.getProductId()%>">
+                                            <input type="hidden" name="category" value="<%=element.getCategory()%>">
+                                            <input type="hidden" name="price" value="<%=element.getPrice()%>">
+
+                                            <input type="submit" value="<%=element.getName()%>" class="btn-link">
+                                            <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                        </form>
+                                    </h4><div>
+                                        <table class="tabledetails">
+                                            <tr><td><%=element.getDescription()%></td>
+                                                <td align="right"><strong><%=element.getPrice()%> 
+                                                        <%
+                                                            if (currency.equals("Euro")) {
+                                                        %>
+                                                        &euro;
+                                                        <%
+                                                        } else if (currency.equals("Dollar")) {
+                                                        %>
+                                                        $
+                                                        <%
+                                                            }
+                                                        %></strong></td>
+                                            </tr>
+                                            <tr><td></td><td align="right"><font color="green">
+                                                    <strong>
+                                                        <%if (element.getDiscount() != 0) {%>
+                                                        <%=element.getDiscount()%> %
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </strong></font></td></tr>
+                                        </table>
                                     </div>
                                 </div>
-                        </c:forEach>
+                                <div class="ratings">
+                                    <p class="pull-right"> 10 reviews </p>
+                                    <p>
+                                        <%
+                                            HashMap<String, Integer> stars = (HashMap<String, Integer>) session.getAttribute("stars");
+                                            Integer productStars = stars.get(element.getName());
+
+                                            for (int i = 0; i < 5; i++) {
+                                                if (i < productStars){
+                                        %>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <%
+                                            }else{
+                                        %>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <%
+                                            }
+                                            }
+                                        %>     
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                                }
+                        %>
                     </div>
                 </div>
                 <center>
                     <ul class="pagination">
                         <li><a href="#">&laquo;</a></li>
-                            <%
-                                int pages = (Integer) session.getAttribute("pages");
+                            <%                                int pages = (Integer) session.getAttribute("pages");
                                 int indexPagination = (Integer) session.getAttribute("indexPagination");
-                                
+
                                 for (int i = 1; i <= pages; i++) {
                                     if (i == indexPagination) {
                             %>
@@ -209,7 +238,7 @@
                             </a>
                         </li>
                         <%
-                            } else {
+                        } else {
                         %>
                         <li>
                             <a>
