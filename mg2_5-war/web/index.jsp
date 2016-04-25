@@ -138,13 +138,13 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img class="slide-image" src="img/ds3.jpg" alt="">
+                                        <img class="slide-image" src="img/main/ds3.jpg" alt="">
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="img/theDivision.jpg" alt="">
+                                        <img class="slide-image" src="img/main/theDivision.jpg" alt="">
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                        <img class="slide-image" src="img/main/fallout-4.png" alt="">
                                     </div>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -167,7 +167,7 @@
 
                         <div class="col-sm-4 col-lg-4 col-md-4">
                             <div class="thumbnail">
-                                <img src="img/<%=element.getLogo()%>" alt="">
+                                <img src="img/logos/<%=element.getLogo()%>" alt="">
                                 <div class="caption">
                                     <h4>
                                         <form method="post" action="FrontController">
@@ -225,7 +225,7 @@
                                                 }
                                             }
                                         %>
-                                        <%=reviewQuantity%> reviews
+                                        <%=reviewQuantity%> review<% if (reviewQuantity != 1) { %>s <% }%>
                                     </p>
                                     <p>
                                         <%

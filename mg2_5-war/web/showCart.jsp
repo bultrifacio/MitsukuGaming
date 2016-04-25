@@ -118,7 +118,7 @@
                         <form action="FrontController" method="post">
                             <input type="hidden" name="id" value="<%=product.getProductId()%>">
                             <input type="hidden" name="command" value="RemoveFromCartCommand">
-                            <input type="image" src="img/remove-icon.png" alt="Submit Form" />
+                            <input type="image" src="img/icons/remove-from-cart-icon.png" alt="Submit Form" />
                         </form>
                     </td>
                 </tr>

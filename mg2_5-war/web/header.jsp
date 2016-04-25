@@ -138,7 +138,7 @@
                                 <td class="large-space">
                                     <form method="post" action="FrontController">
                                         <input type="hidden" name="command" value="ShowCartCommand">
-                                        <input type="image" src="img/cart-icon.png" alt="Submit Form" />
+                                        <input type="image" src="img/icons/cart-icon.png" alt="Submit Form" />
                                     </form>
                                 </td>
                                 <td>

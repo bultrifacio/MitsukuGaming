@@ -51,12 +51,12 @@
                                 <% 
                                     if (active) { 
                                 %>
-                                <li data-target="img/${element.path}" data-slide-to="<%= index%>" class="active"></li>
+                                <li data-target="img/games/${element.path}" data-slide-to="<%= index%>" class="active"></li>
                                 <% 
                                     active = false;
                                     } else {    
                                 %>
-                                <li data-target="img/${element.path}" data-slide-to="<%= index%>"></li>
+                                <li data-target="img/games/${element.path}" data-slide-to="<%= index%>"></li>
                                 <%
                                     }
                                     index++;
@@ -70,14 +70,14 @@
                                     if (active) {
                                 %>
                                 <div class="item active">
-                                    <img class="slide-image" src="img/${element.path}" alt="">
+                                    <img class="slide-image" src="img/games/${element.path}" alt="">
                                 </div>
                                 <%
                                     active = false;
                                     } else {
                                 %>
                                 <div class="item">
-                                    <img class="slide-image" src="img/${element.path}" alt="">
+                                    <img class="slide-image" src="img/games/${element.path}" alt="">
                                 </div>
                                 <% } %>
                             </c:forEach>
@@ -230,7 +230,7 @@
                     <input type="submit" value="Add to cart">
                     -->
                     <input type="hidden" name="command" value="AddToCartCommand">
-                    <input type="image" src="img/add-icon.png" alt="Submit Form" />
+                    <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                 </form>
                     
                 <form action="FrontController" method="post">
