@@ -40,6 +40,8 @@ public class ModifyProductCommand extends FrontCommand {
             product.setAvailable(Integer.parseInt(request.getParameter("available")));
             product.setDescription(request.getParameter("description"));
             product.setSynopsis(request.getParameter("synopsis"));
+            product.setDeveloper(request.getParameter("developer"));
+            product.setPlatform(request.getParameter("platform"));
             productFacade.edit(product);
             List<Product> productList = productFacade.findAll();
             request.setAttribute("productList", productList);

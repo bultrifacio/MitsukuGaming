@@ -35,11 +35,6 @@ and open the template in the editor.
             <br><br>
 
             <form method="post" action="FrontController">
-                <input type="hidden" name="command" value="ShowShopProductsCommand">
-                <input type="submit" value="Show all products">
-            </form>
-
-            <form method="post" action="FrontController">
                 <input type="hidden" name="command" value="ShowProductsCommand">
                 <input type="submit" value="Manage products">
             </form>

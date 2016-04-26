@@ -51,6 +51,10 @@
                     <input type="text" name="cost" value="${element.cost}"><br>
                     Discount:<br>
                     <input type="text" name="discount" value="${element.discount}"><br>
+                    Developer:<br>
+                    <input type="text" name="developer" value="${element.developer}"><br>
+                    Platform:<br>
+                    <input type="text" name="platform" value="${element.platform}"><br>
                     Category:<br>
                     <input type="text" name="category" value="${element.category}"><br>
                     Quantity:<br>

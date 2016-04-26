@@ -29,7 +29,8 @@ public class AddProductCommand extends FrontCommand {
             product.setReleaseDate(formatter.parse(date));
             product.setLogo(request.getParameter("logo"));
             product.setDiscount(Integer.parseInt(request.getParameter("discount")));
-            
+            product.setDeveloper(request.getParameter("developer"));
+            product.setPlatform(request.getParameter("platform"));
             if (request.getParameter("available").equals("True")) {
                 product.setAvailable(1);
             } else {

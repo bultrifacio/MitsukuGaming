@@ -30,6 +30,9 @@
         <br>
         <div class="container">
             <h1>Manage Products</h1>
+            <form action="addProduct.jsp" method="post">
+                <input type="submit" value="Add Product">
+            </form>
             <table class="table-striped table table-hover">
                 <tr>
                     <th>ID</th>

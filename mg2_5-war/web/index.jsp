@@ -58,7 +58,13 @@
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPopularProductsCommand">
-                                <input type="submit" value="Show Popular Products" class="btn-link2">
+                                <input type="submit" value="Popular Games" class="btn-link2">
+                            </form>
+                        </div>
+                        <div class="list-group-item">
+                            <form method="post" action="FrontController">
+                                <input type="hidden" name="command" value="ShowShopProductsCommand">
+                                <input type="submit" value="Games" class="btn-link2">
                             </form>
                         </div>
 
@@ -117,14 +123,6 @@
                                 <input type="submit" class="btn btn-primary" value="Search by category">
                             </form>
                         </div>
-
-                        <!--
-                        <form action="FrontController">
-                        <input type="hidden" name="command" value="showMyWishListCommand">
-                        <input type="submit" value="My Wishlist" class="list-group-item">
-                        </form>
-                        -->
-
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -181,11 +179,11 @@
                                     </h4><div>
                                         <table class="tabledetails">
                                             <tr>
-                                                <td><%=element.getDescription()%></td>
+                                                <td><%=element.getDeveloper()%></td>
                                                 <td align="right">
-                                                    <% 
+                                                    <%
                                                         BigDecimal price = new BigDecimal(Float.toString(element.getPrice()));
-                                                        price = price.setScale(2, BigDecimal.ROUND_HALF_UP);       
+                                                        price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
                                                     %>
                                                     <strong><%=price%> 
                                                         <%
@@ -193,7 +191,7 @@
                                                         %>
                                                         &euro;
                                                         <%
-                                                            } else if (currency.equals("Dollar")) {
+                                                        } else if (currency.equals("Dollar")) {
                                                         %>
                                                         $
                                                         <%
