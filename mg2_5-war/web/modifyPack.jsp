@@ -97,7 +97,7 @@
                             <input type="hidden" name="category" value="${element.category}">
 
                             <input type="hidden" name="command" value="AddProductPackCommand">
-                            <input type="submit"  value="Remove">
+                            <input type="submit"  value="Add">
                         </form>
                     </td>
                 </tr>
