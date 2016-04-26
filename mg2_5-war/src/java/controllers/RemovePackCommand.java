@@ -23,14 +23,14 @@ public class RemovePackCommand extends FrontCommand {
             PackContentFacade contentFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/PackContentFacade");
             
             List<PackContent> contentList = contentFacade.findAll();
+            
             for (PackContent Product : contentList) {
                 if (Product.getPackId() == Integer.parseInt(request.getParameter("id"))){
                     PackContent contentDelete = contentFacade.find((Product.getId()));
-                    contentList.remove(contentDelete);
+                    contentFacade.remove(contentDelete);
                 }               
             }
             
-            /*
             String actualId = request.getParameter("id");
             if (actualId != null) {
                 PackDetails packDelete = packFacade.find(Integer.parseInt(actualId));
@@ -38,7 +38,7 @@ public class RemovePackCommand extends FrontCommand {
                     packFacade.remove(packDelete);
                 }
             }
-            */
+            
             List<PackDetails> packList = packFacade.findAll();
             request.setAttribute("packList", packList);
             forward("/managePacks.jsp");

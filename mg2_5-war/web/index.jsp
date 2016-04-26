@@ -40,7 +40,7 @@
 
     </head>
 
-    <body>
+    <body background="img/main/fc3.jpg">
         <%@include file="header.jsp" %>
         <br>
         <br>
