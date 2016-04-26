@@ -40,6 +40,8 @@
                         <td>${element.available}</td>
                         <td>${element.price}</td>
                         <td>${element.cost}</td>
+                        <td>${element.developer}</td>
+                        <td>${element.platform}</td>
                         <td>${element.discount}</td>
                         <td>
                             <form action="FrontController" method="post">

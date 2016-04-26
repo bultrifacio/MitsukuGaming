@@ -25,14 +25,13 @@
             <table class="table-striped table table-hover">
                 <c:forEach var="element" items="${productList}">
                     <tr>
-                        <td>${element.productId}</td>
                         <td>${element.name}</td>
                         <td>${element.category}</td>
-                        <td>${element.quantity}</td>
                         <td>${element.available}</td>
                         <td>${element.price}</td>
-                        <td>${element.cost}</td>
                         <td>${element.discount}</td>
+                        <td>${element.developer}</td>
+                        <td>${element.platform}</td>
                         <td>
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="id" value="${element.productId}">

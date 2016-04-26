@@ -25,15 +25,12 @@ public class ShowMyPurchaseHistoryCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
             Users loggedUser = (Users) session.getAttribute("loggedUser");
-            
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
-            
             List<Product> productList = productFacade.findAll();
             List<Product> productListFiltre = new ArrayList<>();
             List<Sales> salesList = salesFacade.findAll();
             List<Sales> userSales = new ArrayList<>();
-            
             for (Sales sale : salesList) {
                 if (sale.getUserId() == loggedUser.getUserId()) {
                     userSales.add(sale);
@@ -46,7 +43,6 @@ public class ShowMyPurchaseHistoryCommand extends FrontCommand {
                     }
                 }
             }
-
             request.setAttribute("productListFiltre", productListFiltre);
             forward("/showMyPurchaseHistory.jsp");
         } catch (ServletException | IOException | NamingException ex) {

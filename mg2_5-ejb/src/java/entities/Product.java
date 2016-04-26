@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package entities;
 
 import java.io.Serializable;
@@ -18,6 +24,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ *
+ * @author juancarlos
+ */
 @Entity
 @Table(name = "PRODUCT")
 @XmlRootElement
@@ -32,8 +42,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findByCost", query = "SELECT p FROM Product p WHERE p.cost = :cost"),
     @NamedQuery(name = "Product.findByCategory", query = "SELECT p FROM Product p WHERE p.category = :category"),
     @NamedQuery(name = "Product.findByLogo", query = "SELECT p FROM Product p WHERE p.logo = :logo"),
-    @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount")})
+    @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount"),
+    @NamedQuery(name = "Product.findByPlatform", query = "SELECT p FROM Product p WHERE p.platform = :platform"),
+    @NamedQuery(name = "Product.findByDeveloper", query = "SELECT p FROM Product p WHERE p.developer = :developer")})
 public class Product implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,6 +94,16 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "DISCOUNT")
     private int discount;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "PLATFORM")
+    private String platform;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "DEVELOPER")
+    private String developer;
 
     public Product() {
     }
@@ -89,13 +112,15 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public Product(Integer productId, String name, int quantity, Date releaseDate, int available, int discount) {
+    public Product(Integer productId, String name, int quantity, Date releaseDate, int available, int discount, String platform, String developer) {
         this.productId = productId;
         this.name = name;
         this.quantity = quantity;
         this.releaseDate = releaseDate;
         this.available = available;
         this.discount = discount;
+        this.platform = platform;
+        this.developer = developer;
     }
 
     public Integer getProductId() {
@@ -194,6 +219,22 @@ public class Product implements Serializable {
         this.discount = discount;
     }
 
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(String developer) {
+        this.developer = developer;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -218,5 +259,5 @@ public class Product implements Serializable {
     public String toString() {
         return "entities.Product[ productId=" + productId + " ]";
     }
-    
+
 }
