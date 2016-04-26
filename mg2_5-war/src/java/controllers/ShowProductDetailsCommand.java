@@ -3,15 +3,18 @@ package controllers;
 import controller.ImageFacade;
 import controller.ProductFacade;
 import controller.ReviewFacade;
+import controller.ReviewScoreFacade;
 import controller.UsersFacade;
 import controller.VideoFacade;
 import entities.Image;
 import entities.Product;
 import entities.Review;
+import entities.ReviewScore;
 import entities.Users;
 import entities.Video;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +30,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
+            Product product = productFacade.find(Integer.parseInt(request.getParameter("productId")));
             String currency = (String) session.getAttribute("currency");
             if (!currency.equals("Euro")) {
                 if (currency.equals("Dollar")) {
@@ -39,7 +42,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
             List<Product> Productcategory = productFacade.findAll();
             List<Product> productList = new ArrayList<>();
             for (Product product2 : Productcategory) {
-                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("id")))) {
+                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
                     productList.add(product2);
                 }
             }
@@ -49,10 +52,32 @@ public class ShowProductDetailsCommand extends FrontCommand {
             List<Review> productReviews = new ArrayList<>();
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> reviewOwners = new ArrayList<>();
+            
+            ReviewScoreFacade reviewScoreFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewScoreFacade");
+            List<ReviewScore> reviewScoreList = reviewScoreFacade.findAll();
+            
+            int score = 0;
+            HashMap<Integer, Integer> scores = new HashMap<>();
+            HashMap<Integer, Boolean> allowedToRate = new HashMap<>();
             for (Review review : reviewList) {
-                if (review.getProductId() == Integer.parseInt(request.getParameter("id"))) {
+                if (review.getProductId() == Integer.parseInt(request.getParameter("productId"))) {
                     productReviews.add(review);
                     reviewOwners.add(usersFacade.find(review.getUserId()));
+                    for (ReviewScore reviewScore : reviewScoreList) {
+                        if (review.getReviewId() == reviewScore.getReviewId()) {
+                            score += reviewScore.getScore();
+                        ////////////////////////////////////////////////////
+                        Users loggedUser = (Users) session.getAttribute("loggedUser");
+                        if (loggedUser != null) {
+                            if (loggedUser.getUserId() == reviewScore.getUserId()) {
+                                allowedToRate.put(review.getReviewId(), false);
+                            } else {
+                                allowedToRate.put(review.getReviewId(), true);
+                            }
+                        }////////////////////////////////////////////////////
+                        }
+                    }
+                    scores.put(review.getReviewId(), score);
                 }
             }
             ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
@@ -80,6 +105,8 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("productList", productList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
+            request.setAttribute("scores", scores);
+            request.setAttribute("allowedToRate", allowedToRate);
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);

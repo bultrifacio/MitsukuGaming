@@ -169,7 +169,7 @@
                                 <div class="caption">
                                     <h4>
                                         <form method="post" action="FrontController">
-                                            <input type="hidden" name="id" value="<%=element.getProductId()%>">
+                                            <input type="hidden" name="productId" value="<%=element.getProductId()%>">
                                             <input type="hidden" name="category" value="<%=element.getCategory()%>">
                                             <input type="hidden" name="price" value="<%=element.getPrice()%>">
 
