@@ -26,7 +26,6 @@ public class BanToCommand extends FrontCommand{
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> userlist = usersFacade.findAll();
             
-            //(Integer userId, String name, String email, String password, int state)
             for (Users listuser : userlist) {
                 if (nametoban.equalsIgnoreCase(listuser.getName())){ 
                     Users user = new Users(listuser.getUserId(),listuser.getName(),listuser.getEmail(),listuser.getPassword(),0);
