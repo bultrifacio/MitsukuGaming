@@ -22,7 +22,6 @@ public class LoginCommand extends FrontCommand {
             List<Users> userList = usersFacade.findAll();
             boolean wrongEmail = false;
             session.setAttribute("wrongEmail", 0);
-            System.out.println("La password encriptada es: " + PasswordEncryption.encrypt(request.getParameter("password")));
             for (Users user : userList) {
                 if (user.getEmail().equals(request.getParameter("email"))) {
                     if (user.getPassword().equals(PasswordEncryption.encrypt(request.getParameter("password")))) {
