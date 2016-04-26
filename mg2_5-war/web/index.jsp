@@ -55,6 +55,7 @@
         <br>
         <br>
         <!-- Page Content -->
+        <img class="banner" alt="offer" src="img/banners/banner-ark.jpg" style="float:right"/>
         <div class="container">
 
             <div class="row">
@@ -133,7 +134,10 @@
                                 <input type="submit" class="btn btn-primary" value="Search by category">
                             </form>
                         </div>
+
                     </div>
+
+
                 </div>
                 <div class="col-md-9">
                     <div class="row carousel-holder">
@@ -298,7 +302,9 @@
                     </ul>
                 </center>
             </div>
+
         </div>
+        
     </body>
     <!-- /.container -->
     <div class="container">
