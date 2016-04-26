@@ -41,16 +41,27 @@
     </head>
 
     <body background="img/main/fc3.jpg">
-        <%@include file="header.jsp" %>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.6";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <%@include file="header.jsp" %>
         <br>
         <br>
         <!-- Page Content -->
+        <img class="banner" alt="offer" src="img/banners/banner-ark.jpg" style="float:right"/>
         <div class="container">
 
             <div class="row">
 
                 <div class="col-md-3">
-                    <p class="lead">Shop Name</p>
+                    <p class="lead"><font color="white">Mitsuku Gaming</font></p>
                     <div class="list-group">
                         <a href="register.jsp" class="list-group-item">Register</a>
                         <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
@@ -123,7 +134,10 @@
                                 <input type="submit" class="btn btn-primary" value="Search by category">
                             </form>
                         </div>
+
                     </div>
+
+
                 </div>
                 <div class="col-md-9">
                     <div class="row carousel-holder">
@@ -288,18 +302,32 @@
                     </ul>
                 </center>
             </div>
+
         </div>
+        
     </body>
     <!-- /.container -->
     <div class="container">
         <hr>
-        <!-- Footer -->
+        <!-- Footer    -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</p>
+                    <div class="fb-like" data-href="https://www.facebook.com/MitsukuGaming-640506082765520/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                    <a href="https://twitter.com/MitsukuGaming" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @MitsukuGaming</a>
+                    <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = p + '://platform.twitter.com/widgets.js';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, 'script', 'twitter-wjs');</script>
+                    <p><font color="white">Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</font></p>
                 </div>
             </div>
+
         </footer>
     </div>
 </html>

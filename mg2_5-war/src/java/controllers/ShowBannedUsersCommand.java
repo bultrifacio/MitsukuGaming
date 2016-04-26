@@ -29,7 +29,6 @@ public class ShowBannedUsersCommand extends FrontCommand {
     public void process() {
         try {
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
-            //String nametoban = request.getParameter("nametoban");
             List<Users> usersList = usersFacade.findAll();
             List<Users> bannedUsersList = new ArrayList();
             
@@ -38,7 +37,6 @@ public class ShowBannedUsersCommand extends FrontCommand {
                     bannedUsersList.add(listuser);
                 }
             }
-            //System.out.println(bannedUsersList.get(0).getName());
             request.setAttribute("bannedUsersList", bannedUsersList);
             forward("/bannedUsers.jsp");
             

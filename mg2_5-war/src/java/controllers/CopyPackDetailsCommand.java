@@ -14,14 +14,18 @@ import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 public class CopyPackDetailsCommand extends FrontCommand {
 
     @Override
     public void process() {
         try {
+            HttpSession session = request.getSession(true);
+            
             PackDetailsFacade packFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/PackDetailsFacade");
             PackDetails pack = packFacade.find(Integer.parseInt(request.getParameter("id")));
+            session.setAttribute("idPack", request.getParameter("id"));
             List<PackDetails> packList = new ArrayList<>();
             packList.add(pack);
             

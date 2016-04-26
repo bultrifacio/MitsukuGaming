@@ -51,9 +51,57 @@
                     Discount:<br>
                     <input type="text" name="discount" value="${element.discount}"><br>
                     <input type="hidden" name="command" value="ModifyPackCommand">
-                    <input type="submit"  value="Save changes">
+                    <input type="submit"  value="Save changes">           
                 </c:forEach>
             </fieldset>
         </form>
+        <table class="table-striped table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+
+            <c:forEach var="element" items="${itemsInPack}">
+                <tr>
+                    <td>${element.name}</td>
+                    <td>${element.category}</td>
+                    <td>
+                        <form action="FrontController" method="post">
+                            <input type="hidden" name="id" value="${element.productId}">
+                            <input type="hidden" name="name" value="${element.name}">
+                            <input type="hidden" name="category" value="${element.category}">
+
+                            <input type="hidden" name="command" value="RemoveProductPackCommand">
+                            <input type="submit"  value="Remove">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+        <table class="table-striped table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+
+            <c:forEach var="element" items="${itemsNotInPack}">
+                <tr>
+                    <td>${element.name}</td>
+                    <td>${element.category}</td>
+                    <td>
+                        <form action="FrontController" method="post">
+                            <input type="hidden" name="id" value="${element.productId}">
+                            <input type="hidden" name="name" value="${element.name}">
+                            <input type="hidden" name="category" value="${element.category}">
+
+                            <input type="hidden" name="command" value="AddProductPackCommand">
+                            <input type="submit"  value="Add">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>
