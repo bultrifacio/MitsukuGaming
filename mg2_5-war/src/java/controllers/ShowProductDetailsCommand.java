@@ -4,10 +4,12 @@ import controller.ImageFacade;
 import controller.ProductFacade;
 import controller.ReviewFacade;
 import controller.UsersFacade;
+import controller.VideoFacade;
 import entities.Image;
 import entities.Product;
 import entities.Review;
 import entities.Users;
+import entities.Video;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,9 +63,19 @@ public class ShowProductDetailsCommand extends FrontCommand {
                     imageFilter.add(image);
                 }
             }
+            VideoFacade videoFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/VideoFacade");
+            List<Video> videoList = videoFacade.findAll();
+            List<Video> videoFilter = new ArrayList<>();
+            for (Video video : videoList) {
+                if (video.getProductId() == product.getProductId()){
+                    videoFilter.add(video);
+                }
+            }
+
             request.setAttribute("name", product.getName());
             request.setAttribute("available", product.getAvailable());
             request.setAttribute("imageFilter", imageFilter);
+            request.setAttribute("videoFilter", videoFilter);
             request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("productList", productList);
             request.setAttribute("productReviews", productReviews);

@@ -1,3 +1,4 @@
+<%@page import="entities.Video"%>
 <%@page import="entities.Review"%>
 <%@page import="entities.Users"%>
 <%@page import="java.util.Date"%>
@@ -47,6 +48,8 @@
                                 int index = 0;
                                 boolean active = true;
                             %>
+                            <li data-target="img/games/${element.path}" data-slide-to="<%= index%>" class="active"></li>
+
                             <c:forEach var="element" items="${imageFilter}">
                                 <% 
                                     if (active) { 
@@ -64,7 +67,19 @@
                             </c:forEach>
                         </ol>
                         <div class="carousel-inner">
-                            <% active = true; %>
+                            <%
+                                List<Video> videoList = (List<Video>) request.getAttribute("videoFilter");
+                                for (Video video : videoList) {   
+                            %>
+                            <div class="item">
+                                <center>
+                                <iframe width="850" height="312" src=<%=video.getUrl()%> frameborder="1" allowfullscreen=""></iframe>
+                                </center>
+                            </div>
+                            <% 
+                                }
+                                active = true;
+                            %>
                             <c:forEach var="element" items="${imageFilter}">
                                 <% 
                                     if (active) {
