@@ -130,7 +130,10 @@
                     }
                 %>
                 <br>
-
+                <b>Developer:</b><br>
+                ${element.developer}<br>
+                <b>Platform:</b><br>
+                ${element.platform}<br>
                 <%
                     String category = (String) request.getAttribute("category");
                 %>
