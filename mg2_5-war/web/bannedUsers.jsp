@@ -15,11 +15,28 @@
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
             </form><br><br>
+            <table border="1" class="table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
             <c:forEach var="element" items="${bannedUsersList}">
-                <b>User:</b><br>
-                ${element.name}<br>
-                <br><br>
+                <tr>
+                    <td>${element.name}</td>
+                    <td>
+                          <form action="FrontController" method="post">
+                              <input type="hidden" name="id" value="${element.userId}">
+                              <input type="hidden" name="name" value="${element.name}">
+                              <input type="hidden" name="email" value="${element.email}">
+                              <input type="hidden" name="password" value="${element.password}">
+                              <input type="hidden" name="password" value="${element.state}">
+                              <input type="submit" value="Unban user">
+                              <input type="hidden" name="command" value="UnbanCommand">
+                          </form>
+                    </td>
+                </tr>
             </c:forEach>
+            </table>
             <form action="FrontController" method="post">
                 <input type="text" name="nametoban" placeholder="Ban to :">
                 <input type="hidden" name="command" value="BanToCommand">
