@@ -239,13 +239,13 @@
                                 %>
                                 <strong>Rate by users:</strong> <%=scores.get(review.getReviewId())%><br><br>
                                 <%
-                                    /*
+                                    
                                     if (loggedUser != null) {
                                         if (loggedUser.getUserId() != review.getUserId()) {
                                             if (allowedToRate.get(review.getReviewId())) { 
-                                    */
+                                    
                                 %>
-                                <!--
+                                
                                 <form action="FrontController" method="post">
                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                     <input type="hidden" name="productId" value="<%=review.getProductId()%>">
@@ -262,14 +262,14 @@
                                     <input type="submit" value="Vote Down">
                                     <input type="hidden" name="command" value="RateReviewCommand">
                                 </form>
-                                -->
+                                
                                 <br><br>
                                 <%
-                                /*
+                                
                                                 }
                                             }
                                         }
-                                */
+                                
                                     }
                                 %>
                             </fieldset>
