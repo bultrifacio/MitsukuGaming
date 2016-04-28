@@ -28,7 +28,7 @@ public class ShowCartCommand extends FrontCommand{
             ArrayList<Product> myCart = cart.getContents();
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             List<Product> productList = productFacade.findAll();
-            List<Product> selectedProducts = new ArrayList<>();
+            ArrayList<Product> selectedProducts = new ArrayList<>();
             
             String currency = (String) session.getAttribute("currency");
             //if (!currency.equals("Euro")) {
@@ -37,11 +37,13 @@ public class ShowCartCommand extends FrontCommand{
                         if (Objects.equals(cartProduct.getProductId(), product.getProductId())) {
                             if (currency.equals("Dollar")) {
                                 product.setPrice((float) 1.11970 * product.getPrice());
-                                selectedProducts.add(product);
                             }
+                            selectedProducts.add(product);
                         }
                     }
                 }
+                cart.setContents(selectedProducts);
+                session.setAttribute("Cart", cart);
             //}
             /*String currency = (String) session.getAttribute("currency");
             if (!currency.equals("Euro")) {

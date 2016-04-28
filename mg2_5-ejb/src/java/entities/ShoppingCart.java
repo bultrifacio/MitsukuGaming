@@ -36,6 +36,11 @@ public class ShoppingCart implements ShoppingCartLocal {
         return Cart;
     }
     
+    @Override
+    public void setContents(ArrayList<Product> list) {
+        Cart = list;
+    }
+    
     @Remove
     public void remove(){
         Cart = null;

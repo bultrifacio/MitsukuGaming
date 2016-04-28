@@ -22,6 +22,8 @@ public interface ShoppingCartLocal {
 
     public ArrayList<Product> getContents();
 
+    public void setContents (ArrayList<Product> list);
+    
     public void remove();
     
     public float getTotal();
