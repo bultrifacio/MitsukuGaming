@@ -81,7 +81,7 @@ public class GetInitialDataCommand extends FrontCommand {
 
     }
 
-    private HashMap<String, Integer> countStars(List<Product> convertedList) throws NamingException {
+    public static HashMap<String, Integer> countStars(List<Product> convertedList) throws NamingException {
         HashMap<String, Integer> starsMap = new HashMap<>();
 
         ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");

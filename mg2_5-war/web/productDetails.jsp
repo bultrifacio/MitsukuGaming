@@ -202,7 +202,7 @@
                                 %>
                                 <form action="FrontController" method="post">
                                     <%
-                                        out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("id") + "\">");
+                                        out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("productId") + "\">");
                                         out.println("<input type=\"hidden\" name=\"category\" value=\"" + (String) category + "\">");
                                     %>
                                     <input type="text" name="text" placeholder="Write your review here">
@@ -311,6 +311,7 @@
                                 <input type="submit" value="Add to my wishlist">
                                 <input type="hidden" name="command" value="AddToWishListCommand">
                             </form>
+                            <br><br>
                             <%
                                 }
                             %>
