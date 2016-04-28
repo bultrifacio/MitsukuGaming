@@ -6,6 +6,7 @@ import entities.Product;
 import entities.Review;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +57,8 @@ public class SearchByPriceCommand extends FrontCommand {
                 }
                 session.setAttribute("pages", pages);
                 request.setAttribute("productList", matchesList);
+                HashMap<String, Integer> starsMap = GetInitialDataCommand.countStars(matchesList);
+                session.setAttribute("stars", starsMap);
                 request.setAttribute("reviewList", reviewList);
                 session.setAttribute("wrongRange", 0);
             } else {
@@ -64,7 +67,6 @@ public class SearchByPriceCommand extends FrontCommand {
                 request.setAttribute("reviewList", new ArrayList<Review>());
                 session.setAttribute("wrongRange", 1);
             }
-            
             forward("/index.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(SearchByPriceCommand.class.getName()).log(Level.SEVERE, null, ex);
