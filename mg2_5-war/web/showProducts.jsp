@@ -32,25 +32,20 @@
             <h1>Show Products</h1>
             <table class="table-striped table table-hover">
                 <c:forEach var="element" items="${productList}">
-                    <tr>
-                        <td>${element.productId}</td>
-                        <td>${element.name}</td>
-                        <td>${element.category}</td>
-                        <td>${element.quantity}</td>
-                        <td>${element.available}</td>
-                        <td>${element.price}</td>
-                        <td>${element.cost}</td>
-                        <td>${element.developer}</td>
-                        <td>${element.platform}</td>
-                        <td>${element.discount}</td>
-                        <td>
-                            <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
-                                <input type="hidden" name="command" value="AddToCartCommand">
-                                <input type="submit" value="Add to cart">
-                            </form>
-                        </td>
-                    </tr>
+                      <tr>
+                            <td><img src="img/logos/${element.logo}" alt=""></td>
+                            <td>${element.name}</td>
+                            <td>${element.price}</td>
+                            <td>${element.platform}</td>
+                            <td>${element.discount}</td>
+                            <td>
+                                <form action="FrontController" method="post">
+                                    <input type="hidden" name="id" value="${element.productId}">
+                                    <input type="hidden" name="command" value="AddToCartCommand">
+                                    <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
+                                </form>
+                            </td>
+                        </tr>
                 </c:forEach>
             </table>
         </div>
