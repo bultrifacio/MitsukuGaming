@@ -52,10 +52,10 @@ public class ShowProductDetailsCommand extends FrontCommand {
             List<Review> productReviews = new ArrayList<>();
             UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> reviewOwners = new ArrayList<>();
-            
+
             ReviewScoreFacade reviewScoreFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewScoreFacade");
             List<ReviewScore> reviewScoreList = reviewScoreFacade.findAll();
-            
+
             int score = 0;
             HashMap<Integer, Integer> scores = new HashMap<>();
             HashMap<Integer, Boolean> allowedToRate = new HashMap<>();
@@ -66,15 +66,15 @@ public class ShowProductDetailsCommand extends FrontCommand {
                     for (ReviewScore reviewScore : reviewScoreList) {
                         if (review.getReviewId() == reviewScore.getReviewId()) {
                             score += reviewScore.getScore();
-                        ////////////////////////////////////////////////////
-                        Users loggedUser = (Users) session.getAttribute("loggedUser");
-                        if (loggedUser != null) {
-                            if (loggedUser.getUserId() == reviewScore.getUserId()) {
-                                allowedToRate.put(review.getReviewId(), false);
-                            } else {
-                                allowedToRate.put(review.getReviewId(), true);
-                            }
-                        }////////////////////////////////////////////////////
+                            ////////////////////////////////////////////////////
+                            Users loggedUser = (Users) session.getAttribute("loggedUser");
+                            if (loggedUser != null) {
+                                if (loggedUser.getUserId() == reviewScore.getUserId()) {
+                                    allowedToRate.put(review.getReviewId(), false);
+                                } else {
+                                    allowedToRate.put(review.getReviewId(), true);
+                                }
+                            }////////////////////////////////////////////////////
                         }
                     }
                     scores.put(review.getReviewId(), score);
@@ -84,7 +84,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
             List<Image> imageList = imageFacade.findAll();
             List<Image> imageFilter = new ArrayList<>();
             for (Image image : imageList) {
-                if (image.getProductId() == product.getProductId()){
+                if (image.getProductId() == product.getProductId()) {
                     imageFilter.add(image);
                 }
             }
@@ -92,7 +92,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
             List<Video> videoList = videoFacade.findAll();
             List<Video> videoFilter = new ArrayList<>();
             for (Video video : videoList) {
-                if (video.getProductId() == product.getProductId()){
+                if (video.getProductId() == product.getProductId()) {
                     videoFilter.add(video);
                 }
             }
