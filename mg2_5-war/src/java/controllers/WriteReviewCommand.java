@@ -22,6 +22,7 @@ public class WriteReviewCommand extends FrontCommand {
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             Date date = new Date();
             Users loggedUser = (Users) session.getAttribute("loggedUser");
+            String aux = request.getParameter("productId");
             Review review = new Review(
                     new Random().nextInt(1000000), 
                     Integer.parseInt(request.getParameter("productId")), 
