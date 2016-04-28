@@ -13,6 +13,14 @@
             <h1>WishList</h1>
             <div class="container">
                 <table class="table-striped table table-hover">
+                    <tr>
+                        <th>Logo</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Platform</th>
+                        <th>Discount</th>
+                        <th>Buy!!</th>
+                    </tr>
                     <c:forEach var="element" items="${productListWished}">
                         <tr>
                             <td><img src="img/logos/${element.logo}" alt=""></td>
