@@ -181,6 +181,14 @@
                                             <td>
                                                 <form action="FrontController" method="post">
                                                     <input type="hidden" name="productId" value="${attribute.productId}">
+                                                    <!-- Borrar estos inputs -->
+                                                    <input type="hidden" name="name" value="${attribute.name}">
+                                                    <input type="hidden" name="quantity" value="${attribute.quantity}">
+                                                    <input type="hidden" name="available" value="${attribute.available}">
+                                                    <input type="hidden" name="category" value="${attribute.category}">
+                                                    <input type="hidden" name="price" value="${attribute.price}">
+                                                    <input type="hidden" name="cost" value="${attribute.cost}">
+                                                    
                                                     <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                                     <input type="image" src="img/logos/${attribute.logo}" height="40%" width="40%" alt="" />
                                                 </form>
