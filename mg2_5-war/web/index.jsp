@@ -217,7 +217,7 @@
                                                         %>
                                                         &euro;
                                                         <%
-                                                        } else if (currency.equals("Dollar")) {
+                                                            } else if (currency.equals("Dollar")) {
                                                         %>
                                                         $
                                                         <%

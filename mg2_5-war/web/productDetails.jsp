@@ -176,32 +176,47 @@
                                             <th>Platform</th>
                                             <th>Discount</th>
                                         </tr>
-                                    <c:forEach var="attribute" items="${productList}">
-                                        <tr>
-                                            <td>
-                                                <form action="FrontController" method="post">
-                                                    <input type="hidden" name="productId" value="${attribute.productId}">
-                                                    <!-- Borrar estos inputs -->
-                                                    <input type="hidden" name="name" value="${attribute.name}">
-                                                    <input type="hidden" name="quantity" value="${attribute.quantity}">
-                                                    <input type="hidden" name="available" value="${attribute.available}">
-                                                    <input type="hidden" name="category" value="${attribute.category}">
-                                                    <input type="hidden" name="price" value="${attribute.price}">
-                                                    <input type="hidden" name="cost" value="${attribute.cost}">
-                                                    
-                                                    <input type="hidden" name="command" value="ShowProductDetailsCommand">
-                                                    <input type="image" src="img/logos/${attribute.logo}" height="40%" width="40%" alt="" />
-                                                </form>
-                                            </td>
-                                            <td>${attribute.price}</td>
-                                            <td>${attribute.category}</td>
-                                            <td>${attribute.platform}</td>
-                                            <td>${attribute.discount}</td>
-                                         </tr>
-                                     </c:forEach>
+                                        <c:forEach var="attribute" items="${productList}">
+                                            <tr>
+                                                <td width="20%">
+                                                    <form action="FrontController" method="post">
+                                                        <input type="hidden" name="productId" value="${attribute.productId}">
+                                                        <!-- Borrar estos inputs -->
+                                                        <input type="hidden" name="name" value="${attribute.name}">
+                                                        <input type="hidden" name="quantity" value="${attribute.quantity}">
+                                                        <input type="hidden" name="available" value="${attribute.available}">
+                                                        <input type="hidden" name="category" value="${attribute.category}">
+                                                        <input type="hidden" name="price" value="${attribute.price}">
+                                                        <input type="hidden" name="cost" value="${attribute.cost}">
+
+                                                        <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                                        <input type="image" src="img/logos/${attribute.logo}" height="100%" width="100%" alt="" />
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    ${attribute.price} 
+                                                    <%
+                                                        if (currency.equals("Euro")) {
+                                                    %>
+                                                    &euro;
+                                                    <%
+                                                    } else {
+                                                        if (currency.equals("Dollar")) {
+                                                    %>
+                                                    $
+                                                    <%
+                                                            }
+                                                        }
+                                                    %>
+                                                </td>
+                                                <td>${attribute.category}</td>
+                                                <td>${attribute.platform}</td>
+                                                <td>${attribute.discount}</td>
+                                            </tr>
+                                        </c:forEach>
                                     </table>
                             </fieldset>
-                            
+
                             <fieldset>
                                 <legend>User reviews</legend>
                                 <%
@@ -247,13 +262,13 @@
                                 %>
                                 <strong>Rate by users:</strong> <%=scores.get(review.getReviewId())%><br><br>
                                 <%
-                                    
+
                                     if (loggedUser != null) {
                                         if (loggedUser.getUserId() != review.getUserId()) {
-                                            if (allowedToRate.get(review.getReviewId())) { 
-                                    
+                                            if (allowedToRate.get(review.getReviewId())) {
+
                                 %>
-                                
+
                                 <form action="FrontController" method="post">
                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                     <input type="hidden" name="productId" value="<%=review.getProductId()%>">
@@ -270,14 +285,14 @@
                                     <input type="submit" value="Vote Down">
                                     <input type="hidden" name="command" value="RateReviewCommand">
                                 </form>
-                                
+
                                 <br><br>
                                 <%
-                                
+
                                                 }
                                             }
                                         }
-                                
+
                                     }
                                 %>
                             </fieldset>
