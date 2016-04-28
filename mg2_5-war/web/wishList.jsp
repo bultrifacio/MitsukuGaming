@@ -23,7 +23,7 @@
                     </tr>
                     <c:forEach var="element" items="${productListWished}">
                         <tr>
-                            <td><img src="img/logos/${element.logo}" alt=""></td>
+                            <td><img src="img/logos/${element.logo}" height="50%" width="50%" alt=""></td>
                             <td>${element.name}</td>
                             <td>${element.price}</td>
                             <td>${element.platform}</td>

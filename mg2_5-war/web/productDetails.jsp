@@ -179,7 +179,7 @@
                                         </tr>
                                     <c:forEach var="attribute" items="${productList}">
                                         <tr>
-                                            <td><img src="img/logos/${attribute.logo}" alt=""></td>
+                                            <td><img src="img/logos/${attribute.logo}" height="40%" width="40%" alt=""></td>
                                             <td>${attribute.price}</td>
                                             <td>${attribute.category}</td>
                                             <td>${attribute.platform}</td>
