@@ -167,23 +167,33 @@
 
                             <fieldset>
                                 <b>Similar Games:</b><br>
-                                <c:forEach var="attribute" items="${productList}">
-                                    <tr>
-                                        <td><img src="img/logos/${attribute.logo}" alt=""></td>
-                                        <td>${attribute.price}</td>
-                                        <td>${attribute.category}</td>
-                                        <td>${attribute.platform}</td>
-                                        <td>${attribute.discount}</td>
-                                        <td>
-                                            <form action="FrontController" method="post">
-                                                <input type="hidden" name="productId" value="${attribute.productId}">
-                                                <input type="submit" value="Visit Product">
-                                                <input type="hidden" name="command" value="ShowProductDetailsCommand">
-                                            </form>
-                                            <br>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                <div class="container">
+                                    <table class="table-striped table table-hover">
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Price</th>
+                                            <th>Category</th>
+                                            <th>Platform</th>
+                                            <th>Discount</th>
+                                            <th>Visit</th>
+                                        </tr>
+                                    <c:forEach var="attribute" items="${productList}">
+                                        <tr>
+                                            <td><img src="img/logos/${attribute.logo}" alt=""></td>
+                                            <td>${attribute.price}</td>
+                                            <td>${attribute.category}</td>
+                                            <td>${attribute.platform}</td>
+                                            <td>${attribute.discount}</td>
+                                            <td>
+                                                <form action="FrontController" method="post">
+                                                    <input type="hidden" name="productId" value="${attribute.productId}">
+                                                    <input type="submit" value="Visit Product">
+                                                    <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                                </form>
+                                            </td>
+                                         </tr>
+                                     </c:forEach>
+                                    </table>
                             </fieldset>
                             
                             <fieldset>
