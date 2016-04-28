@@ -150,13 +150,25 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img class="slide-image" src="img/main/ds3.jpg" alt="">
+                                        <form action="FrontController" method="post">
+                                            <input type="hidden" name="productId" value="6">
+                                            <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                            <input class="slide-image" type="image" src="img/main/ds3.jpg" alt="" />
+                                        </form>
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="img/main/theDivision.jpg" alt="">
+                                        <form action="FrontController" method="post">
+                                            <input type="hidden" name="productId" value="1">
+                                            <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                            <input class="slide-image" type="image" src="img/main/theDivision.jpg" alt="" />
+                                        </form>
                                     </div>
                                     <div class="item">
-                                        <img class="slide-image" src="img/main/fallout-4.png" alt="">
+                                        <form action="FrontController" method="post">
+                                            <input type="hidden" name="productId" value="3">
+                                            <input type="hidden" name="command" value="ShowProductDetailsCommand">
+                                            <input class="slide-image" type="image" src="img/main/fallout-4.png" alt="" />
+                                        </form>
                                     </div>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

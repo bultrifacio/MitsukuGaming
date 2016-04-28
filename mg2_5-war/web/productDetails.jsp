@@ -231,7 +231,7 @@
                                 %>
                                 <strong>Rate by users:</strong> <%=scores.get(review.getReviewId())%><br><br>
                                 <%
-                                    /* 
+                                    /*
                                     if (loggedUser != null) {
                                         if (loggedUser.getUserId() != review.getUserId()) {
                                             if (allowedToRate.get(review.getReviewId())) { 
