@@ -107,16 +107,15 @@
                                 </div>
                             </div>
                         </div>
-
-                        <c:forEach var="element" items="${selectedProduct}">
-                            <!-- <b>ID:</b><br>
-                            ${element.productId}<br> -->
+                        <%
+                        Product product = (Product) request.getAttribute("product");
+                        %>
                             <b>Product name:</b><br>
-                            ${element.name}<br>
+                            <%=product.getName()%><br>
                             <b>Category:</b><br>
-                            ${element.category}<br>
+                            <%=product.getCategory()%><br>
                             <b>Price:</b><br>
-                            ${element.price}
+                            <%=product.getPrice()%>
                             <%
                                 if (currency.equals("Euro")) {
                             %>
@@ -132,16 +131,12 @@
                             %>
                             <br>
                             <b>Developer:</b><br>
-                            ${element.developer}<br>
+                            <%=product.getDeveloper()%><br>
                             <b>Platform:</b><br>
-                            ${element.platform}<br>
+                            <%=product.getPlatform()%><br>
                             <%
-                                //String category = (String) request.getAttribute("category");
-                                Product product = (Product) request.getAttribute("product");
-                                String category = product.getCategory();
                                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                                List<Product> list = (List<Product>) request.getAttribute("selectedProduct");
-                                Date releaseDate = list.get(0).getReleaseDate();
+                                Date releaseDate = product.getReleaseDate();
                                 String formatedDate = df.format(releaseDate);
                             %>
 
@@ -149,20 +144,20 @@
                             <%= formatedDate%><br>
                             <b>Available:</b><br>
                             <%
-                                //if ((int) request.getAttribute("available") == 1) {
+                                if (product.getAvailable() == 1) {
                             %>
                             Yes
                             <%
-                            //} else if ((int) request.getAttribute("available") == 0) {
+                                } else if (product.getAvailable() == 0) {
                             %>
                             No
-                            <%                //}
+                            <%
+                                }
                             %>
-                            <!-- ${element.available} --><br>
                             <b>Description:</b><br>
-                            ${element.description}<br>
+                            <%=product.getDescription()%><br>
                             <b>Synopsis:</b><br>
-                            ${element.synopsis}<br><br>
+                            <%=product.getSynopsis()%><br><br>
 
                             <fieldset>
                                 <b>Similar Games:</b><br>
@@ -175,7 +170,7 @@
                                             <th>Platform</th>
                                             <th>Discount</th>
                                         </tr>
-                                        <c:forEach var="attribute" items="${productList}">
+                                        <c:forEach var="attribute" items="${similarProductList}">
                                             <tr>
                                                 <td width="20%">
                                                     <form action="FrontController" method="post">
@@ -223,17 +218,15 @@
                                     if (loggedUser != null) {
                                 %>
                                 <form action="FrontController" method="post">
-                                    <%
-                                        out.println("<input type=\"hidden\" name=\"productId\" value=\"" + request.getParameter("productId") + "\">");
-                                        out.println("<input type=\"hidden\" name=\"category\" value=\"" + (String) category + "\">");
-                                    %>
+                                    <input type="hidden" name="productId" value="<%=request.getParameter("productId")%>">
+                                    <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                     <input type="text" name="text" placeholder="Write your review here">
                                     <input type="text" name="score" placeholder="Your score">
-
+                                    
                                     <c:forEach var="attribute" items="${productList}">
                                         <input type="hidden" name="price" value="${attribute.price}">
                                     </c:forEach>
-
+                                    
                                     <input type="hidden" name="command" value="WriteReviewCommand">
                                     <input type="submit" value="Write a review">
                                 </form>
@@ -299,7 +292,7 @@
                                                         %>
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                        <input type="hidden" name="category" value="<%=category%>">
+                                                        <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                         <input type="hidden" name="score" value="1">
                                                         <input type="image" src="img/icons/like-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
@@ -309,7 +302,7 @@
                                                     <form action="FrontController" method="post">
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                        <input type="hidden" name="category" value="<%=category%>">
+                                                        <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                         <input type="hidden" name="score" value="-1">
                                                         <input type="image" src="img/icons/dislike-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
@@ -319,7 +312,7 @@
                                                 <form action="FrontController" method="post">
                                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                     <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                    <input type="hidden" name="category" value="<%=category%>">
+                                                    <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                     <input type="textarea" name="reason" placeholder="Write the reason here.">
                                                     <input type="submit" class="btn-link error-text" value="Report this review">
                                                     <input type="hidden" name="command" value="ReportReviewCommand">
@@ -355,7 +348,7 @@
                                 -->
                                 
                                 <% 
-                                    Integer quantity = (Integer) request.getAttribute("quantity");
+                                    Integer quantity = product.getQuantity();
                                     if (quantity == 0){
                                 %>
                                     <h1> PRUEBA CORRECTA </h1>
@@ -395,8 +388,6 @@
                                 }
                             }
                             %>
-
-                        </c:forEach>
                     </div>
                 </div>
             </fieldset>

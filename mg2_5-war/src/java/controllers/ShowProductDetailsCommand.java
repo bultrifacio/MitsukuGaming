@@ -106,14 +106,14 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("videoFilter", videoFilter);
             request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("product", product);
-            request.setAttribute("productList", similarProductList);
+            request.setAttribute("similarProductList", similarProductList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
             request.setAttribute("scores", scores);
             request.setAttribute("allowedToRate", allowedToRate);
             request.setAttribute("productId", request.getAttribute("productId"));
-            request.setAttribute("category", request.getAttribute("category"));
-            request.setAttribute("price", request.getAttribute("price"));
+            //request.setAttribute("category", request.getAttribute("category"));
+            //request.setAttribute("price", request.getAttribute("price"));
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
