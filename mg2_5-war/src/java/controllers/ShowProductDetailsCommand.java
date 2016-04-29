@@ -39,11 +39,11 @@ public class ShowProductDetailsCommand extends FrontCommand {
             }
             List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
-            List<Product> productCategory = productFacade.findAll();
-            List<Product> productList = new ArrayList<>();
-            for (Product product2 : productCategory) {
-                if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
-                    productList.add(product2);
+            List<Product> productList = productFacade.findAll();
+            List<Product> similarProductList = new ArrayList<>();
+            for (Product actualProduct : productList) {
+                if (actualProduct.getCategory().equals(request.getParameter("category")) && (actualProduct.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
+                    similarProductList.add(actualProduct);
                 }
             }
             request.setAttribute("category", request.getAttribute("category"));
@@ -103,7 +103,8 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("imageFilter", imageFilter);
             request.setAttribute("videoFilter", videoFilter);
             request.setAttribute("selectedProduct", selectedProduct);
-            request.setAttribute("productList", productList);
+            request.setAttribute("product", product);
+            request.setAttribute("productList", similarProductList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
             request.setAttribute("scores", scores);

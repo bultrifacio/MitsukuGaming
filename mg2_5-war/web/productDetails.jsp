@@ -136,10 +136,9 @@
                             <b>Platform:</b><br>
                             ${element.platform}<br>
                             <%
-                                String category = (String) request.getAttribute("category");
-                            %>
-
-                            <%
+                                //String category = (String) request.getAttribute("category");
+                                Product product = (Product) request.getAttribute("product");
+                                String category = product.getCategory();
                                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                                 List<Product> list = (List<Product>) request.getAttribute("selectedProduct");
                                 Date releaseDate = list.get(0).getReleaseDate();
