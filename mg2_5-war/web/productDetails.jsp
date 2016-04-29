@@ -305,9 +305,19 @@
                                 <input type="hidden" name="available" value="${element.available}">
                                 <input type="hidden" name="price" value="${element.price}">
                                 <input type="hidden" name="cost" value="${element.cost}">
-                                
                                 <input type="submit" value="Add to cart">
                                 -->
+                                
+                                <% 
+                                    Integer quantity = (Integer) request.getAttribute("quantity");
+                                    if (quantity == 0){
+                                %>
+                                    <h1> PRUEBA CORRECTA </h1>
+                                <%
+                                    }else{
+                                    
+                                %>
+                                
                                 <input type="hidden" name="command" value="AddToCartCommand">
                                 <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                             </form>
@@ -337,6 +347,7 @@
                             <br><br>
                             <%
                                 }
+                            }
                             %>
 
                         </c:forEach>
