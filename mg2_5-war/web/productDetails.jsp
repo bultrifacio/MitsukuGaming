@@ -195,8 +195,7 @@
                                                 </td>
                                                 <td>
                                                     ${attribute.price} 
-                                                    <%
-                                                        if (currency.equals("Euro")) {
+                                                    <%                                                        if (currency.equals("Euro")) {
                                                     %>
                                                     &euro;
                                                     <%
@@ -240,59 +239,93 @@
                                 </form>
                                 <br>
                                 <%
+                                } else {
+                                %>
+                                <div class="error-text">Login to write you own review and to rate other users reviews.</div><br>
+                                <%
                                     }
 
                                     List<Review> productReviews = (List<Review>) request.getAttribute("productReviews");
                                     List<Users> reviewOwners = (List<Users>) request.getAttribute("reviewOwners");
                                     for (Review review : productReviews) {
-                                        out.println("<b>Name: </b>");
-                                        for (Users owner : reviewOwners) {
-                                            if (owner.getUserId() == review.getUserId()) {
-                                                out.println(owner.getName() + "<br>");
-                                                break;
-                                            }
-                                        }
-                                        Date reviewDate = review.getDate();
-                                        String reviewDateText = df.format(reviewDate);
-                                        out.println("<b>Date: </b>" + reviewDateText + "<br>");
-                                        out.println("<b>Text: </b>" + review.getText() + "<br>");
-                                        out.println("<b>Score: </b>" + review.getScore() + "<br>");
-                                        HashMap<Integer, Integer> scores = (HashMap<Integer, Integer>) request.getAttribute("scores");
-                                        HashMap<Integer, Boolean> allowedToRate = (HashMap<Integer, Boolean>) request.getAttribute("allowedToRate");
                                 %>
-                                <strong>Rate by users:</strong> <%=scores.get(review.getReviewId())%><br><br>
-                                <%
-
-                                    if (loggedUser != null) {
-                                        if (loggedUser.getUserId() != review.getUserId()) {
-                                            if (allowedToRate.get(review.getReviewId())) {
-
-                                %>
-
-                                <form action="FrontController" method="post">
-                                    <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
-                                    <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                    <input type="hidden" name="score" value="1">
-
-                                    <input type="submit" value="Vote Up">
-                                    <input type="hidden" name="command" value="RateReviewCommand">
-                                </form>
-                                <form action="FrontController" method="post">
-                                    <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
-                                    <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                    <input type="hidden" name="score" value="-1">
-
-                                    <input type="submit" value="Vote Down">
-                                    <input type="hidden" name="command" value="RateReviewCommand">
-                                </form>
-
-                                <br><br>
-                                <%
-
+                                <div class="row">
+                                    <div class="col-sm-4 col-lg-4 col-md-4">
+                                        <div class="thumbnail">
+                                            <%
+                                                out.println("<b>Name: </b>");
+                                                for (Users owner : reviewOwners) {
+                                                    if (owner.getUserId() == review.getUserId()) {
+                                                        out.println(owner.getName() + "<br>");
+                                                        break;
+                                                    }
                                                 }
-                                            }
-                                        }
+                                                Date reviewDate = review.getDate();
+                                                String reviewDateText = df.format(reviewDate);
+                                                out.println("<b>Date: </b>" + reviewDateText + "<br>");
+                                                out.println("<b>Text: </b>" + review.getText() + "<br>");
+                                                out.println("<b>Score: </b>" + review.getScore() + "<br>");
+                                                HashMap<Integer, Integer> scores = (HashMap<Integer, Integer>) request.getAttribute("scores");
+                                                HashMap<Integer, Boolean> allowedToRate = (HashMap<Integer, Boolean>) request.getAttribute("allowedToRate");
+                                            %>
+                                            <b>Rate by users:</b> 
+                                            <%
+                                                // Show text red or green depending on score
+                                                if (scores.get(review.getReviewId()) < 0) {
+                                                %>
+                                                <div class="error-text"><%=scores.get(review.getReviewId())%></div><br>
+                                                <%
+                                                } else {
+                                                    if (scores.get(review.getReviewId()) > 0) {
+                                                %>
+                                                <div class="success-text"><%=scores.get(review.getReviewId())%></div><br>
+                                                <%
+                                                    } else {
+                                                        %>
+                                                    <div><%=scores.get(review.getReviewId())%></div><br>
+                                                <%
+                                                    }
+                                                }
+                                                if (loggedUser != null) {
+                                                    if (loggedUser.getUserId() != review.getUserId()) {
+                                                        if (allowedToRate.get(review.getReviewId())) {
 
+                                            %>
+                                            <div class="container" style="width: 100%;">
+                                                <div class="theme-table-image col-sm-6">
+                                                    <form action="FrontController" method="post">
+                                                        <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
+                                                        <input type="hidden" name="productId" value="<%=review.getProductId()%>">
+                                                        <input type="hidden" name="score" value="1">
+                                                        <input type="image" src="img/icons/like-icon.png" alt="" />
+                                                        <input type="hidden" name="command" value="RateReviewCommand">
+                                                    </form>
+                                                </div>
+                                                <div class="theme-table-image col-sm-6">
+                                                    <form action="FrontController" method="post">
+                                                        <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
+                                                        <input type="hidden" name="productId" value="<%=review.getProductId()%>">
+                                                        <input type="hidden" name="score" value="-1">
+                                                        <input type="image" src="img/icons/dislike-icon.png" alt="" />
+                                                        <input type="hidden" name="command" value="RateReviewCommand">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <%
+
+                                            } else {
+                                            %>
+                                            <div class="error-text">You cannot vote this review.</div><br>
+                                            <%
+                                                        }
+                                                    }
+                                                }
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
                                     }
                                 %>
                             </fieldset>

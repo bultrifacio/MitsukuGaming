@@ -62,6 +62,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
             for (Review review : reviewList) {
                 if (review.getProductId() == Integer.parseInt(request.getParameter("productId"))) {
                     productReviews.add(review);
+                    allowedToRate.put(review.getReviewId(), true);
                     reviewOwners.add(usersFacade.find(review.getUserId()));
                     for (ReviewScore reviewScore : reviewScoreList) {
                         if (review.getReviewId() == reviewScore.getReviewId()) {
