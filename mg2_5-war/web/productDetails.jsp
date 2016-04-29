@@ -195,7 +195,8 @@
                                                 </td>
                                                 <td>
                                                     ${attribute.price} 
-                                                    <%                                                        if (currency.equals("Euro")) {
+                                                    <%
+                                                        if (currency.equals("Euro")) {
                                                     %>
                                                     &euro;
                                                     <%
@@ -299,6 +300,7 @@
                                                         %>
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
+                                                        <input type="hidden" name="category" value="<%=category%>">
                                                         <input type="hidden" name="score" value="1">
                                                         <input type="image" src="img/icons/like-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
@@ -308,14 +310,17 @@
                                                     <form action="FrontController" method="post">
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
+                                                        <input type="hidden" name="category" value="<%=category%>">
                                                         <input type="hidden" name="score" value="-1">
                                                         <input type="image" src="img/icons/dislike-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
                                                     </form>
                                                 </div>
+                                                <br>
                                                 <form action="FrontController" method="post">
                                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                     <input type="hidden" name="productId" value="<%=review.getProductId()%>">
+                                                    <input type="hidden" name="category" value="<%=category%>">
                                                     <input type="textarea" name="reason" placeholder="Write the reason here.">
                                                     <input type="submit" class="btn-link error-text" value="Report this review">
                                                     <input type="hidden" name="command" value="ReportReviewCommand">

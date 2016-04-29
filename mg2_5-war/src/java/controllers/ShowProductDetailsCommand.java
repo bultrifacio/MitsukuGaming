@@ -39,9 +39,9 @@ public class ShowProductDetailsCommand extends FrontCommand {
             }
             List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
-            List<Product> Productcategory = productFacade.findAll();
+            List<Product> productCategory = productFacade.findAll();
             List<Product> productList = new ArrayList<>();
-            for (Product product2 : Productcategory) {
+            for (Product product2 : productCategory) {
                 if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
                     productList.add(product2);
                 }
@@ -67,7 +67,6 @@ public class ShowProductDetailsCommand extends FrontCommand {
                     for (ReviewScore reviewScore : reviewScoreList) {
                         if (review.getReviewId() == reviewScore.getReviewId()) {
                             score += reviewScore.getScore();
-                            ////////////////////////////////////////////////////
                             Users loggedUser = (Users) session.getAttribute("loggedUser");
                             if (loggedUser != null) {
                                 if (loggedUser.getUserId() == reviewScore.getUserId()) {
@@ -75,7 +74,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
                                 } else {
                                     allowedToRate.put(review.getReviewId(), true);
                                 }
-                            }////////////////////////////////////////////////////
+                            }
                         }
                     }
                     scores.put(review.getReviewId(), score);
