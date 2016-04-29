@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -31,26 +32,16 @@ public class ShowProductDetailsCommand extends FrontCommand {
             HttpSession session = request.getSession(true);
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             Product product = productFacade.find(Integer.parseInt(request.getParameter("productId")));
-            String currency = (String) session.getAttribute("currency");
-            if (!currency.equals("Euro")) {
-                if (currency.equals("Dollar")) {
-                    product.setPrice((float) 1.11970 * product.getPrice());
-                }
-            }
-            List<Product> selectedProduct = new ArrayList<>();
-            selectedProduct.add(product);
-            List<Product> productList = productFacade.findAll();
-            List<Product> similarProductList = new ArrayList<>();
-            for (Product actualProduct : productList) {
-                if (actualProduct.getCategory().equals(request.getParameter("category")) && (actualProduct.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
-                    similarProductList.add(actualProduct);
-                }
-            }
-            request.setAttribute("category", request.getAttribute("category"));
+
+            product = calculateCurrency(product);
+
+            List<Product> similarProductList = showSimilarProduct(product);
+
+            /////////////////////////////////////
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
+            UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Review> reviewList = reviewFacade.findAll();
             List<Review> productReviews = new ArrayList<>();
-            UsersFacade usersFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/UsersFacade");
             List<Users> reviewOwners = new ArrayList<>();
 
             ReviewScoreFacade reviewScoreFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewScoreFacade");
@@ -81,42 +72,70 @@ public class ShowProductDetailsCommand extends FrontCommand {
                     score = 0;
                 }
             }
-            ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
-            List<Image> imageList = imageFacade.findAll();
-            List<Image> imageFilter = new ArrayList<>();
-            for (Image image : imageList) {
-                if (image.getProductId() == product.getProductId()) {
-                    imageFilter.add(image);
-                }
-            }
-            VideoFacade videoFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/VideoFacade");
-            List<Video> videoList = videoFacade.findAll();
-            List<Video> videoFilter = new ArrayList<>();
-            for (Video video : videoList) {
-                if (video.getProductId() == product.getProductId()) {
-                    videoFilter.add(video);
-                }
-            }
-
-            request.setAttribute("quantity", product.getQuantity());
+            ////////////////////////////////////
             
-            request.setAttribute("name", product.getName());
-            request.setAttribute("available", product.getAvailable());
+            List<Image> imageFilter = showImages(product);
+
+            List<Video> videoFilter = showVideos(product);
+
             request.setAttribute("imageFilter", imageFilter);
             request.setAttribute("videoFilter", videoFilter);
-            request.setAttribute("selectedProduct", selectedProduct);
             request.setAttribute("product", product);
             request.setAttribute("similarProductList", similarProductList);
             request.setAttribute("productReviews", productReviews);
             request.setAttribute("reviewOwners", reviewOwners);
             request.setAttribute("scores", scores);
             request.setAttribute("allowedToRate", allowedToRate);
-            request.setAttribute("productId", request.getAttribute("productId"));
-            //request.setAttribute("category", request.getAttribute("category"));
-            //request.setAttribute("price", request.getAttribute("price"));
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private Product calculateCurrency(Product product) {
+        HttpSession session = request.getSession(true);
+        String currency = (String) session.getAttribute("currency");
+        if (!currency.equals("Euro")) {
+            if (currency.equals("Dollar")) {
+                product.setPrice((float) 1.11970 * product.getPrice());
+            }
+        }
+        return product;
+    }
+
+    private List<Product> showSimilarProduct(Product product) throws NamingException {
+        ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
+        List<Product> productList = productFacade.findAll();
+        List<Product> similarProductList = new ArrayList<>();
+        for (Product actualProduct : productList) {
+            if (actualProduct.getCategory().equals(product.getCategory()) && (!Objects.equals(actualProduct.getProductId(), product.getProductId()))) {
+                similarProductList.add(actualProduct);
+            }
+        }
+        return similarProductList;
+    }
+
+    private List<Image> showImages(Product product) throws NamingException {
+        ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
+        List<Image> imageList = imageFacade.findAll();
+        List<Image> imageFilter = new ArrayList<>();
+        for (Image image : imageList) {
+            if (image.getProductId() == product.getProductId()) {
+                imageFilter.add(image);
+            }
+        }
+        return imageFilter;
+    }
+
+    private List<Video> showVideos(Product product) throws NamingException {
+        VideoFacade videoFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/VideoFacade");
+        List<Video> videoList = videoFacade.findAll();
+        List<Video> videoFilter = new ArrayList<>();
+        for (Video video : videoList) {
+            if (video.getProductId() == product.getProductId()) {
+                videoFilter.add(video);
+            }
+        }
+        return videoFilter;
     }
 }

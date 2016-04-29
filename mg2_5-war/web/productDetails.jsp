@@ -12,7 +12,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buy <%= request.getAttribute("name")%> on Mitsuku Gaming</title>
+        <%
+            Product product = (Product) request.getAttribute("product");
+        %>
+        <title>Buy <%=product.getName()%> on Mitsuku Gaming</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -35,7 +38,8 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <h1>Buy <%= request.getAttribute("name")%></h1>
+            
+            <h1>Buy <%=product.getName()%></h1>
             <br><br>
             <fieldset>
                 <legend>Product information:</legend>
@@ -107,9 +111,6 @@
                                 </div>
                             </div>
                         </div>
-                        <%
-                        Product product = (Product) request.getAttribute("product");
-                        %>
                             <b>Product name:</b><br>
                             <%=product.getName()%><br>
                             <b>Category:</b><br>
@@ -141,7 +142,7 @@
                             %>
 
                             <b>Release date:</b><br>
-                            <%= formatedDate%><br>
+                            <%=formatedDate%><br>
                             <b>Available:</b><br>
                             <%
                                 if (product.getAvailable() == 1) {
@@ -154,6 +155,7 @@
                             <%
                                 }
                             %>
+                            <br>
                             <b>Description:</b><br>
                             <%=product.getDescription()%><br>
                             <b>Synopsis:</b><br>
@@ -218,15 +220,10 @@
                                     if (loggedUser != null) {
                                 %>
                                 <form action="FrontController" method="post">
-                                    <input type="hidden" name="productId" value="<%=request.getParameter("productId")%>">
+                                    <input type="hidden" name="productId" value="<%=product.getProductId()%>">
                                     <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                     <input type="text" name="text" placeholder="Write your review here">
                                     <input type="text" name="score" placeholder="Your score">
-                                    
-                                    <c:forEach var="attribute" items="${productList}">
-                                        <input type="hidden" name="price" value="${attribute.price}">
-                                    </c:forEach>
-                                    
                                     <input type="hidden" name="command" value="WriteReviewCommand">
                                     <input type="submit" value="Write a review">
                                 </form>

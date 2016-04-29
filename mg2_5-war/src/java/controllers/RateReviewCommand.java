@@ -27,10 +27,10 @@ public class RateReviewCommand extends FrontCommand {
             ReviewScore reviewScore = new ReviewScore(0, review.getReviewId(), loggedUser.getUserId(), score);
             reviewScoreFacade.create(reviewScore);
             
-            request.setAttribute("productId", request.getAttribute("productId"));
-            request.setAttribute("category", request.getAttribute("category"));
-            request.setAttribute("price", request.getAttribute("price"));
-            forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
+            //request.setAttribute("productId", request.getAttribute("productId"));
+            //request.setAttribute("category", request.getAttribute("category"));
+            //request.setAttribute("price", request.getAttribute("price"));
+            forward("/FrontController?productId=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(RateReviewCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
