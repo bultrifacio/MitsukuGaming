@@ -11,10 +11,6 @@
         <br>
         <div class="container">
             <h1>Banned Users List</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
             <table border="1" class="table-striped">
                 <tr>
                     <th>Name</th>

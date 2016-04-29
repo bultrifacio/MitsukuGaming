@@ -46,6 +46,7 @@ and open the template in the editor.
                     Price: <input name="price" type="text"><br>
                     Cost: <input name="cost" type="text"><br>
                     Developer: <input name="developer" type="text"><br>
+                    Discount: <input name="discount" type="text"><br>
                     Platform: <input name="platform" type="text"><br>
                     Description:<br>
                     <textarea name="description" rows="10" cols="20"></textarea><br>
