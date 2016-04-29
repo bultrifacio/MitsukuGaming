@@ -315,6 +315,7 @@
                                                 </div>
                                                 <form action="FrontController" method="post">
                                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
+                                                    <input type="hidden" name="productId" value="<%=review.getProductId()%>">
                                                     <input type="textarea" name="reason" placeholder="Write the reason here.">
                                                     <input type="submit" class="btn-link error-text" value="Report this review">
                                                     <input type="hidden" name="command" value="ReportReviewCommand">

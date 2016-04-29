@@ -28,7 +28,6 @@ public class ReportReviewCommand extends FrontCommand {
             reportFacade.create(report);
             
             request.setAttribute("productId", request.getAttribute("productId"));
-            request.setAttribute("id", request.getAttribute("productId"));
             request.setAttribute("category", request.getAttribute("category"));
             request.setAttribute("price", request.getAttribute("price"));
             forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
