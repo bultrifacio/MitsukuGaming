@@ -272,18 +272,18 @@
                                             <%
                                                 // Show text red or green depending on score
                                                 if (scores.get(review.getReviewId()) < 0) {
-                                                %>
-                                                <div class="error-text"><%=scores.get(review.getReviewId())%></div><br>
-                                                <%
-                                                } else {
-                                                    if (scores.get(review.getReviewId()) > 0) {
-                                                %>
-                                                <div class="success-text"><%=scores.get(review.getReviewId())%></div><br>
-                                                <%
-                                                    } else {
-                                                        %>
-                                                    <div><%=scores.get(review.getReviewId())%></div><br>
-                                                <%
+                                            %>
+                                            <div class="error-text"><%=scores.get(review.getReviewId())%></div><br>
+                                            <%
+                                            } else {
+                                                if (scores.get(review.getReviewId()) > 0) {
+                                            %>
+                                            <div class="success-text"><%=scores.get(review.getReviewId())%></div><br>
+                                            <%
+                                            } else {
+                                            %>
+                                            <div><%=scores.get(review.getReviewId())%></div><br>
+                                            <%
                                                     }
                                                 }
                                                 if (loggedUser != null) {
@@ -294,6 +294,9 @@
                                             <div class="container" style="width: 100%;">
                                                 <div class="theme-table-image col-sm-6">
                                                     <form action="FrontController" method="post">
+                                                        <%
+                                                            int reviewId = review.getReviewId();
+                                                        %>
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
                                                         <input type="hidden" name="score" value="1">
@@ -313,7 +316,6 @@
                                             </div>
                                             <br>
                                             <%
-
                                             } else {
                                             %>
                                             <div class="error-text">You cannot vote this review.</div><br>

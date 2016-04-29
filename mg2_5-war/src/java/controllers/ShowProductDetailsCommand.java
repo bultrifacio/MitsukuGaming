@@ -79,6 +79,7 @@ public class ShowProductDetailsCommand extends FrontCommand {
                         }
                     }
                     scores.put(review.getReviewId(), score);
+                    score = 0;
                 }
             }
             ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
