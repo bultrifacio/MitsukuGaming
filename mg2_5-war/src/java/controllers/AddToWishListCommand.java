@@ -23,7 +23,7 @@ public class AddToWishListCommand extends FrontCommand {
             Users loggedUser = (Users) session.getAttribute("loggedUser");
             WishlistFacade wishList = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/WishlistFacade");
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
+            Product product = productFacade.find(Integer.parseInt(request.getParameter("productId")));
             Wishlist list = new Wishlist();
             list.setUserId(loggedUser.getUserId());
             list.setProductId(product.getProductId());

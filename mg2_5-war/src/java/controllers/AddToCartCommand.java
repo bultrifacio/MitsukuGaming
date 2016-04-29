@@ -31,7 +31,7 @@ public class AddToCartCommand extends FrontCommand {
                 cart = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ShoppingCart");
                 session.setAttribute("Cart", cart);
             }
-            cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("id"))));
+            cart.addProduct(productFacade.find(Integer.parseInt(request.getParameter("productId"))));
             request.setAttribute("cart", cart.getContents());
             forward("/FrontController?command=ShowCartCommand");
         } catch (NamingException | ServletException | IOException ex) {

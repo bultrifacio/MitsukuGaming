@@ -177,14 +177,6 @@
                                                 <td width="20%">
                                                     <form action="FrontController" method="post">
                                                         <input type="hidden" name="productId" value="${attribute.productId}">
-                                                        <!-- Borrar estos inputs -->
-                                                        <input type="hidden" name="name" value="${attribute.name}">
-                                                        <input type="hidden" name="quantity" value="${attribute.quantity}">
-                                                        <input type="hidden" name="available" value="${attribute.available}">
-                                                        <input type="hidden" name="category" value="${attribute.category}">
-                                                        <input type="hidden" name="price" value="${attribute.price}">
-                                                        <input type="hidden" name="cost" value="${attribute.cost}">
-
                                                         <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                                         <input type="image" src="img/logos/${attribute.logo}" height="100%" width="100%" alt="" />
                                                     </form>
@@ -229,12 +221,11 @@
                                 </form>
                                 <br>
                                 <%
-                                } else {
+                                    } else {
                                 %>
                                 <div class="error-text">Login to write you own review and to rate other users reviews.</div><br>
                                 <%
                                     }
-
                                     List<Review> productReviews = (List<Review>) request.getAttribute("productReviews");
                                     List<Users> reviewOwners = (List<Users>) request.getAttribute("reviewOwners");
                                     for (Review review : productReviews) {
@@ -279,7 +270,6 @@
                                                 if (loggedUser != null) {
                                                     if (loggedUser.getUserId() != review.getUserId()) {
                                                         if (allowedToRate.get(review.getReviewId())) {
-
                                             %>
                                             <div class="container" style="width: 100%;">
                                                 <div class="theme-table-image col-sm-6">
@@ -289,7 +279,6 @@
                                                         %>
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                        <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                         <input type="hidden" name="score" value="1">
                                                         <input type="image" src="img/icons/like-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
@@ -299,7 +288,6 @@
                                                     <form action="FrontController" method="post">
                                                         <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                         <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                        <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                         <input type="hidden" name="score" value="-1">
                                                         <input type="image" src="img/icons/dislike-icon.png" alt="" />
                                                         <input type="hidden" name="command" value="RateReviewCommand">
@@ -309,7 +297,6 @@
                                                 <form action="FrontController" method="post">
                                                     <input type="hidden" name="reviewId" value="<%=review.getReviewId()%>">
                                                     <input type="hidden" name="productId" value="<%=review.getProductId()%>">
-                                                    <input type="hidden" name="category" value="<%=product.getCategory()%>">
                                                     <input type="textarea" name="reason" placeholder="Write the reason here.">
                                                     <input type="submit" class="btn-link error-text" value="Report this review">
                                                     <input type="hidden" name="command" value="ReportReviewCommand">
@@ -334,34 +321,23 @@
                             </fieldset>
 
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
-                                <!--
-                                <input type="hidden" name="name" value="${element.name}">
-                                <input type="hidden" name="quantity" value="${element.quantity}">
-                                <input type="hidden" name="available" value="${element.available}">
-                                <input type="hidden" name="price" value="${element.price}">
-                                <input type="hidden" name="cost" value="${element.cost}">
-                                <input type="submit" value="Add to cart">
-                                -->
-                                
+                                <input type="hidden" name="productId" value="<%=product.getProductId()%>">
                                 <% 
                                     Integer quantity = product.getQuantity();
-                                    if (quantity == 0){
+                                    if (quantity == 0) {
                                 %>
                                     <h1> PRUEBA CORRECTA </h1>
                                 <%
-                                    }else{
+                                    } else {
                                     
                                 %>
-                                
                                 <input type="hidden" name="command" value="AddToCartCommand">
                                 <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                             </form>
 
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
-                                <input type="hidden" name="name" value="${element.name}">
-
+                                <input type="hidden" name="productId" value="<%=product.getProductId()%>">
+                                <input type="hidden" name="name" value="<%=product.getName()%>">
                                 <input type="submit" value="Stats">
                                 <input type="hidden" name="command" value="ShowProductStatsCommand">
                             </form>
@@ -370,13 +346,7 @@
                                 if (loggedUser != null) {
                             %>
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
-                                <input type="hidden" name="name" value="${element.name}">
-                                <input type="hidden" name="quantity" value="${element.quantity}">
-                                <input type="hidden" name="available" value="${element.available}">
-                                <input type="hidden" name="price" value="${element.price}">
-                                <input type="hidden" name="cost" value="${element.cost}">
-
+                                <input type="hidden" name="productId" value="<%=product.getProductId()%>">
                                 <input type="submit" value="Add to my wishlist">
                                 <input type="hidden" name="command" value="AddToWishListCommand">
                             </form>
@@ -390,4 +360,5 @@
             </fieldset>
         </div>
     </body>
+    <%@include file="footer.jsp" %>
 </html>

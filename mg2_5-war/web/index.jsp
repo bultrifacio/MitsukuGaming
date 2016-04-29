@@ -196,9 +196,6 @@
                                     <h4>
                                         <form method="post" action="FrontController">
                                             <input type="hidden" name="productId" value="<%=element.getProductId()%>">
-                                            <input type="hidden" name="category" value="<%=element.getCategory()%>">
-                                            <input type="hidden" name="price" value="<%=element.getPrice()%>">
-
                                             <input type="submit" value="<%=element.getName()%>" class="btn-link">
                                             <input type="hidden" name="command" value="ShowProductDetailsCommand">
                                         </form>
@@ -318,28 +315,5 @@
         </div>
 
     </body>
-    <!-- /.container -->
-    <div class="container">
-        <hr>
-        <!-- Footer    -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="fb-like" data-href="https://www.facebook.com/MitsukuGaming-640506082765520/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
-                    <a href="https://twitter.com/MitsukuGaming" class="twitter-follow-button" data-show-count="false">Follow @MitsukuGaming</a>
-                    <script>!function (d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                            if (!d.getElementById(id)) {
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src = p + '://platform.twitter.com/widgets.js';
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }
-                        }(document, 'script', 'twitter-wjs');</script>
-                    <p><font color="white">Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</font></p>
-                </div>
-            </div>
-
-        </footer>
-    </div>
+    <%@include file="footer.jsp" %>
 </html>

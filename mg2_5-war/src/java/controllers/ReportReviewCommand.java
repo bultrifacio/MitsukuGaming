@@ -26,10 +26,6 @@ public class ReportReviewCommand extends FrontCommand {
             Report report = new Report(0, review.getReviewId(), loggedUser.getUserId());
             report.setReason(request.getParameter("reason"));
             reportFacade.create(report);
-            
-            //request.setAttribute("productId", request.getAttribute("productId"));
-            //request.setAttribute("category", request.getAttribute("category"));
-            //request.setAttribute("price", request.getAttribute("price"));
             forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(ReportReviewCommand.class.getName()).log(Level.SEVERE, null, ex);

@@ -30,10 +30,7 @@ public class WriteReviewCommand extends FrontCommand {
                     Integer.parseInt(request.getParameter("score")),
                     loggedUser.getUserId(),
                     date);
-            //request.setAttribute(/*"id"*/"productId", request.getAttribute("productId"));
-            //request.setAttribute("category", request.getAttribute("category"));
             reviewFacade.create(review);
-            //request.setAttribute("price", request.getAttribute("price"));
             forward("/FrontController?id=" + request.getParameter("productId") + "&command=ShowProductDetailsCommand");
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(WriteReviewCommand.class.getName()).log(Level.SEVERE, null, ex);
