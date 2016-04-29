@@ -109,6 +109,9 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("reviewOwners", reviewOwners);
             request.setAttribute("scores", scores);
             request.setAttribute("allowedToRate", allowedToRate);
+            request.setAttribute("productId", request.getAttribute("productId"));
+            request.setAttribute("category", request.getAttribute("category"));
+            request.setAttribute("price", request.getAttribute("price"));
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);
