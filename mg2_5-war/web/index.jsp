@@ -217,7 +217,7 @@
                                                         %>
                                                         &euro;
                                                         <%
-                                                            } else if (currency.equals("Dollar")) {
+                                                        } else if (currency.equals("Dollar")) {
                                                         %>
                                                         $
                                                         <%
@@ -316,7 +316,7 @@
             </div>
 
         </div>
-        
+
     </body>
     <!-- /.container -->
     <div class="container">
@@ -326,7 +326,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="fb-like" data-href="https://www.facebook.com/MitsukuGaming-640506082765520/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
-                    <a href="https://twitter.com/MitsukuGaming" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @MitsukuGaming</a>
+                    <a href="https://twitter.com/MitsukuGaming" class="twitter-follow-button" data-show-count="false">Follow @MitsukuGaming</a>
                     <script>!function (d, s, id) {
                             var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
                             if (!d.getElementById(id)) {

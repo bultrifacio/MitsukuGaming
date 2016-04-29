@@ -39,9 +39,9 @@ public class ShowProductDetailsCommand extends FrontCommand {
             }
             List<Product> selectedProduct = new ArrayList<>();
             selectedProduct.add(product);
-            List<Product> Productcategory = productFacade.findAll();
+            List<Product> productCategory = productFacade.findAll();
             List<Product> productList = new ArrayList<>();
-            for (Product product2 : Productcategory) {
+            for (Product product2 : productCategory) {
                 if (product2.getCategory().equals(request.getParameter("category")) && (product2.getProductId() != Integer.parseInt(request.getParameter("productId")))) {
                     productList.add(product2);
                 }
@@ -62,11 +62,11 @@ public class ShowProductDetailsCommand extends FrontCommand {
             for (Review review : reviewList) {
                 if (review.getProductId() == Integer.parseInt(request.getParameter("productId"))) {
                     productReviews.add(review);
+                    allowedToRate.put(review.getReviewId(), true);
                     reviewOwners.add(usersFacade.find(review.getUserId()));
                     for (ReviewScore reviewScore : reviewScoreList) {
                         if (review.getReviewId() == reviewScore.getReviewId()) {
                             score += reviewScore.getScore();
-                            ////////////////////////////////////////////////////
                             Users loggedUser = (Users) session.getAttribute("loggedUser");
                             if (loggedUser != null) {
                                 if (loggedUser.getUserId() == reviewScore.getUserId()) {
@@ -74,10 +74,11 @@ public class ShowProductDetailsCommand extends FrontCommand {
                                 } else {
                                     allowedToRate.put(review.getReviewId(), true);
                                 }
-                            }////////////////////////////////////////////////////
+                            }
                         }
                     }
                     scores.put(review.getReviewId(), score);
+                    score = 0;
                 }
             }
             ImageFacade imageFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ImageFacade");
@@ -109,6 +110,9 @@ public class ShowProductDetailsCommand extends FrontCommand {
             request.setAttribute("reviewOwners", reviewOwners);
             request.setAttribute("scores", scores);
             request.setAttribute("allowedToRate", allowedToRate);
+            request.setAttribute("productId", request.getAttribute("productId"));
+            request.setAttribute("category", request.getAttribute("category"));
+            request.setAttribute("price", request.getAttribute("price"));
             forward("/productDetails.jsp");
         } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowProductDetailsCommand.class.getName()).log(Level.SEVERE, null, ex);

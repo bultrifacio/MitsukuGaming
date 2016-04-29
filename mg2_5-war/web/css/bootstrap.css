@@ -6823,6 +6823,10 @@ button.close {
     color:#bb020b;
 }
 
+.success-text {
+    color:#339933;
+}
+
 input#cart-icon {
     background: #ccc url('img/cart-icon.png') no-repeat top left;
     padding-left: 40px;
