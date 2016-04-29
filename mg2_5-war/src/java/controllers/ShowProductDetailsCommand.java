@@ -97,6 +97,8 @@ public class ShowProductDetailsCommand extends FrontCommand {
                 }
             }
 
+            request.setAttribute("quantity", product.getQuantity());
+            
             request.setAttribute("name", product.getName());
             request.setAttribute("available", product.getAvailable());
             request.setAttribute("imageFilter", imageFilter);
