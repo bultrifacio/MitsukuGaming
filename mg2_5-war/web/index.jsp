@@ -78,6 +78,13 @@
                                 <input type="submit" value="Games" class="btn-link2">
                             </form>
                         </div>
+                        
+                        <div class="list-group-item">
+                            <form method="post" action="FrontController">
+                                <input type="hidden" name="command" value="ShowPacksForAddToCart">
+                                <input type="submit" value="See Packs" class="btn-link2">
+                            </form>
+                        </div>
 
                         <%                            if (loggedUser != null) {
                         %>
