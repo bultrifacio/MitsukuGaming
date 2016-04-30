@@ -1,3 +1,5 @@
+<%@page import="entities.Product"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,22 +23,40 @@
                         <th>Discount</th>
                         <th>Buy!!</th>
                     </tr>
-                    <c:forEach var="element" items="${productListWished}">
+                    <%
+                       
+                            List<Product> productList = (List<Product>) request.getAttribute("productListWished");
+                            for (Product element : productList) {
+                    %>
                         <tr>
-                            <td><img src="img/logos/${element.logo}" height="50%" width="50%" alt=""></td>
-                            <td>${element.name}</td>
-                            <td>${element.price}</td>
-                            <td>${element.platform}</td>
-                            <td>${element.discount}</td>
+                            <td><img src="img/logos/<%=element.getLogo()%>" height="50%" width="50%" alt=""></td>
+                            <td><%=element.getName()%></td>
+                            <td><%=element.getPrice()%></td>
+                            <td><%=element.getPlatform()%></td>
+                            <td><%=element.getDiscount()%></td>
                             <td>
-                                <form action="FrontController" method="post">
-                                    <input type="hidden" name="id" value="${element.productId}">
-                                    <input type="hidden" name="command" value="AddToCartCommand">
-                                    <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
-                                </form>
+                                <%
+                                    if (element.getQuantity()!= 0){
+                                        
+                                %>
+                                        <form action="FrontController" method="post">
+                                            <input type="hidden" name="id" value="<%=element.getProductId()%>">
+                                            <input type="hidden" name="command" value="AddToCartCommand">
+                                            <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
+                                        </form>
+                                <%
+                                    }else{
+                                %>
+                                    <font color="red">No hay Stock</font>
+                                <%
+                                    }
+                                %>
+                                
                             </td>
                         </tr>
-                    </c:forEach>
+                      <%
+                          }
+                      %>    
                 </table>
             </div>
         </div>

@@ -66,7 +66,6 @@
                         Date releaseDate = list.get(0).getReleaseDate();
                         String formattedDate = df.format(releaseDate);
                     %>
-                    
                     <input type="text" name="release" value="<%= formattedDate %>"><br>
                     Available:<br>
                     <input type="text" name="available" value="${element.available}"><br>

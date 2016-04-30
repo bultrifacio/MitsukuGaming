@@ -326,7 +326,7 @@
                                     Integer quantity = product.getQuantity();
                                     if (quantity == 0) {
                                 %>
-                                    <h1> PRUEBA CORRECTA </h1>
+                                <font color="red">Lo sentimos no hay stock, por favor logueate y añadelo a tu lista de deseados para futuras notificaciones</font><br>
                                 <%
                                     } else {
                                     
@@ -334,7 +334,9 @@
                                 <input type="hidden" name="command" value="AddToCartCommand">
                                 <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                             </form>
-
+                                <%
+                                    }
+                                %>
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="productId" value="<%=product.getProductId()%>">
                                 <input type="hidden" name="name" value="<%=product.getName()%>">
@@ -353,7 +355,6 @@
                             <br><br>
                             <%
                                 }
-                            }
                             %>
                     </div>
                 </div>
