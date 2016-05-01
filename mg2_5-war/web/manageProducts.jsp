@@ -77,6 +77,11 @@
                                 <input type="submit" value="Remove Product">
                                 <input type="hidden" name="command" value="RemoveProductCommand">
                             </form>
+                            <form action="FrontController" method="post">
+                                <input type="hidden" name="productId" value="${element.productId}">
+                                <input type="submit" value="Show Stats">
+                                <input type="hidden" name="command" value="ShowProductStatsCommand">
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

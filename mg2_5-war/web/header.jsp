@@ -44,7 +44,7 @@
                             <a href="#">About</a>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a href="mailbox.jsp">Suggestions</a>
                         </li>
                         <li>
                             <a href="supportform.jsp">Contact</a>
@@ -52,8 +52,6 @@
                         <li>
                             <table>
                                 <tr>
-
-
                                     <%
                                         Users loggedUser = (Users) session.getAttribute("loggedUser");
                                         if (loggedUser != null) {

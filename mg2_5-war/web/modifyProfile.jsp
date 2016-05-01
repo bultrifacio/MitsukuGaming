@@ -7,13 +7,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modify User</title>
+        <title>Modify Profile</title>
     </head>
     <body>
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <h1>Modify User</h1>
+            <h1>Modify Profile</h1>
             <form action="FrontController" method="post">
                 <fieldset>
                     <legend>User information:</legend>
@@ -24,14 +24,12 @@
                     %>
 
                     <c:forEach var="element" items="${userInfo}">
-                        ID:<br>
-                        <input type="text" name="id" readonly="readonly" value="${element.userId}"><br>
                         User name:<br>
-                        <input type="text" name="name" value="${element.name}"><br>
+                        <input type="text" name="name" value="${element.name}" placeholder="Name"><br>
                         Email:<br>
-                        <input type="text" name="email" value="${element.email}"><br>
+                        <input type="text" name="email" value="${element.email}" placeholder="Email"><br>
                         Password:<br>
-                        <input type="text" name="password" value="${element.password}"><br>
+                        <input type="password" name="password" value="" placeholder="New Password"><br>
                         <input type="hidden" name="command" value="ModifyProfileCommand">
                         <input type="submit"  value="Save changes">
                     </c:forEach>

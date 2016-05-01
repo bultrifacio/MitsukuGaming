@@ -51,7 +51,7 @@
                         Email:<br>
                         <input type="text" name="email" value="${element.email}"><br>
                         Password:<br>
-                        <input type="text" name="password" value="${element.password}"><br>
+                        <input type="password" name="password" value="${element.password}"><br>
                         <input type="hidden" name="command" value="ModifyUsersCommand">
                         <input type="submit"  value="Save changes">
                     </c:forEach>

@@ -36,10 +36,6 @@
             <h1>Product Stats</h1>
             <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
             %>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command" value="ShowCartCommand">
-                <input type="submit" value="Show cart" class="btn-link">
-            </form><br><br>
             <fieldset>
                 <legend>Product: ${name}</legend>
                 <b>Number of sales: </b>

@@ -20,7 +20,7 @@ public class ShowProductStatsCommand extends FrontCommand {
     public void process() {
         try {
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            Product product = productFacade.find(Integer.parseInt(request.getParameter("id")));
+            Product product = productFacade.find(Integer.parseInt(request.getParameter("productId")));
             
             SalesFacade salesFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/SalesFacade");
             List<Sales> sales = salesFacade.findAll();
@@ -30,13 +30,13 @@ public class ShowProductStatsCommand extends FrontCommand {
             
             int salesProduct = 0; //Number of sales of this product.
             for (Sales sale : sales) {
-                if (( (int) sale.getProductId()) == Integer.parseInt(request.getParameter("id"))) {
+                if (( (int) sale.getProductId()) == Integer.parseInt(request.getParameter("productId"))) {
                     salesProduct++;
                 }
             }
             int wishProduct = 0; //Number of wish of this product.
             for (Wishlist wish : wishlist) {
-                if (( (int) wish.getProductId()) == Integer.parseInt(request.getParameter("id"))) {
+                if (( (int) wish.getProductId()) == Integer.parseInt(request.getParameter("productId"))) {
                     wishProduct++;
                 }
             }
@@ -46,16 +46,16 @@ public class ShowProductStatsCommand extends FrontCommand {
             int paypal = 0;
             int wire_transfer = 0;
             for (Sales sale : sales) {
-                if ((sale.getProductId() == Integer.parseInt(request.getParameter("id"))) && (sale.getMethod().equals("Visa"))) {
+                if ((sale.getProductId() == Integer.parseInt(request.getParameter("productId"))) && (sale.getMethod().equals("Visa"))) {
                     visa++;
                 }
-                if ((sale.getProductId() == Integer.parseInt(request.getParameter("id"))) && (sale.getMethod().equals("MasterCard"))) {
+                if ((sale.getProductId() == Integer.parseInt(request.getParameter("productId"))) && (sale.getMethod().equals("MasterCard"))) {
                     mastercard++;
                 }
-                if ((sale.getProductId() == Integer.parseInt(request.getParameter("id"))) && (sale.getMethod().equals("PayPal"))) {
+                if ((sale.getProductId() == Integer.parseInt(request.getParameter("productId"))) && (sale.getMethod().equals("PayPal"))) {
                     paypal++;
                 }
-                if ((sale.getProductId() == Integer.parseInt(request.getParameter("id"))) && (sale.getMethod().equals("Wire transfer"))) {
+                if ((sale.getProductId() == Integer.parseInt(request.getParameter("productId"))) && (sale.getMethod().equals("Wire transfer"))) {
                     wire_transfer++;
                 }
             }

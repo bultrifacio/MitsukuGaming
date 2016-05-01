@@ -24,15 +24,17 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
+        <br>
         <div class="container">
-        <form action="FrontController" method="post">
-            <fieldset>
-                <legend>Suggestions Mailbox:</legend>
-                <textarea name="suggestion" rows="10" cols="40"></textarea><br>
-                <input name="command" value="MailBoxCommand" type="hidden"><br>
-                    <input value="Send" type="submit"><br>
-            </fieldset>
-        </form>
+            <h1>Send us a suggestion</h1>
+            <form action="FrontController" method="post">
+                <fieldset>
+                    <legend>Suggestions Mailbox:</legend>
+                    <textarea name="suggestion" rows="10" cols="40" placeholder="Write your suggestions here."></textarea><br>
+                    <input type="hidden" name="command" value="MailBoxCommand"><br>
+                    <input type="submit" value="Send"><br>
+                </fieldset>
+            </form>
         </div>
     </body>
 </html>
