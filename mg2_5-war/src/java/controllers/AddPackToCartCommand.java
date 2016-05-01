@@ -52,7 +52,7 @@ public class AddPackToCartCommand extends FrontCommand {
             float discount = Float.parseFloat(request.getParameter("discount")) / 100;
             for (Product product : productListPack) {
                 product.setPrice(product.getPrice() - (discount * product.getPrice()));
-                //Modificamos el descuento del producto para NO aplicar dos tipos de descuento diferentes :
+                // Modificamos el descuento del producto para NO aplicar dos tipos de descuento diferentes :
                 // 1 del pack y otro el que lleve.
                 product.setDiscount(0);
                 cart.addProduct(product);
@@ -60,11 +60,7 @@ public class AddPackToCartCommand extends FrontCommand {
 
             forward("/showCart.jsp");
 
-        } catch (ServletException ex) {
-            Logger.getLogger(AddPackToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AddPackToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
+        } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(AddPackToCartCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
