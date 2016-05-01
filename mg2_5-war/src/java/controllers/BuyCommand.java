@@ -75,11 +75,12 @@ public class BuyCommand extends FrontCommand {
                 }
             }
             // CAMBIAR UBICACION FICHERO
-            try (PrintWriter writer = new PrintWriter("Ticket.txt", "UTF-8")) {
+            //try (PrintWriter writer = new PrintWriter("Ticket.txt", "UTF-8")) {
+            try (PrintWriter writer = new PrintWriter(System.getProperty("user.home") + "/Desktop/Ticket.txt", "UTF-8")) {
                 writer.println("Thanks for your purchase:");
                 writer.println("Product name - Price");
                 for (Product product : cart.getContents()) {
-                    writer.println(product.getName() + " - " + (product.getPrice()-(product.getPrice()*(product.getDiscount()*100))));
+                    writer.println(product.getName() + " - " + (product.getPrice() - (product.getPrice() * (product.getDiscount() * 100))));
                 }
             }
             cart.remove();
