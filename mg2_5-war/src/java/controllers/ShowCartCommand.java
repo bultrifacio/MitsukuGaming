@@ -5,8 +5,6 @@ import entities.Product;
 import entities.ShoppingCartLocal;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -14,7 +12,7 @@ import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-public class ShowCartCommand extends FrontCommand{
+public class ShowCartCommand extends FrontCommand {
 
     @Override
     public void process() {
@@ -27,32 +25,17 @@ public class ShowCartCommand extends FrontCommand{
             }
             ArrayList<Product> myCart = cart.getContents();
             ProductFacade productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
-            List<Product> productList = productFacade.findAll();
             ArrayList<Product> selectedProducts = new ArrayList<>();
-            
+
             String currency = (String) session.getAttribute("currency");
-            //if (!currency.equals("Euro")) {
-                for (Product product : productList) {
-                    for (Product cartProduct : myCart) {
-                        if (Objects.equals(cartProduct.getProductId(), product.getProductId())) {
-                            if (currency.equals("Dollar")) {
-                                product.setPrice((float) 1.11970 * product.getPrice());
-                            }
-                            selectedProducts.add(product);
-                        }
-                    }
+            for (Product cartProduct : myCart) {
+                if (currency.equals("Dollar")) {
+                    cartProduct.setPrice((float) 1.11970 * cartProduct.getPrice());
                 }
-                cart.setContents(selectedProducts);
-                session.setAttribute("Cart", cart);
-            //}
-            /*String currency = (String) session.getAttribute("currency");
-            if (!currency.equals("Euro")) {
-                for (Product product : productList) {
-                    if (currency.equals("Dollar")) {
-                        product.setPrice((float) 1.11970 * product.getPrice());
-                    }
-                }
-            }*/
+                selectedProducts.add(cartProduct);
+            }
+            cart.setContents(selectedProducts);
+            session.setAttribute("Cart", cart);
             session.setAttribute("total", cart.getTotal());
             request.setAttribute("cart", selectedProducts);
             forward("/showCart.jsp");
