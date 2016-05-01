@@ -33,75 +33,77 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
-        <h1>Modify Pack</h1>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command">
-            <input type="submit" value="Go to Main page" class="btn-link">
-        </form><br><br>
-        <form action="FrontController" method="post">
-            <fieldset>
-                <legend>Pack information:</legend>
-                <c:forEach var="element" items="${packList}">
-                    ID:<br>
-                    <input type="text" name="id" value="${element.packId}"><br>
-                    Pack name:<br>
-                    <input type="text" name="name" value="${element.name}"><br>
-                    Description:<br>
-                    <input type="text" name="description" value="${element.description}"><br>
-                    Discount:<br>
-                    <input type="text" name="discount" value="${element.discount}"><br>
-                    <input type="hidden" name="command" value="ModifyPackCommand">
-                    <input type="submit"  value="Save changes">           
+        <div class="container">
+            <h1>Modify Pack</h1>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="command">
+                <input type="submit" value="Go to Main page" class="btn-link">
+            </form><br><br>
+            <form action="FrontController" method="post">
+                <fieldset>
+                    <legend>Pack information:</legend>
+                    <c:forEach var="element" items="${packList}">
+                        ID:<br>
+                        <input type="text" name="id" value="${element.packId}"><br>
+                        Pack name:<br>
+                        <input type="text" name="name" value="${element.name}"><br>
+                        Description:<br>
+                        <input type="text" name="description" value="${element.description}"><br>
+                        Discount:<br>
+                        <input type="text" name="discount" value="${element.discount}"><br>
+                        <input type="hidden" name="command" value="ModifyPackCommand">
+                        <input type="submit"  value="Save changes">           
+                    </c:forEach>
+                </fieldset>
+            </form>
+            <table class="table-striped table table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+
+                <c:forEach var="element" items="${itemsInPack}">
+                    <tr>
+                        <td>${element.name}</td>
+                        <td>${element.category}</td>
+                        <td>
+                            <form action="FrontController" method="post">
+                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="name" value="${element.name}">
+                                <input type="hidden" name="category" value="${element.category}">
+
+                                <input type="hidden" name="command" value="RemoveProductPackCommand">
+                                <input type="submit"  value="Remove">
+                            </form>
+                        </td>
+                    </tr>
                 </c:forEach>
-            </fieldset>
-        </form>
-        <table class="table-striped table table-hover">
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Action</th>
-            </tr>
-
-            <c:forEach var="element" items="${itemsInPack}">
+            </table>
+            <table class="table-striped table table-hover">
                 <tr>
-                    <td>${element.name}</td>
-                    <td>${element.category}</td>
-                    <td>
-                        <form action="FrontController" method="post">
-                            <input type="hidden" name="id" value="${element.productId}">
-                            <input type="hidden" name="name" value="${element.name}">
-                            <input type="hidden" name="category" value="${element.category}">
-
-                            <input type="hidden" name="command" value="RemoveProductPackCommand">
-                            <input type="submit"  value="Remove">
-                        </form>
-                    </td>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
                 </tr>
-            </c:forEach>
-        </table>
-        <table class="table-striped table table-hover">
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Action</th>
-            </tr>
 
-            <c:forEach var="element" items="${itemsNotInPack}">
-                <tr>
-                    <td>${element.name}</td>
-                    <td>${element.category}</td>
-                    <td>
-                        <form action="FrontController" method="post">
-                            <input type="hidden" name="id" value="${element.productId}">
-                            <input type="hidden" name="name" value="${element.name}">
-                            <input type="hidden" name="category" value="${element.category}">
+                <c:forEach var="element" items="${itemsNotInPack}">
+                    <tr>
+                        <td>${element.name}</td>
+                        <td>${element.category}</td>
+                        <td>
+                            <form action="FrontController" method="post">
+                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="name" value="${element.name}">
+                                <input type="hidden" name="category" value="${element.category}">
 
-                            <input type="hidden" name="command" value="AddProductPackCommand">
-                            <input type="submit"  value="Add">
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+                                <input type="hidden" name="command" value="AddProductPackCommand">
+                                <input type="submit"  value="Add">
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>
