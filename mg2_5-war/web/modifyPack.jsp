@@ -35,6 +35,8 @@
         <br>
         <div class="container">
             <h1>Modify Pack</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
@@ -104,6 +106,9 @@
                     </tr>
                 </c:forEach>
             </table>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

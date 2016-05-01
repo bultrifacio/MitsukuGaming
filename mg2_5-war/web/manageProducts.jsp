@@ -30,6 +30,8 @@
         <br>
         <div class="container">
             <h1>Manage Products</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <form action="addProduct.jsp" method="post">
                 <input type="submit" value="Add Product">
             </form>
@@ -79,6 +81,9 @@
                     </tr>
                 </c:forEach>
             </table>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

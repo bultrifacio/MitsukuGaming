@@ -30,6 +30,8 @@
         <br>
         <div class="container">
             <h1>Manage Users</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <table class="table-striped table table-hover">
                 <tr>
                     <th>ID</th>
@@ -58,6 +60,9 @@
                     </tr>
                 </c:forEach>
             </table>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

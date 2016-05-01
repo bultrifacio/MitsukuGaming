@@ -64,7 +64,13 @@
                     <p class="lead"><font color="white">Mitsuku Gaming</font></p>
                     <div class="list-group">
                         <a href="register.jsp" class="list-group-item">Register</a>
+                        <%                            
+                            if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+                        %>
                         <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
+                        <%                            
+                            }
+                        %>
                         <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
