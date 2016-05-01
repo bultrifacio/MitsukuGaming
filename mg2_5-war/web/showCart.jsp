@@ -164,7 +164,7 @@
             <br>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command" value="CheckoutCommand">
-                <input type="submit" value="Checkout">
+                <input type="image" src="img/icons/checkout-icon.png" alt="Submit Form" />
             </form>
         </div>
     </body>

@@ -349,7 +349,7 @@
                             %>
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="productId" value="<%=product.getProductId()%>">
-                                <input type="submit" value="Add to my wishlist">
+                                <input type="image" src="img/icons/add-to-wishlist-icon.png" alt="Submit Form" />
                                 <input type="hidden" name="command" value="AddToWishListCommand">
                             </form>
                             <br><br>
