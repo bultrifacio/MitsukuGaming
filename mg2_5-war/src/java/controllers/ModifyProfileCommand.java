@@ -1,6 +1,7 @@
 package controllers;
 
 import controller.UsersFacade;
+import entities.PasswordEncryption;
 import entities.Users;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class ModifyProfileCommand extends FrontCommand {
                     request.getParameter("id")),
                     request.getParameter("name"),
                     request.getParameter("email"),
-                    request.getParameter("password"));
+                    PasswordEncryption.encrypt(request.getParameter("password")));
             usersFacade.edit(user);
             Users users = usersFacade.find(Integer.parseInt(request.getParameter("id")));
             List<Users> userList = new ArrayList<>();

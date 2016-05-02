@@ -17,12 +17,6 @@
             <form action="FrontController" method="post">
                 <fieldset>
                     <legend>User information:</legend>
-
-                    <%
-                        //Product product = (Product) session.getAttribute("product");
-                        //if (product != null) {
-                    %>
-
                     <c:forEach var="element" items="${userInfo}">
                         User name:<br>
                         <input type="text" name="name" value="${element.name}" placeholder="Name"><br>
