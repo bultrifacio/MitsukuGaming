@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="entities.Video"%>
 <%@page import="entities.Review"%>
@@ -116,7 +117,17 @@
                             <b>Category:</b><br>
                             <%=product.getCategory()%><br>
                             <b>Price:</b><br>
-                            <%=product.getPrice()%>
+                            <%
+                                float p;
+                                if (product.getDiscount() > 0) {
+                                    p = (float) (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0)));
+                                } else {
+                                    p = (float) product.getPrice();
+                                } 
+                                BigDecimal priceDiscounted = new BigDecimal(Float.toString(p));
+                                priceDiscounted = priceDiscounted.setScale(2, BigDecimal.ROUND_HALF_UP);
+                            %>
+                            <%=priceDiscounted%>
                             <%
                                 if (currency.equals("Euro")) {
                             %>
