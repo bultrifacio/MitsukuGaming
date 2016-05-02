@@ -26,7 +26,7 @@
                         <td>${element.platform}</td>
                         <td>
                             <form action="FrontController" method="post">
-                                <input type="hidden" name="id" value="${element.productId}">
+                                <input type="hidden" name="productId" value="${element.productId}">
                                 <input type="hidden" name="command" value="AddToCartCommand">
                                 <input type="submit" value="Add to cart">
                             </form>
