@@ -124,6 +124,12 @@
                                     %>
                                 <input type="submit" class="btn btn-primary" value="Filter by price">
                             </form>
+                                
+                            <form method ="post" action="FrontController">
+                                <input type="hidden" name="command" value="SortByPriceCommand">
+                                <input type="submit" class="btn btn-primary" value="Sort by price">
+                            </form>    
+                                
                             <br>
                             <form method="post" action="FrontController">
                                 <input type="radio" name="category" value="FPS" checked> FPS<br>

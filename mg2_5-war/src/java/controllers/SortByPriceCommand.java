@@ -27,15 +27,37 @@ public class SortByPriceCommand extends FrontCommand {
 
             List<Product> productList = productFacade.findAll();
             List<Review> reviewList = reviewFacade.findAll();
-            
+
             ArrayList<Product> sortedList = new ArrayList<>();
-            int index = 0;
-            boolean isGreater = false;
+
+            boolean comparableVector[] = new boolean[productList.size()];
+            for (int i = 0; i < comparableVector.length; i++) {
+                comparableVector[i] = false;
+            }
+
+            int index = -1;
+            int indexProductLowerPrice = 0;
+            float isGreater = 100;
+            Product productLowerPrice = new Product();
+
             for (Product product : productList) {
-                product.setPrice(product.getPrice() * (float) session.getAttribute("rate"));
-                sortedList.add(index, product);
-           }
-            
+                productLowerPrice = product;
+                for (Product elementToCompare : productList) {
+                    index++;
+                    if (elementToCompare.getPrice() < isGreater) {
+                        if (comparableVector[index] == false) {
+                            isGreater = elementToCompare.getPrice();
+                            indexProductLowerPrice = index;
+                            productLowerPrice = elementToCompare;
+                        }
+                    }
+                }
+                comparableVector[indexProductLowerPrice] = true;
+                isGreater = 100;
+                index = -1;
+                sortedList.add(productLowerPrice);
+            }
+
             request.setAttribute("productList", sortedList);
             request.setAttribute("reviewList", reviewList);
             HashMap<String, Integer> starsMap = GetInitialDataCommand.countStars(sortedList);
