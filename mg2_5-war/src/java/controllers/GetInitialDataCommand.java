@@ -62,7 +62,7 @@ public class GetInitialDataCommand extends FrontCommand {
                 pages = (productList.size() / 6);
             }
 
-            List<Product> paginatedList = productFacade.findRange(new int[]{indexPagination * 6 - 5, indexPagination * 6});
+            List<Product> paginatedList = productFacade.findRange(new int[]{indexPagination * 6 - 6, indexPagination * 6 - 1});
             List<Product> convertedList = new ArrayList<>();
             for (Product product : paginatedList) {
                 product.setPrice((float) session.getAttribute("rate") * product.getPrice());
