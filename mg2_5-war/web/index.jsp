@@ -233,8 +233,25 @@
                                                 <td align="right">
                                                     <font color="green">
                                                     <% if (element.getDiscount() != 0) {%>
-                                                    <strong><%=element.getDiscount()%> %</strong>
-                                                    <% } %>
+                                                    <strong><%=element.getDiscount()%> %</strong><br>
+                                                    <%
+                                                        float discountedPrice = (float) (element.getPrice() - (element.getPrice() * (element.getDiscount() / 100.0)));
+                                                        BigDecimal priceDis = new BigDecimal(Float.toString(discountedPrice));
+                                                        priceDis = priceDis.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                                    %>
+                                                    <strong><%=priceDis%>
+                                                    <%
+                                                        if (currency.equals("Euro")) {
+                                                        %>
+                                                        &euro;
+                                                        <%
+                                                        } else if (currency.equals("Dollar")) {
+                                                        %>
+                                                        $
+                                                        <%
+                                                            }
+                                                        } %>
+                                                        </strong>
                                                     </font>
                                                 </td>
                                             </tr>
