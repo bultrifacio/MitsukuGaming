@@ -95,7 +95,7 @@
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowMyFollowingListCommand">
-                                <input type="submit" value="My following list" class="btn-link2">
+                                <input type="submit" value="My Following List" class="btn-link2">
                             </form>
                         </div>
                         <%
