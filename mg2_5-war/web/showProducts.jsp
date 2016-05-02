@@ -40,7 +40,7 @@
                             <td>${element.discount}</td>
                             <td>
                                 <form action="FrontController" method="post">
-                                    <input type="hidden" name="id" value="${element.productId}">
+                                    <input type="hidden" name="productId" value="${element.productId}">
                                     <input type="hidden" name="command" value="AddToCartCommand">
                                     <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                                 </form>

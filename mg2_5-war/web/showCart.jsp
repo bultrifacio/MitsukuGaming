@@ -89,17 +89,16 @@
                     <td><font color="green"><%=product.getDiscount()%> %</font></td>
                     <td>
                         <%
+                            float p;
                             if (product.getDiscount() > 0) {
-                        %>
-                        <% 
-                            float p = (float) (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0))) * (Integer) entry.getValue();
+                                p = (float) (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0))) * (Integer) entry.getValue();
+                            } else {
+                                p = (float) product.getPrice() * (Integer) entry.getValue();
+                            } 
                             BigDecimal priceDiscounted = new BigDecimal(Float.toString(p));
                             priceDiscounted = priceDiscounted.setScale(2, BigDecimal.ROUND_HALF_UP);
                         %>
                         <%=priceDiscounted%>
-                        <% } else {%>
-                        <%=product.getPrice() * (Integer) entry.getValue()%>
-                        <% } %>
                         <%
                             if (currency.equals("Euro")) {
                         %>
