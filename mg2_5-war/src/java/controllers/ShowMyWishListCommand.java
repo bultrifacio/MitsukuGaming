@@ -37,24 +37,24 @@ public class ShowMyWishListCommand extends FrontCommand {
             List<Wishlist> wishlist = wishListFacade.findAll();
             List<Product> products = productFacade.findAll();
             List<Product> productListWished = new ArrayList<>();
-            
+
             for (Wishlist wish : wishlist) {
                 for (Product product : products) {
-                    if((wish.getProductId()==product.getProductId())&&(wish.getUserId() == loggedUser.getUserId())){
+                    if ((wish.getProductId() == product.getProductId()) && (wish.getUserId() == loggedUser.getUserId())) {
+                        String currency = (String) session.getAttribute("currency");
+                        if (!currency.equals("Euro")) {
+                            if (currency.equals("Dollar")) {
+                                product.setPrice((float) 1.11970 * product.getPrice());
+                            }
+                        }
                         productListWished.add(product);
                     }
                 }
             }
             request.setAttribute("productListWished", productListWished);
             forward("/wishList.jsp");
-        } catch (NamingException ex) {
-            Logger.getLogger(ShowMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(ShowMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (NamingException | ServletException | IOException ex) {
             Logger.getLogger(ShowMyWishListCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

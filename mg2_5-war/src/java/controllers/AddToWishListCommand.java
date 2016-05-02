@@ -6,7 +6,6 @@ import entities.Product;
 import entities.Users;
 import entities.Wishlist;
 import java.io.IOException;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
