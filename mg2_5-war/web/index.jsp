@@ -212,9 +212,16 @@
                                                     <%
                                                         BigDecimal price = new BigDecimal(Float.toString(element.getPrice()));
                                                         price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                                    
+                                                        if (element.getDiscount() == 0) {
                                                     %>
                                                     <strong><%=price%> 
                                                         <%
+                                                            } else {
+                                                        %>
+                                                        <strong><strike><font color="red"><%=price%>
+                                                        <%
+                                                        }
                                                             if (currency.equals("Euro")) {
                                                         %>
                                                         &euro;
@@ -222,6 +229,14 @@
                                                         } else if (currency.equals("Dollar")) {
                                                         %>
                                                         $
+                                                        <%
+                                                            }
+                                                        %>
+                                                        
+                                                        <%
+                                                            if (element.getDiscount() != 0) {
+                                                        %>
+                                                        </strike></font>
                                                         <%
                                                             }
                                                         %>
