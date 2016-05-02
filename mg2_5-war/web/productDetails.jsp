@@ -209,7 +209,7 @@
                                 <legend>User reviews</legend>
                                 <%
                                     loggedUser = (Users) session.getAttribute("loggedUser");
-                                    if (loggedUser != null) {
+                                    if ((loggedUser != null) && (loggedUser.getState()!=0)) {
                                 %>
                                 <form action="FrontController" method="post">
                                     <input type="hidden" name="productId" value="<%=product.getProductId()%>">
