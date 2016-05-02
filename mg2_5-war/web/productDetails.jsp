@@ -45,9 +45,9 @@
                 <legend>Product information:</legend>
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="row carousel-holder">
+                        <div class="row carousel-holder" >
                             <div class="col-md-12">
-                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
                                     <ol class="carousel-indicators">
                                         <%
                                             int index = 0;
