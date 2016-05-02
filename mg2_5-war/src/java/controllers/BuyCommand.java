@@ -80,7 +80,11 @@ public class BuyCommand extends FrontCommand {
                 writer.println("Thanks for your purchase:");
                 writer.println("Product name - Price");
                 for (Product product : cart.getContents()) {
-                    writer.println(product.getName() + " - " + (product.getPrice() - (product.getPrice() * (product.getDiscount() * 100))));
+                    if (product.getDiscount() > 0) {
+                        writer.println(product.getName() + " - " + (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100))));
+                    } else {
+                        writer.println(product.getName() + " - " + product.getPrice());
+                    }
                 }
             }
             cart.remove();

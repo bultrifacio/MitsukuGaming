@@ -94,7 +94,7 @@
                                 p = (float) (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100.0))) * (Integer) entry.getValue();
                             } else {
                                 p = (float) product.getPrice() * (Integer) entry.getValue();
-                            } 
+                            }
                             BigDecimal priceDiscounted = new BigDecimal(Float.toString(p));
                             priceDiscounted = priceDiscounted.setScale(2, BigDecimal.ROUND_HALF_UP);
                         %>
