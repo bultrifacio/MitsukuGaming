@@ -56,7 +56,7 @@
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }
                             }(document, 'script', 'twitter-wjs');</script>
-                        <p><font color="#FF6600">Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</font></p>
+                        <p><font color="grey">Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</font></p>
                     </div>
                     
                 </div>

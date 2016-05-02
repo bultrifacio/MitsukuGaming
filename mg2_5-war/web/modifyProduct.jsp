@@ -57,6 +57,8 @@
                     <input type="text" name="developer" value="${element.developer}"><br>
                     Platform:<br>
                     <input type="text" name="platform" value="${element.platform}"><br>
+                    Logo:<br>
+                    <input type="text" name="logo" value="${element.logo}"><br>
                     Category:<br>
                     <input type="text" name="category" value="${element.category}"><br>
                     Quantity:<br>

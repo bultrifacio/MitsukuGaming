@@ -81,7 +81,7 @@ public class ModifyProductCommand extends FrontCommand {
                 Product productInStock = productFacade.find(userAdvice.getProductId());
                 //"C:\\Users\\Jusio\\Desktop\\" + (productInStock.getName() + "-" + userToAdvice.getName()) + ".txt", Para comprobar que se genera bien
                 // he puesto la misma ruta que esta en MailBoxCommand pero no parece que funcione. 
-                FileWriter out = new FileWriter("./" + (productInStock.getName() + "-" + userToAdvice.getName()) + ".txt");
+                FileWriter out = new FileWriter((System.getProperty("user.home") + "/Desktop/"+(productInStock.getName() + "-" + userToAdvice.getName()) + ".txt"));
                 out.write("Buenos días compañero " + userToAdvice.getName() + ", nos complace informarte que el juego " + productInStock.getName() + "ya está en stock, puedes proceder a su"
                         + " compra desde la lista de deseados. \r\n"
                         + "Que tengas un buen día y esperamos verte pronto.\r\n"
