@@ -30,6 +30,7 @@
                         <input type="text" name="email" value="${element.email}" placeholder="Email"><br>
                         Password:<br>
                         <input type="password" name="password" value="" placeholder="New Password"><br>
+                        <input type="hidden" name="id" value="${element.userId}">
                         <input type="hidden" name="command" value="ModifyProfileCommand">
                         <input type="submit"  value="Save changes">
                     </c:forEach>
