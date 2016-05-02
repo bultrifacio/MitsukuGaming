@@ -11,4 +11,5 @@
         <h1>ERROR 404 UNKNOWN JSP</h1>
         <div>That command doesn't exists.</div>
     </body>
+    <%@include file="footer.jsp" %>
 </html>

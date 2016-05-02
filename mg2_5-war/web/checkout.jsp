@@ -50,7 +50,7 @@
                 <input name="command" value="ShowFollowerListToBuyCommand" type="hidden"><br>
                 <input value="Buy for your friend" type="submit"><br>
             </form>
-
         </div>
     </body>
+    <%@include file="footer.jsp" %>
 </html>

@@ -55,4 +55,5 @@ and open the template in the editor.
             %>
         </div>
     </body>
+    <%@include file="footer.jsp" %>
 </html>
