@@ -69,7 +69,6 @@
                         <%                            
                             }
                         %>
-                        <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPopularProductsCommand">
