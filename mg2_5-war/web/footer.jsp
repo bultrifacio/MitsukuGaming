@@ -38,8 +38,14 @@
             <!-- Footer    -->
             <footer>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="fb-like" data-href="https://www.facebook.com/MitsukuGaming-640506082765520/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                    <center>
+                    <div id="twitterwidget2">
+                    <a class="twitter-timeline" href="https://twitter.com/MitsukuGaming" data-widget-id="721735073972817920">Tweets by @MitsukuGaming</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>   
+                    </div>
+                    </center>
+                    <div id="twitterwidget1" class="col-lg-12">
+                        <div  class="fb-like" data-href="https://www.facebook.com/MitsukuGaming-640506082765520/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
                         <a href="https://twitter.com/MitsukuGaming" class="twitter-follow-button" data-show-count="false">Follow @MitsukuGaming</a>
                         <script>!function (d, s, id) {
                                 var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
@@ -52,6 +58,7 @@
                             }(document, 'script', 'twitter-wjs');</script>
                         <p><font color="white">Copyright &copy; <strong>Mitsuku Gaming</strong> 2016</font></p>
                     </div>
+                    
                 </div>
             </footer>
         </div>
