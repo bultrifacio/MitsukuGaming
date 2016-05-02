@@ -12,11 +12,6 @@
         <br>
         <div class="container">
             <h1>FollowList</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-
             <c:forEach var="element" items="${usersList}">
                 <b>Name: </b><br>
 
