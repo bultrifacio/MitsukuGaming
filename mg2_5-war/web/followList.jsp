@@ -21,7 +21,12 @@
                 <b>Name: </b><br>
 
                 ${element.name}<br>
-
+                
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="id" value="${element.userId}">
+                    <input type="submit" value="View Profile">
+                    <input type="hidden" name="command" value="CopyFriendsDetailsCommand">
+                </form>
                 <br><br>
             </c:forEach><br><br>
 
