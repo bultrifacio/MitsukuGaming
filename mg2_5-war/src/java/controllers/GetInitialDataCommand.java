@@ -35,13 +35,14 @@ public class GetInitialDataCommand extends FrontCommand {
                 session.setAttribute("rate", (float) 1.0);
             }
 
+            
             session.setAttribute("actualPage", "FrontController");
             productFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ProductFacade");
             ReviewFacade reviewFacade = InitialContext.doLookup("java:global/mg2_5/mg2_5-ejb/ReviewFacade");
             
             List<Product> productList = productFacade.findAll();
             List<Review> reviewList = reviewFacade.findAll();
-
+            
             if (session.getAttribute("indexPagination") == null) {
                 session.setAttribute("indexPagination", 1);
             } else {

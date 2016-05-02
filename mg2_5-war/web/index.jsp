@@ -283,7 +283,14 @@
                 </div>
                 <center>
                     <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
+                        <li><a>
+                                <form method="post" action="FrontController">
+                                    <input type="hidden" name="command" value="ArrowsCommand">
+                                    <input type="submit" name="arrow" value="&laquo;" class="btn-link">
+                                    <input type="hidden" name="direction" value="-1">
+                                </form>
+                            </a> 
+                        </li>
                             <%
                                 int pages = (Integer) session.getAttribute("pages");
                                 int indexPagination = (Integer) session.getAttribute("indexPagination");
@@ -314,7 +321,16 @@
                                 }
                             }
                         %>
-                        <li><a href="#">&raquo;</a></li>
+                        <li>
+                            <a>
+                                <form method="post" action="FrontController">
+                                    <input type="hidden" name="command" value="ArrowsCommand">
+                                    <input type="submit" name="arrow" value="&raquo;" class="btn-link">
+                                    <input type="hidden" name="direction" value="1">
+                                </form>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </center>
             </div>
