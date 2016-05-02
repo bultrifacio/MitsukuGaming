@@ -57,9 +57,7 @@
         <!-- Page Content -->
         <img class="banner" alt="offer" src="img/banners/banner-ark.jpg" style="float:right"/>
         <div class="container">
-
             <div class="row">
-
                 <div class="col-md-3">
                     <p class="lead"><font color="white">Mitsuku Gaming</font></p>
                     <div class="list-group">
