@@ -6,7 +6,6 @@ import entities.Product;
 import entities.Review;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -55,6 +54,7 @@ public class SortByPriceCommand extends FrontCommand {
                 comparableVector[indexProductLowerPrice] = true;
                 isGreater = 100;
                 index = -1;
+                productLowerPrice.setPrice(productLowerPrice.getPrice() * (float) session.getAttribute("rate"));
                 sortedList.add(productLowerPrice);
             }
 
