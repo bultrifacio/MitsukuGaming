@@ -6,6 +6,7 @@ import entities.Product;
 import entities.Review;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,10 +32,9 @@ public class SortByPriceCommand extends FrontCommand {
             int index = 0;
             boolean isGreater = false;
             for (Product product : productList) {
-                
                 product.setPrice(product.getPrice() * (float) session.getAttribute("rate"));
                 sortedList.add(index, product);
-            }
+           }
             
             request.setAttribute("productList", sortedList);
             request.setAttribute("reviewList", reviewList);
