@@ -13,6 +13,7 @@ import entities.ShoppingCartLocal;
 import entities.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -80,10 +81,21 @@ public class BuyCommand extends FrontCommand {
                 writer.println("Thanks for your purchase:");
                 writer.println("Product name - Price");
                 for (Product product : cart.getContents()) {
+                    float p;
                     if (product.getDiscount() > 0) {
-                        writer.println(product.getName() + " - " + (product.getPrice() - (product.getPrice() * (product.getDiscount() / 100))));
+                        p = product.getPrice() - (product.getPrice() * (product.getDiscount() / 100));
                     } else {
-                        writer.println(product.getName() + " - " + product.getPrice());
+                        p = product.getPrice();
+                    }
+                    BigDecimal priceDiscounted = new BigDecimal(Float.toString(p));
+                    priceDiscounted = priceDiscounted.setScale(2, BigDecimal.ROUND_HALF_UP);
+                    String currency = (String) session.getAttribute("currency");
+                    if (currency.equals("Euro")) {
+                        writer.println(product.getName() + " - " + priceDiscounted + " €");
+                    } else {
+                        if (currency.equals("Dollar")) {
+                            writer.println(product.getName() + " - " + priceDiscounted + " $");
+                        }
                     }
                 }
             }
