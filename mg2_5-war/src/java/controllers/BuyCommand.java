@@ -83,7 +83,7 @@ public class BuyCommand extends FrontCommand {
                 for (Product product : cart.getContents()) {
                     float p;
                     if (product.getDiscount() > 0) {
-                        p = product.getPrice() - (product.getPrice() * (product.getDiscount() / 100));
+                        p = product.getPrice() - (product.getPrice() * (float) (product.getDiscount() / 100.0));
                     } else {
                         p = product.getPrice();
                     }
