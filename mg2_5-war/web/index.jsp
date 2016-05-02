@@ -41,31 +41,23 @@
     </head>
 
     <body background="img/main/fc3.jpg">
-        <div id="fb-root"></div>
-        <script>(function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.6";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            <%@include file="header.jsp" %>
+        <%@include file="header.jsp" %>
         <br>
         <br>
         <!-- Page Content -->
         <img class="banner" alt="offer" src="img/banners/banner-ark.jpg" style="float:right"/>
         <div class="container">
-
             <div class="row">
-
                 <div class="col-md-3">
                     <p class="lead"><font color="white">Mitsuku Gaming</font></p>
                     <div class="list-group">
                         <a href="register.jsp" class="list-group-item">Register</a>
+                        <%                            if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+                        %>
                         <a href="adminPanel.jsp" class="list-group-item">Admin Panel</a>
-                        <a href="mailbox.jsp" class="list-group-item">Suggestions MailBox</a>
+                        <%
+                            }
+                        %>
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPopularProductsCommand">
@@ -78,7 +70,7 @@
                                 <input type="submit" value="Games" class="btn-link2">
                             </form>
                         </div>
-                        
+
                         <div class="list-group-item">
                             <form method="post" action="FrontController">
                                 <input type="hidden" name="command" value="ShowPacksForAddToCart">

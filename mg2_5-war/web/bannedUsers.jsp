@@ -11,6 +11,8 @@
         <br>
         <div class="container">
             <h1>Banned Users List</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <table border="1" class="table-striped">
                 <tr>
                     <th>Name</th>
@@ -38,6 +40,9 @@
                 <input type="hidden" name="command" value="BanToCommand">
                 <input type="submit" value="Ban">
             </form>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

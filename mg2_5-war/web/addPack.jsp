@@ -33,6 +33,8 @@ and open the template in the editor.
         <br>
         <div class="container">
             <h1>Add a pack</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <form action="FrontController" method="post">
                 <input type="hidden" name="command">
                 <input type="submit" value="Go to Main page" class="btn-link">
@@ -48,6 +50,9 @@ and open the template in the editor.
                     <input value="Add new pack" type="submit"><br>
                 </fieldset>
             </form>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

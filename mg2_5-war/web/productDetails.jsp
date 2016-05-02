@@ -337,12 +337,6 @@
                                 <%
                                     }
                                 %>
-                            <form action="FrontController" method="post">
-                                <input type="hidden" name="productId" value="<%=product.getProductId()%>">
-                                <input type="hidden" name="name" value="<%=product.getName()%>">
-                                <input type="submit" value="Stats">
-                                <input type="hidden" name="command" value="ShowProductStatsCommand">
-                            </form>
 
                             <%
                                 if (loggedUser != null) {

@@ -31,7 +31,7 @@
                 <fieldset>
                     <legend>Technical Support:</legend>
                     Explain your problem:<br>
-                    <textarea name="comentarios" rows="10" cols="40"></textarea><br>
+                    <textarea name="support" rows="10" cols="40"></textarea><br>
                     <input type="hidden" name="command" value="SupportCommand">
                     <input type="submit" value="Sent">
                 </fieldset>

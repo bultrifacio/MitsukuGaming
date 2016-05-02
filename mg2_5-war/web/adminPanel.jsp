@@ -33,7 +33,8 @@ and open the template in the editor.
         <div class="container">
             <h1>Admin Panel</h1>
             <br><br>
-
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
             <form method="post" action="FrontController">
                 <input type="hidden" name="command" value="ShowProductsCommand">
                 <input type="submit" value="Manage products">
@@ -43,7 +44,7 @@ and open the template in the editor.
                 <input type="submit" value="Manage users">
                 <input type="hidden" name="command" value="ShowUsersCommand">
             </form>
-            
+
             <form method="post" action="FrontController">
                 <input type="hidden" name="command" value="ShowPacksCommand">
                 <input type="submit" value="Manage packs">
@@ -56,6 +57,9 @@ and open the template in the editor.
                 <input type="hidden" name="command" value="ShowBannedUsersCommand">
                 <input type="submit" value="Banned Users List">
             </form>
+            <%
+                }
+            %>
         </div>
     </body>
 </html>

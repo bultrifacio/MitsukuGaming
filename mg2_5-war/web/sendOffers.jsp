@@ -26,9 +26,14 @@
     <body>
         <%@include file="header.jsp" %>
         <br>
+        <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+        %>
         <div class="container">
             <h1>Offers sent successfully</h1>
             <a href="adminPanel.jsp">Return to Admin Panel</a>
         </div>
+        <%
+            }
+        %>
     </body>
 </html>

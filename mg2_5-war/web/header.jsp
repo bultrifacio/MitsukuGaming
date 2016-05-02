@@ -41,10 +41,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#">About</a>
+                            <a href="newsSection.jsp">News</a>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a href="mailbox.jsp">Suggestions</a>
                         </li>
                         <li>
                             <a href="supportform.jsp">Contact</a>
@@ -52,8 +52,6 @@
                         <li>
                             <table>
                                 <tr>
-
-
                                     <%
                                         Users loggedUser = (Users) session.getAttribute("loggedUser");
                                         if (loggedUser != null) {

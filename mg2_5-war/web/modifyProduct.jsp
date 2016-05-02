@@ -33,6 +33,8 @@
         <%@include file="header.jsp" %>
         <br>
         <h1>Modify Product</h1>
+        <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+        %>
         <form action="FrontController" method="post">
             <input type="hidden" name="command">
             <input type="submit" value="Go to Main page" class="btn-link">
@@ -62,11 +64,11 @@
                     Release date:<br>
                     <%
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                        List<Product> list = (List<Product>)request.getAttribute("productList");
+                        List<Product> list = (List<Product>) request.getAttribute("productList");
                         Date releaseDate = list.get(0).getReleaseDate();
                         String formattedDate = df.format(releaseDate);
                     %>
-                    <input type="text" name="release" value="<%= formattedDate %>"><br>
+                    <input type="text" name="release" value="<%= formattedDate%>"><br>
                     Available:<br>
                     <input type="text" name="available" value="${element.available}"><br>
                     Description:<br>
@@ -78,5 +80,8 @@
                 </c:forEach>
             </fieldset>
         </form>
+        <%
+                }
+            %>
     </body>
 </html>

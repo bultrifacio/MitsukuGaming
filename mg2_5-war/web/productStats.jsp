@@ -33,19 +33,17 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-        <h1>Product Stats</h1>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="ShowCartCommand">
-            <input type="submit" value="Show cart" class="btn-link">
-        </form><br><br>
-        <fieldset>
-            <legend>Product: ${name}</legend>
+            <h1>Product Stats</h1>
+            <%                if (loggedUser != null && loggedUser.getName().equals("Pepe")) {
+            %>
+            <fieldset>
+                <legend>Product: ${name}</legend>
                 <b>Number of sales: </b>
                 ${salesProduct}<br>
                 <b>Number of wish: </b>
                 ${wishProduct}<br><br>
-                
-            <legend>Payment methods: </legend>
+
+                <legend>Payment methods: </legend>
                 <b>Visa: </b>
                 ${MethodVisa}<br>
                 <b>MasterCard: </b>
@@ -54,8 +52,11 @@
                 ${MethodPaypal}<br>
                 <b>Wire transfer: </b>
                 ${MethodWireTranfer}<br><br>
-        </fieldset>
-    </div>
-</body>
+            </fieldset>
+        </div>
+        <%
+            }
+        %>
+    </body>
 </html>
 
