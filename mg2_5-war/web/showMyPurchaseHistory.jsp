@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>My Purchase history</title>
+        <title>My Purchase History</title>
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,11 +30,8 @@
         <br>
         <div class="container">
             <h1>My Purchase History</h1>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="command">
-                <input type="submit" value="Go to Main page" class="btn-link">
-            </form><br><br>
-            <table border="1" class="table-striped">
+            <br>
+            <table border="1" class="table-striped table table-hover">
                 <c:forEach var="element" items="${productListFiltre}">
                     <tr>
                         <td>${element.name}</td>

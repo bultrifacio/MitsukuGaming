@@ -265,16 +265,16 @@
                                                 // Show text red or green depending on score
                                                 if (scores.get(review.getReviewId()) < 0) {
                                             %>
-                                            <div class="error-text"><%=scores.get(review.getReviewId())%></div><br>
+                                            <b class="error-text"><%=scores.get(review.getReviewId())%></b><br><br>
                                             <%
                                             } else {
                                                 if (scores.get(review.getReviewId()) > 0) {
                                             %>
-                                            <div class="success-text"><%=scores.get(review.getReviewId())%></div><br>
+                                            <b class="success-text"><%=scores.get(review.getReviewId())%></b><br><br>
                                             <%
                                             } else {
                                             %>
-                                            <div><%=scores.get(review.getReviewId())%></div><br>
+                                            <b><%=scores.get(review.getReviewId())%></b><br><br>
                                             <%
                                                     }
                                                 }

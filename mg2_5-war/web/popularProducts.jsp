@@ -13,7 +13,7 @@
         <%@include file="header.jsp" %>
         <br>
         <div class="container">
-            <h1>Show Products</h1>
+            <h1>Show Popular Products</h1>
             <table class="table-striped table table-hover">
                 <c:forEach var="element" items="${productList}">
                     <tr>
@@ -28,7 +28,7 @@
                             <form action="FrontController" method="post">
                                 <input type="hidden" name="productId" value="${element.productId}">
                                 <input type="hidden" name="command" value="AddToCartCommand">
-                                <input type="submit" value="Add to cart">
+                                <input type="image" src="img/icons/add-to-cart-icon.png" alt="Submit Form" />
                             </form>
                         </td>
                     </tr>
