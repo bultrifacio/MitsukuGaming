@@ -6,7 +6,6 @@ import controller.WishlistFacade;
 import entities.Product;
 import entities.Users;
 import entities.Wishlist;
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
