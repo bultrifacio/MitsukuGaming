@@ -9,34 +9,49 @@ CREATE TABLE VIDEO (VIDEO_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, P
 
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (2, 'https://www.youtube.com/embed/9_8Qi-I4o9E');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (1, 'https://www.youtube.com/embed/13TbCC0MY8U');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (3, 'https://www.youtube.com/embed/mJPJv2Lf78A?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (4, 'https://www.youtube.com/embed/NteAPGprDJk?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (5, 'https://www.youtube.com/embed/haMLxLbN2WI?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (6, 'https://www.youtube.com/embed/-v_hlGRx-uA?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (7, 'https://www.youtube.com/embed/_ukxGwWsYJs?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (8, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (9, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (10, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (11, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (12, 'https://www.youtube.com/embed/pRzYt9_Amu0?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (13, 'https://www.youtube.com/embed/dushZybUYnM?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (14, 'https://www.youtube.com/embed/v4lT5sI4FkE?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (15, 'https://www.youtube.com/embed/g6UWbcTKWsk?rel=0');
+    
 INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
     VALUES (16, 'https://www.youtube.com/embed/7fsayMcVD90?rel=0');
 
@@ -106,8 +121,10 @@ CREATE TABLE FOLLOWER_LIST (FOLLOWER_ID INTEGER GENERATED ALWAYS AS IDENTITY PRI
 
 INSERT INTO APP.FOLLOWER_LIST (USER_ID, FOLLOWER)
     VALUES (1, 2);
+    
 INSERT INTO APP.FOLLOWER_LIST (USER_ID, FOLLOWER)
     VALUES (2, 1);
+    
 INSERT INTO APP.FOLLOWER_LIST (USER_ID, FOLLOWER)
     VALUES (1, 3);
 
@@ -117,42 +134,61 @@ CREATE TABLE IMAGE (IMAGE_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, P
 
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (3, 'fallout-4_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (3, 'fallout-4_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (6, 'dark-souls-3_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (6, 'dark-souls-3_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (2, 'mgsv-tpp_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (2, 'mgsv-tpp_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (8, 'mushroom-wars_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (9, 'mxgp2_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (10, 'final-fantasy-ix_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH")
     VALUES (13, 'overwatch_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (4, 'doom_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (4, 'doom_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (5, 'mg5GZ_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (5, 'mg5GZ_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (14, 'SCblacklist_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (14, 'SCblacklist_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (15, 'soulreaver_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (16, 'BD2_1.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (16, 'BD2_2.jpg');
+    
 INSERT INTO APP.IMAGE (PRODUCT_ID, "PATH") 
     VALUES (11, 'FF8_1.jpg');
 
@@ -162,24 +198,34 @@ CREATE TABLE REVIEW (REVIEW_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (2, 'The best game of the world.', 10, 1, '2016-03-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (2, 'A Hideo Kojima Game.', 9, 2, '2016-03-27');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (3, 'Bethesda rocks!', 10, 3, '2016-04-25');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (6, 'Hard game', 5, 1, '2016-04-25');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (3, 'Elite', 4, 1, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (2, 'Pure stealth.', 10, 4, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (6, 'Praise the Sun!', 10, 4, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (6, 'I can''t pass the tutorial...', 1, 5, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (2, 'Best Stealth game.', 8, 5, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (6, 'Prepare To Die.', 7, 6, '2016-04-28');
+    
 INSERT INTO APP.REVIEW (PRODUCT_ID, TEXT, SCORE, USER_ID, "DATE")
     VALUES (6, 'Bad optimization...', 1, 7, '2016-04-28');
 
@@ -189,18 +235,25 @@ CREATE TABLE SALES (SALE_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, PR
 
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (2, 1, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (3, 1, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (6, 1, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (2, 3, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (6, 4, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (3, 5, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (6, 5, '2016-05-01', 'Visa');
+    
 INSERT INTO APP.SALES (PRODUCT_ID, USER_ID, "DATE", "METHOD") 
     VALUES (4, 4, '2016-05-01', 'Visa');
 
@@ -210,16 +263,22 @@ CREATE TABLE USERS (USER_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "N
 
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, STATE)
     VALUES ('Pepe', 'pepe@mail.com', '81dc9bdb52d04dc20036dbd8313ed055',1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, STATE)
     VALUES ('Ismael', 'isma@mail.es', 'd93591bdf7860e1e4ee2fca799911215',1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, STATE)
     VALUES ('Juan Carlos', 'juan@correo.es', '934b535800b1cba8f96a5d72f72f1611',1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, "STATE")
     VALUES ('Abian', 'abian@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, "STATE")
     VALUES ('Ruben', 'ruben@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, "STATE")
     VALUES ('Hector', 'hector@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+    
 INSERT INTO APP.USERS ("NAME", EMAIL, PASSWORD, "STATE")
     VALUES ('Jose', 'jose@mail.com', '8ec779ae27cfeb86d3be7c25ddd370a0', 1);
 
@@ -236,12 +295,16 @@ CREATE TABLE PACK_CONTENT (ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
 
 INSERT INTO APP.PACK_CONTENT (PACK_ID, PRODUCT_ID) 
     VALUES (1, 2);
+    
 INSERT INTO APP.PACK_CONTENT (PACK_ID, PRODUCT_ID) 
     VALUES (1, 5);
+    
 INSERT INTO APP.PACK_CONTENT (PACK_ID, PRODUCT_ID) 
     VALUES (2, 6);
+    
 INSERT INTO APP.PACK_CONTENT (PACK_ID, PRODUCT_ID) 
     VALUES (2, 15);
+    
 INSERT INTO APP.PACK_CONTENT (PACK_ID, PRODUCT_ID) 
     VALUES (2, 7);
     
@@ -251,6 +314,7 @@ CREATE TABLE PACK_DETAILS (PACK_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY 
 
 INSERT INTO APP.PACK_DETAILS ("NAME", DESCRIPTION, LOGO, DISCOUNT) 
     VALUES ('Pack Metal Gear', 'Descuentos en MG Saga', 'mgsv-tpp_1.jpg', 25);
+    
 INSERT INTO APP.PACK_DETAILS ("NAME", DESCRIPTION, LOGO, DISCOUNT) 
     VALUES ('Aventura', 'Juegos de Aventura varios', 'dark-souls-3_1.jpg', 25);
 
