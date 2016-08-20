@@ -5,66 +5,6 @@ Online Gaming Shop
 DATABASE SCRIPT
 ---------------------------------------------------------------------------------------------------
 
-CREATE TABLE VIDEO (VIDEO_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, PRODUCT_ID INTEGER NOT NULL, "URL" VARCHAR(200));
-
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (2, 'https://www.youtube.com/embed/9_8Qi-I4o9E');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (1, 'https://www.youtube.com/embed/13TbCC0MY8U');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (3, 'https://www.youtube.com/embed/mJPJv2Lf78A?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (4, 'https://www.youtube.com/embed/NteAPGprDJk?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (5, 'https://www.youtube.com/embed/haMLxLbN2WI?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (6, 'https://www.youtube.com/embed/-v_hlGRx-uA?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (7, 'https://www.youtube.com/embed/_ukxGwWsYJs?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (8, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (9, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (10, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (11, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (12, 'https://www.youtube.com/embed/pRzYt9_Amu0?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (13, 'https://www.youtube.com/embed/dushZybUYnM?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (14, 'https://www.youtube.com/embed/v4lT5sI4FkE?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (15, 'https://www.youtube.com/embed/g6UWbcTKWsk?rel=0');
-    
-INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
-    VALUES (16, 'https://www.youtube.com/embed/7fsayMcVD90?rel=0');
-
----------------------------------------------------------------------------------------------------
-
-CREATE TABLE REVIEW_SCORE (SCORE_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, REVIEW_ID INTEGER NOT NULL, USER_ID INTEGER NOT NULL, SCORE INTEGER NOT NULL);
-
----------------------------------------------------------------------------------------------------
-
-CREATE TABLE REPORT (REPORT_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, REVIEW_ID INTEGER NOT NULL, USER_ID INTEGER NOT NULL, REASON LONG VARCHAR);
-
----------------------------------------------------------------------------------------------------
-
 CREATE TABLE PRODUCT (PRODUCT_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "NAME" VARCHAR(144) NOT NULL, DESCRIPTION LONG VARCHAR, SYNOPSIS LONG VARCHAR, QUANTITY INTEGER DEFAULT 0  NOT NULL, RELEASE_DATE DATE NOT NULL, AVAILABLE INTEGER NOT NULL, PRICE REAL, COST REAL, CATEGORY VARCHAR(15), LOGO VARCHAR(50), DISCOUNT INTEGER DEFAULT 0  NOT NULL, PLATFORM VARCHAR(30) DEFAULT 'DRM-Free'  NOT NULL, DEVELOPER VARCHAR(40) DEFAULT 'God'  NOT NULL);
 
 INSERT INTO APP.PRODUCT ("NAME", DESCRIPTION, SYNOPSIS, QUANTITY, RELEASE_DATE, AVAILABLE, PRICE, COST, CATEGORY, LOGO, DISCOUNT, PLATFORM, DEVELOPER) 
@@ -317,4 +257,64 @@ INSERT INTO APP.PACK_DETAILS ("NAME", DESCRIPTION, LOGO, DISCOUNT)
     
 INSERT INTO APP.PACK_DETAILS ("NAME", DESCRIPTION, LOGO, DISCOUNT) 
     VALUES ('Aventura', 'Juegos de Aventura varios', 'dark-souls-3_1.jpg', 25);
+
+------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE VIDEO (VIDEO_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, PRODUCT_ID INTEGER NOT NULL, "URL" VARCHAR(200));
+
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (2, 'https://www.youtube.com/embed/9_8Qi-I4o9E');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (1, 'https://www.youtube.com/embed/13TbCC0MY8U');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (3, 'https://www.youtube.com/embed/mJPJv2Lf78A?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (4, 'https://www.youtube.com/embed/NteAPGprDJk?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (5, 'https://www.youtube.com/embed/haMLxLbN2WI?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (6, 'https://www.youtube.com/embed/-v_hlGRx-uA?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (7, 'https://www.youtube.com/embed/_ukxGwWsYJs?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (8, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (9, 'https://www.youtube.com/embed/r8HKY3-AzuM?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (10, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (11, 'https://www.youtube.com/embed/OWbzaPqdR_U?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (12, 'https://www.youtube.com/embed/pRzYt9_Amu0?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (13, 'https://www.youtube.com/embed/dushZybUYnM?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (14, 'https://www.youtube.com/embed/v4lT5sI4FkE?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (15, 'https://www.youtube.com/embed/g6UWbcTKWsk?rel=0');
+    
+INSERT INTO APP.VIDEO (PRODUCT_ID, URL) 
+    VALUES (16, 'https://www.youtube.com/embed/7fsayMcVD90?rel=0');
+
+---------------------------------------------------------------------------------------------------
+
+CREATE TABLE REVIEW_SCORE (SCORE_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, REVIEW_ID INTEGER NOT NULL, USER_ID INTEGER NOT NULL, SCORE INTEGER NOT NULL);
+
+---------------------------------------------------------------------------------------------------
+
+CREATE TABLE REPORT (REPORT_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, REVIEW_ID INTEGER NOT NULL, USER_ID INTEGER NOT NULL, REASON LONG VARCHAR);
 
