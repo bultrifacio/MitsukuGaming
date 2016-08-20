@@ -1,9 +1,9 @@
 # MitsukuGaming
 Online Gaming Shop
 
-###############
+
 DATABASE SCRIPT
-###############
+---------------------------------------------------------------------------------------------------
 
 CREATE TABLE VIDEO (VIDEO_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, PRODUCT_ID INTEGER NOT NULL, "URL" VARCHAR(200));
 
