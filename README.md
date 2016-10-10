@@ -1,8 +1,20 @@
 # MitsukuGaming
-Online Gaming Shop
+Online Gaming Shop.
+Allows you to navigate across the web to make a purchase of the published products. 
 
+Features:
+-You can search products using several filters.
+-You can register and login to have a history of purchases.
+-You can add products to your wishlist.
+-You can add other users as friends.
+-You can gift products to users in your friend list.
+-You can send suggestion messages.
+-You can send support messages.
+As admin:
+-You can read received suggestion messages.
+-You can read received support messages.
 
-DATABASE SCRIPT
+DATABASE "SAMPLE" SCRIPT
 ---------------------------------------------------------------------------------------------------
 
 CREATE TABLE **PRODUCT** (PRODUCT_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "NAME" VARCHAR(144) NOT NULL, DESCRIPTION LONG VARCHAR, SYNOPSIS LONG VARCHAR, QUANTITY INTEGER DEFAULT 0  NOT NULL, RELEASE_DATE DATE NOT NULL, AVAILABLE INTEGER NOT NULL, PRICE REAL, COST REAL, CATEGORY VARCHAR(15), LOGO VARCHAR(50), DISCOUNT INTEGER DEFAULT 0  NOT NULL, PLATFORM VARCHAR(30) DEFAULT 'DRM-Free'  NOT NULL, DEVELOPER VARCHAR(40) DEFAULT 'God'  NOT NULL);
