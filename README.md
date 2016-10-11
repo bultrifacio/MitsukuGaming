@@ -2,20 +2,30 @@
 Online Gaming Shop.
 Allows you to navigate across the web to make a purchase of the published products. 
 
-Features:
--You can search products using several filters.
--You can register and login to have a history of purchases.
--You can add products to your wishlist.
--You can add other users as friends.
--You can gift products to users in your friend list.
--You can send suggestion messages.
--You can send support messages.
-As admin:
--You can read received suggestion messages.
--You can read received support messages.
+# Main features:
+* As client:
+  * You can search products using several filters.
+  * You can register and login to have a history of purchases.
+  * You can add products to your wishlist.
+  * You can write a review of a product, giving a score for the product.
+  * You can rate the reviews from other users.
+  * You can report the reviews from other users.
+  * You can add other users as friends.
+  * You can gift products to users in your friend list.
+  * You can send suggestion messages.
+  * You can send support messages.
 
-DATABASE "SAMPLE" SCRIPT
+* As admin:
+  * You can read received suggestion messages.
+  * You can read received support messages.
+  * You can manage the products, adding, editing or removing products from the shop.
+  * You can manage the reports of reviews from users.
+  * You can ban/block users from posting reviews, and remove this status too.
+
+DATABASE
 ---------------------------------------------------------------------------------------------------
+
+The system use a database named *"sample"*. This is the SQL script to create the necessary tables:
 
 CREATE TABLE **PRODUCT** (PRODUCT_ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, "NAME" VARCHAR(144) NOT NULL, DESCRIPTION LONG VARCHAR, SYNOPSIS LONG VARCHAR, QUANTITY INTEGER DEFAULT 0  NOT NULL, RELEASE_DATE DATE NOT NULL, AVAILABLE INTEGER NOT NULL, PRICE REAL, COST REAL, CATEGORY VARCHAR(15), LOGO VARCHAR(50), DISCOUNT INTEGER DEFAULT 0  NOT NULL, PLATFORM VARCHAR(30) DEFAULT 'DRM-Free'  NOT NULL, DEVELOPER VARCHAR(40) DEFAULT 'God'  NOT NULL);
 
